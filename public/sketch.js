@@ -1,51 +1,50 @@
-// Create a new connection using socket.io (imported in index.html)
-let socket = io();
+var w = 0;
 
-// define the function that will be called on a new newConnection
-socket.on("connect", newConnection);
-
-function newConnection() {
-  console.log("your id:", socket.id);
+function preload(){
+  // put preload code here
+  // track = loadSound("/assets/sounds/ItFeelsGood.mp3");
 }
-
-// Define which function should be called when a new message
-// comes from the server with type "mouseBroadcast"
-
-socket.on("mouseBroadcast", otherMouse);
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background("red");
-}
-
-// Callback function called when a new message comes from the server
-// Data parameters will contain the received data
-function otherMouse(data) {
-  console.log("received:", data);
-  noStroke();
-  fill("yellow");
-  ellipse(data.x, data.y, 20);
-}
-
-function mouseDragged() {
-  console.log("sending: ", mouseX, mouseY);
-  noStroke();
-  fill(255);
-
-  // create an object containing the mouse position
-  let message = {
-    x: mouseX,
-    y: mouseY,
-  };
-  // send the object to server,
-  // tag it as "mouse" event
-  socket.emit("mouse", message);
-
-  ellipse(mouseX, mouseY, 20);
+  // put setup code here
+  // createCanvas(windowWidth,windowHeight);
+  // track.play();
 }
 
 function draw() {
-  // evert draw cycle, add a background with low opacity
-  // to create the "fade" effect
-  background(0, 5);
+  // put drawing code here
+  // trackTime = track.currentTime();
+  // console.log(trackTime);
+}
+
+function watch() {
+  if (w == 0) {
+    document.getElementById("overlay").style.opacity = "0";
+    document.getElementById("bt2").style.backgroundImage = "url(/assets/images/lp/occhio-barrato.png)";
+    w = 1
+  } else if(w == 1) {
+    document.getElementById("overlay").style.opacity = "0.8";
+    document.getElementById("bt2").style.backgroundImage = "url(/assets/images/lp/occhio.png)";
+    w = 0
+  }
+}
+
+function gioca() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("header").style.display = "none";
+}
+
+function home() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("header").style.display = "flex";
+}
+
+function info(){
+  if (w == 0) {
+    document.getElementById("welcome").style.display = "none";
+    w = 1
+  } else if(w == 1) {
+    document.getElementById("welcome").style.display = "block";
+    w = 0
+  }
 }

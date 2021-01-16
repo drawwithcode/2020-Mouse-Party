@@ -1,0 +1,238 @@
+body {
+  position: absolute;
+  position: fixed;
+  background-color: #0f1122;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#overlay{
+  background-color: #0f1122;
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  display: block;
+}
+
+#header {
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.elementiSx {
+  background-color: red;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  height: 15%;
+  width: 0%;
+  margin-left: 5%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  }
+
+.elementiDx {
+  width: 10%;
+  height: auto;
+  margin: auto;
+  margin-right: 5%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+#logo{
+  height: 30pt;
+}
+
+#join, #occhio{
+  height: 20pt;
+}
+
+#logo:hover, #bt1:hover, #bt2:hover, #bt3:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.menu{
+  position: fixed;
+  left: 5%;
+  top: 5%;
+  width: 15%;
+  height: 30%;
+}
+
+.testo{
+  margin:0;
+  padding: 0;
+  font-size: 12pt;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.watching{
+  margin-top: 0;
+  height:30%;
+}
+
+.dancing{
+  margin-top: 0;
+  height:40%;
+}
+
+.omini{
+margin-top: 3%;
+}
+
+.omino{
+  margin-top: 0;
+  margin-right: 2%;
+  height: 15pt;
+  float: left;
+}
+
+#u1{
+  display: none;
+  /* display: block; */
+}
+
+#u2{
+  display: none;
+  /* display: block; */
+}
+
+#u3{
+  display: none;
+  /* display: block; */
+}
+
+#u4{
+  display: none;
+  /* display: block; */
+}
+
+#u5{
+  display: none;
+  /* display: block; */
+}
+
+#u6{
+  /* display: none; */
+  display: block;
+}
+
+#u7{
+  /* display: none; */
+  display: block;
+}
+
+#u8{
+  /* display: none; */
+  display: block;
+}
+
+#utenti{
+  display: none;
+  /* display: block; */
+}
+
+
+button {
+  background-color: #0f1122;
+  border-color: #f15a24;
+  border-style: solid;
+  border-width: 1.5px;
+  color: #f15a24;
+  text-align: center;
+  font-size: 11pt;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  width: 40%;
+  height: 20pt;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#bt1 {
+  width: 42pt;
+  display: block;
+}
+
+#bt2 {
+  width: 21pt;
+  background-image: url(/assets/images/lp/occhio.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+
+#bt3 {
+  position: fixed;
+  right: 5%;
+  top: 5%;
+  height: 15pt;
+  width: 15pt;
+  border-color: #ffffff;
+  color: #ffffff;
+  background-image: url(/assets/images/lp/i.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+
+.gioco {
+  position: absolute;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  width: 1080px;
+  height: 1080px;
+  z-index: 0;
+  border: none;
+  decoration: none;
+  overflow: none;
+}
+
+#schermo {
+    position: absolute;
+    position: fixed;
+    background-color: #0f1122;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#welcome {
+  display: block;
+  position: absolute;
+  position: fixed;
+  padding: 0;
+  width: 40%;
+  height: 40%;
+  left: 30%;
+  top:30%;
+  z-index: 1;
+  border: none;
+}

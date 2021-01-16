@@ -1,24 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      width="device-width,"
-      initial-scale="1.0,"
-      maximum-scale="1.0,"
-      user-scalable="0"
-    />
-    <style>
-      body {
-        padding: 0;
-        margin: 0;
-      }
-    </style>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="p5.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <script src="sketch.js"></script>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="utf-8">
+  <title>MouseParty</title>
+  <link rel="icon" href="/assets/favicon.png">
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+  </style>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="assets/lib/p5.min.js"></script>
+  <script src="assets/lib/p5.sound.min.js"></script>
+  <script src="assets/lib/p5.play.js"></script>
+  <script src="sketch.js"></script>
+  <link href="website.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <iframe id="welcome" src="assets/welcome/index.html"></iframe>
+  <div id="schermo">
+    <iframe class="gioco" src="/assets/game/index.html"></iframe>
+    <!-- <iframe class="gioco" src="https://prova-cursori.herokuapp.com"></iframe> -->
+  </div>
+  <div id="overlay">
+    <button id="bt3" onclick="info()"></button>
+    <div class="menu">
+      <div class="watching">
+        <p class="testo">watching</p>
+        <div class="omini">
+          <img src="assets/images/lp/omino.png" class="omino" id="u1">
+          <img src="assets/images/lp/omino.png" class="omino" id="u2">
+          <img src="assets/images/lp/omino.png" class="omino" id="u3">
+          <img src="assets/images/lp/omino.png" class="omino" id="u4">
+          <img src="assets/images/lp/omino.png" class="omino" id="u5">
+          <img src="assets/images/lp/omino.png" class="omino" id="u6">
+          <img src="assets/images/lp/omino.png" class="omino" id="u7">
+          <img src="assets/images/lp/omino.png" class="omino" id="u8">
+          <div class="testo" id="utenti">+1</div>
+        </div>
+      </div>
+      <div class="dancing">
+        <p class="testo" id="dancing">dancing</p>
+        <div class="omini">
+          <img src="assets/images/lp/omino.png" class="omino" id="u1">
+          <img src="assets/images/lp/omino.png" class="omino" id="u2">
+          <img src="assets/images/lp/omino.png" class="omino" id="u3">
+          <img src="assets/images/lp/omino.png" class="omino" id="u4">
+          <img src="assets/images/lp/omino.png" class="omino" id="u5">
+          <img src="assets/images/lp/omino.png" class="omino" id="u6">
+          <img src="assets/images/lp/omino.png" class="omino" id="u7">
+          <img src="assets/images/lp/omino.png" class="omino" id="u8">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="elementiSx">
+    <img src="assets/images/lp/logo4.png" id="logo" onclick="home()">
+  </div>
+  <div id="header">
+    <div class="elementiDx">
+      <button id="bt1" onclick="gioca()">JOIN</button>
+      <button id="bt2" onclick="watch()"></button>
+    </div>
+  </div>
+</body>
+
 </html>
