@@ -98,12 +98,12 @@ function draw() {
 
   translate(width / 2, height / 2);
 
-  drawSprites();
-
   pointer.position.x = mouseX - width / 2;
   pointer.position.y = mouseY - height / 2;
 
   if (playerIn == true) {
+    drawSprites();
+
     myCursor.update();
     myCursor.display();
     socket.emit("mouse", mousePosition);
@@ -134,6 +134,11 @@ function draw() {
       var circle = clickEffect[i];
       circle.display();
     }
+
+    //run beatmap
+    for(let i = 0; i < beatmap.length; i++) {
+        beatmap[i].run();
+    }
   } else {
     for(var i = 0; i < otherCursors.length; i++){
       push();
@@ -147,11 +152,6 @@ function draw() {
   if (audio.currentTime > 0) {
     songTime = audio.currentTime;
     songPercent = songTime / (audio.duration);
-  }
-
-  //run beatmap
-  for(let i = 0; i < beatmap.length; i++) {
-      beatmap[i].run();
   }
 
   // giocatori online
@@ -175,16 +175,22 @@ function mouseClicked() {
 // __ Sockets Listeners __
 
 socket.on("connect", newPlayerConnected);
-socket.on("playerJoined", newPlayerJoined);
+socket.on("playerJoined", myPlayerJoined);
+socket.on("playerLeft", myPlayerLeft);
 
 function newPlayerConnected() {
   console.log("your id:", socket.id);
   socket.emit('subscribe', roomname);
 }
 
-function newPlayerJoined() {
+function myPlayerJoined() {
   console.log("true")
   playerIn = true;
+}
+
+function myPlayerLeft() {
+  console.log("false")
+  playerIn = false;
 }
 
 socket.on("first", function (data) {
@@ -205,7 +211,7 @@ socket.on("current", function (data) {
 
 socket.on("playsong", function (data) {
   audio.currentTime = data;
-  console.log(audio.currentTime);
+  // console.log(audio.currentTime);
   audio.play();
 });
 
@@ -445,7 +451,7 @@ class Beat {
       pop();
       this.beatHit = true;
     }
-    console.log(this.beatCollide);
+    // console.log(this.beatCollide);
   }
 
   userSliderInput(){

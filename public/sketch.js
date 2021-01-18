@@ -35,7 +35,6 @@ function watch() {
 function gioca_1() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
-  console.log(socket.id)
   socket.emit("join", {id: socket.id});
 }
 
@@ -43,17 +42,21 @@ function gioca_2() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   document.getElementById("myFrame").src = "/assets/game_r2/index.html";
+  socket.emit("join", {id: socket.id});
 }
 
 function gioca_3() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   document.getElementById("myFrame").src = "/assets/game_r3/index.html";
+  socket.emit("join", {id: socket.id});
 }
 
 function home() {
+  document.getElementById("myFrame").src = "/assets/game_r1/index.html";
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
+  socket.emit("leave", {id: socket.id});
 }
 
 function info(){
@@ -76,5 +79,5 @@ function displayPlayers(data) {
   // data.pl = numoro di giocatori;
   // data.room = stanza da cui arrivano i dati (data.room è una stringa, non un numero);
 
-console.log("room" + data.room)
+  // console.log(data.pl + " / " + data.room)
 }

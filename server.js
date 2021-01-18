@@ -69,7 +69,14 @@ io.on("connection", function (socket) {
       pl: data.pl,
       room: data.room,
     }
-    socket.emit("playersNumber", playersData);
+    socket.broadcast.emit("playersNumber", playersData);
+  });
+
+  socket.on("leave", function(data) {
+    userIndex = usersAr.indexOf(data.id);
+    userIndex = userIndex + 1;
+    userId = usersAr[userIndex];
+    socket.to(userId).emit("playerLeft", "playerLeft");
   });
 
   socket.on("disconnect", function() {
