@@ -1,3 +1,5 @@
+let socket = io();
+
 var w = 0;
 
 function preload(){
@@ -15,6 +17,7 @@ function draw() {
   // put drawing code here
   // trackTime = track.currentTime();
   // console.log(trackTime);
+
 }
 
 function watch() {
@@ -23,20 +26,34 @@ function watch() {
     document.getElementById("bt2").style.backgroundImage = "url(/assets/images/lp/occhio-barrato.png)";
     w = 1
   } else if(w == 1) {
-    document.getElementById("overlay").style.opacity = "0.8";
+    document.getElementById("overlay").style.opacity = "1";
     document.getElementById("bt2").style.backgroundImage = "url(/assets/images/lp/occhio.png)";
     w = 0
   }
 }
 
-function gioca() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("header").style.display = "none";
+function gioca_1() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("elementiDx").style.display = "none";
+  console.log(socket.id)
+  socket.emit("join", {id: socket.id});
+}
+
+function gioca_2() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("elementiDx").style.display = "none";
+  document.getElementById("myFrame").src = "/assets/game_r2/index.html";
+}
+
+function gioca_3() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("elementiDx").style.display = "none";
+  document.getElementById("myFrame").src = "/assets/game_r3/index.html";
 }
 
 function home() {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("header").style.display = "flex";
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("elementiDx").style.display = "flex";
 }
 
 function info(){
@@ -47,4 +64,17 @@ function info(){
     document.getElementById("welcome").style.display = "block";
     w = 0
   }
+}
+
+socket.on("playersNumber", displayPlayers);
+
+
+function displayPlayers(data) {
+  // qui ci va la gestione degli omini
+  // questo sketch riceve dal server il pacchetto di dati "playersData"
+  // all'interno c'è:
+  // data.pl = numoro di giocatori;
+  // data.room = stanza da cui arrivano i dati (data.room è una stringa, non un numero);
+
+console.log("room" + data.room)
 }

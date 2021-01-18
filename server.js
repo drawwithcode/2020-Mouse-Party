@@ -21,30 +21,34 @@ let socket = require("socket.io");
 let io = socket(server);
 
 var ctr = 0;
+var usersAr = [];
 
 io.on("connection", function (socket) {
+  usersAr.push(socket.id);
 
-  if (ctr == 0) {
-    console.log("first client: " + socket.id);
+  if (ctr == 1) {
     socket.emit("first", "first");
   }
-
   ctr++;
-  console.log(ctr);
 
-  socket.on('subscribe',function (room) {
+  socket.on("join", function(data) {
+    userIndex = usersAr.indexOf(data.id);
+    userIndex = userIndex + 1;
+    userId = usersAr[userIndex];
+    socket.to(userId).emit("playerJoined", "playerJoined");
+  });
+
+  socket.on('subscribe', function (room) {
     socket.join(room);
   });
 
-  socket.on("where",function (data) {
+  socket.on("where", function (data) {
     console.log(data);
-    // socket.emit("current",data.times);
-    io.to(data.room).emit("current",data.times);
+    io.to(data.room).emit("current", data.times);
   });
 
-  socket.on("play",function (data) {
-    // socket.emit('playsong',data.times);
-    io.to(data.room).emit('playsong',data.times);
+  socket.on("play", function (data) {
+    io.to(data.room).emit("playsong", data.times);
   });
 
   socket.on("mouse", function(data) {
@@ -54,8 +58,18 @@ io.on("connection", function (socket) {
       width: data.width,
       height: data.height,
       id: socket.id,
+      room: data.room,
     }
-    socket.broadcast.emit("mouseBroadcast", mouseData);
+    socket.to(data.room).emit("mouseBroadcast", mouseData);
+    // socket.broadcast.emit("mouseBroadcast", mouseData);
+  });
+
+  socket.on("countPlayers", function(data) {
+    var playersData = {
+      pl: data.pl,
+      room: data.room,
+    }
+    socket.emit("playersNumber", playersData);
   });
 
   socket.on("disconnect", function() {
@@ -64,17 +78,9 @@ io.on("connection", function (socket) {
     }
     socket.broadcast.emit("deleteCursor", socketData);
     ctr--;
-    console.log(ctr);
   });
 
-  // socket.on("songTime", function(data) {
-  //   var timeData = {
-  //     time: data.time,
-  //   }
-  //   console.log("time: ", timeData.time);
-  //   socket.emit("timeBroadcast", timeData);
-  // });
-
 });
+
 
 console.log("node server is running");

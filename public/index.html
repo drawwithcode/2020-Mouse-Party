@@ -21,13 +21,12 @@
 <body>
   <iframe id="welcome" src="assets/welcome/index.html"></iframe>
   <div id="schermo">
-    <iframe class="gioco" src="/assets/game/index.html"></iframe>
-    <!-- <iframe class="gioco" src="https://prova-cursori.herokuapp.com"></iframe> -->
+    <iframe id="myFrame" class="gioco" src="/assets/game_r1/index.html"></iframe>
   </div>
   <div id="overlay">
     <button id="bt3" onclick="info()"></button>
     <div class="menu">
-      <div class="watching">
+      <!-- <div class="watching">
         <p class="testo">watching</p>
         <div class="omini">
           <img src="assets/images/lp/omino.png" class="omino" id="u1">
@@ -40,7 +39,7 @@
           <img src="assets/images/lp/omino.png" class="omino" id="u8">
           <div class="testo" id="utenti">+1</div>
         </div>
-      </div>
+      </div> -->
       <div class="dancing">
         <p class="testo" id="dancing">dancing</p>
         <div class="omini">
@@ -56,15 +55,17 @@
       </div>
     </div>
   </div>
-  <div class="elementiSx">
+  <!-- <div class="elementiSx"> -->
     <img src="assets/images/lp/logo4.png" id="logo" onclick="home()">
-  </div>
-  <div id="header">
-    <div class="elementiDx">
-      <button id="bt1" onclick="gioca()">JOIN</button>
+  <!-- </div> -->
+  <!-- <div id="header"> -->
+    <div id="elementiDx">
+      <button id="join1" onclick="gioca_1()">JOIN 1</button>
+      <button id="join2" onclick="gioca_2()">JOIN 2</button>
+      <button id="join3" onclick="gioca_3()">SOLO</button>
       <button id="bt2" onclick="watch()"></button>
     </div>
-  </div>
+  <!-- </div> -->
 </body>
 
 </html>
