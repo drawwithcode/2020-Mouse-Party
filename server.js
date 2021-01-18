@@ -70,7 +70,6 @@ io.on("connection", function (socket) {
       room: data.room,
     }
     socket.broadcast.emit("playersNumber", playersData);
-<<<<<<< Updated upstream
   });
 
   socket.on("leave", function(data) {
@@ -78,8 +77,6 @@ io.on("connection", function (socket) {
     userIndex = userIndex + 1;
     userId = usersAr[userIndex];
     socket.to(userId).emit("playerLeft", "playerLeft");
-=======
->>>>>>> Stashed changes
   });
 
   socket.on("disconnect", function() {
