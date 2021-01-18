@@ -92,14 +92,14 @@ body {
   font-weight: bold;
 }
 
-.watching{
+.room1{
   margin-top: 0;
-  height:30%;
+  height:65px;
 }
 
-.dancing{
+.room2{
   margin-top: 0;
-  height:40%;
+  height:65px;
 }
 
 .omini{
@@ -113,49 +113,105 @@ margin-top: 5pt;
   float: left;
 }
 
-#u1{
+#u1r1{
   display: none;
   /* display: block; */
 }
 
-#u2{
+#u2r1{
   display: none;
   /* display: block; */
 }
 
-#u3{
+#u3r1{
   display: none;
   /* display: block; */
 }
 
-#u4{
+#u4r1{
   display: none;
   /* display: block; */
 }
 
-#u5{
+#u5r1{
   display: none;
   /* display: block; */
 }
 
-#u6{
+#u6r1{
+  display: none;
+  /* display: block; */
+}
+
+#u7r1{
+  display: none;
+  /* display: block; */
+}
+
+#u8r1{
+  display: none;
+  /* display: block; */
+}
+
+#plusR1{
+  display: none;
+  /* display: block; */
+}
+
+#noneR1{
+  display: none;
+  /* display: block; */
+}
+
+
+#u1r2{
+  display: none;
+  /* display: block; */
+}
+
+#u2r2{
+  display: none;
+  /* display: block; */
+}
+
+#u3r2{
+  display: none;
+  /* display: block; */
+}
+
+#u4r2{
+  display: none;
+  /* display: block; */
+}
+
+#u5r2{
+  display: none;
+  /* display: block; */
+}
+
+#u6r2{
+  display: none;
+  /* display: block; */
+}
+
+#u7r2{
+  display: none;
+  /* display: block; */
+}
+
+#u8r2{
+  display: none;
+  /* display: block; */
+}
+
+#plusR2{
+  display: none;
+  /* display: block; */
+}
+
+#noneR2{
   /* display: none; */
   display: block;
-}
-
-#u7{
-  /* display: none; */
-  display: block;
-}
-
-#u8{
-  /* display: none; */
-  display: block;
-}
-
-#utenti{
-  display: none;
-  /* display: block; */
 }
 
 
@@ -178,7 +234,7 @@ button {
 }
 
 #join1 {
-  width: 50pt;
+  width: 65pt;
   display: block;
   position: absolute;
   bottom: 89pt;
@@ -186,7 +242,7 @@ button {
 }
 
 #join2 {
-  width: 50pt;
+  width: 65pt;
   display: block;
   position: absolute;
   bottom: 62pt;
@@ -194,7 +250,7 @@ button {
 }
 
 #join3 {
-  width: 50pt;
+  width: 65pt;
   display: block;
   position: absolute;
   bottom: 35pt;
