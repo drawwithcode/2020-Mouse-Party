@@ -1,4 +1,3 @@
-let socket = io();
 
 let tutorial;
 let gifBenvenuto;
@@ -19,7 +18,6 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   tutorial = gifBenvenuto;
   document.getElementById("freccina").style.display = "block";
-  document.getElementById("X").style.display = "block";
 }
 
 function draw() {
@@ -56,7 +54,8 @@ function next() {
     h2 = 'testo di introduzione lorem ipsum dolor sit amet, consectetur adipiscing elit.';
     tutorial = gifBenvenuto;
     i++
-  } else if (i == 1) {
+  }
+  if (i == 1) {
     h1 = "CLICK"
     h2 = 'Premi su il cerchiolino che appare con il giusto tempismo (testo da riscrivere)';
     tutorial = gif1;
@@ -70,18 +69,6 @@ function next() {
     h1 = "SPINNER"
     h2 = 'bla blablabla spiegare spinner';
     tutorial = gif1;
-    i++
-    document.getElementById("freccina").style.display = "none";
+    i=0
   }
-}
-
-function chiudi(){
-  let welcomeFinished = true;
-  socket.emit("fineTutorial", welcomeFinished);
-  i=0
-  h1 = "WELCOME!"
-  h2 = 'testo di introduzione lorem ipsum dolor sit amet, consectetur adipiscing elit.';
-  tutorial = gifBenvenuto;
-  i++
-  document.getElementById("freccina").style.display = "block";
 }
