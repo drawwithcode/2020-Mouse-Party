@@ -139,6 +139,13 @@ function draw() {
     for(let i = 0; i < beatmap.length; i++) {
         beatmap[i].run();
     }
+
+    // giocatori online
+    let playersOnline = {
+      pl: otherCursors.length + 1,
+      room: roomname
+    };
+    socket.emit("countPlayers", playersOnline);
   } else {
     for(var i = 0; i < otherCursors.length; i++){
       push();
@@ -147,19 +154,19 @@ function draw() {
       otherCursors[i].update();
       pop();
     }
+
+    // giocatori online
+    let playersOnline = {
+      pl: otherCursors.length,
+      room: roomname
+    };
+    socket.emit("countPlayers", playersOnline);
   }
 
   if (audio.currentTime > 0) {
     songTime = audio.currentTime;
     songPercent = songTime / (audio.duration);
   }
-
-  // giocatori online
-  let playersOnline = {
-    pl: otherCursors.length + 1,
-    room: roomname
-  };
-  socket.emit("countPlayers", playersOnline);
 
 }
 

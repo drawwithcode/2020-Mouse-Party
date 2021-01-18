@@ -79,5 +79,5 @@ function displayPlayers(data) {
   // data.pl = numoro di giocatori;
   // data.room = stanza da cui arrivano i dati (data.room è una stringa, non un numero);
 
-  // console.log(data.pl + " / " + data.room)
+  console.log(data.pl + " / " + data.room)
 }
