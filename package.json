@@ -1,5 +1,5 @@
 {
-  "name": "p5-node",
+  "name": "2020-asmr-final",
   "version": "1.0.0",
   "description": "Simple node app",
   "main": "server.js",
@@ -12,5 +12,13 @@
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^3.0.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drawwithcode/2020-asmr-final.git"
+  },
+  "bugs": {
+    "url": "https://github.com/drawwithcode/2020-asmr-final/issues"
+  },
+  "homepage": "https://github.com/drawwithcode/2020-asmr-final#readme"
 }
