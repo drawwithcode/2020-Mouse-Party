@@ -72,6 +72,11 @@ io.on("connection", function (socket) {
     socket.broadcast.emit("playersNumber", playersData);
   });
 
+  socket.on("fineTutorial", function(data) {
+    var chiudiBenvenuto = data
+    socket.broadcast.emit("closeWelcome", chiudiBenvenuto);
+  });
+
   socket.on("leave", function(data) {
     userIndex = usersAr.indexOf(data.id);
     userIndex = userIndex + 1;
