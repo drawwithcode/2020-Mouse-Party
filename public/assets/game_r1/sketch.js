@@ -22,7 +22,7 @@ var start = 0
 // __ varibili Riki __
 
 let beatmap = [];
-let beatDuration = 2;
+let beatDuration = 1.5;
 let beatSize = 65;
 let beatInputDelay = 0.2;
 let mouseCursorSize = 50;
@@ -33,6 +33,7 @@ let songTime;
 let songPercent;
 let songStarted = false;
 let inputColor = "rgba(0,146,255,0.6)";
+let inputSize = 20; //mouse collision area is an n pixel square around mouseX and mouseY
 
 //
 let sliderSizeX = [
@@ -203,7 +204,7 @@ function draw() {
   }
 
   if (audio.currentTime > 0) {
-    songTime = audio.currentTime;
+    songTime = audio.currentTime+0.3;
     songPercent = songTime / (audio.duration);
   }
 
@@ -443,7 +444,7 @@ class Beat {
   displayBeat() { //builds the beat visualization
     this.animColor = "rgba(255,255,255,"+map(this.count*beatSize/(beatDuration*60), 20, 65, 0, 1, true) + ")"
     this.fixedColor = "rgba(255,255,255,"+map(this.id-currentBeat, 0, 4, 1, 0, true) + ")"
-    this.lineColor = "rgba(255,255,255,"+map(this.id-currentBeat, 0, 5, 1, 0, true)/3 + ")"
+    this.lineColor = "rgba(255,255,255,"+map(this.id-currentBeat, 0, 3, 1, 0, true)/3 + ")"
 
     //line
     push();
@@ -482,15 +483,12 @@ class Beat {
   }
 
   userBeatInput(){
-    this.beatCollide = this.beatSprite.overlapPixel(mouseX - width / 2, mouseY - height / 2) //collideCircleCircle(mouseX, mouseY, mouseCursorSize/3, this.posX, this.posY, beatSize);
     if (this.beatCollide && songTime >= this.time - beatInputDelay){
       this.beatHit = true;
     }
-    // console.log(this.beatCollide);
   }
 
   userSliderInput(){
-    this.beatCollide = this.beatSprite.overlapPixel(mouseX - width / 2, mouseY - height / 2) //collideCircleCircle(mouseX, mouseY, mouseCursorSize/3, this.posX, this.posY, beatSize);
     if (this.beatCollide){
       push();
         noFill();
@@ -529,6 +527,17 @@ class Beat {
       this.spriteLoaded = true;
     }
     this.beatSprite.visible = false;
+
+    //check collision on 4 points arount the pointer (allows for more forgiving inputs)
+    this.beatCollideA = this.beatSprite.overlapPixel(mouseX-width/2+inputSize, mouseY-height/2+inputSize);
+    this.beatCollideB = this.beatSprite.overlapPixel(mouseX-width/2-inputSize, mouseY-height/2+inputSize);
+    this.beatCollideC = this.beatSprite.overlapPixel(mouseX-width/2-inputSize, mouseY-height/2-inputSize);
+    this.beatCollideD = this.beatSprite.overlapPixel(mouseX-width/2+inputSize, mouseY-height/2-inputSize);
+    this.beatCollideMain = this.beatSprite.overlapPixel(mouseX-width/2, mouseY-height/2);
+    if (this.beatCollideA || this.beatCollideB || this.beatCollideC || this.beatCollideD || this.beatCollideMain){
+      this.beatCollide = true;
+    }
+    else{this.beatCollide = false}
 
     //run spinners and beats
     if (this.type != 'slider'){
