@@ -17,7 +17,7 @@ var palette = [
   {r: 255, g: 80, b: 51 },
   {r: 255, g: 103, b: 0 }
 ];
-var start = 0
+var audioIsPlaying = false;
 
 // __ varibili Riki __
 
@@ -186,6 +186,14 @@ function draw() {
       room: roomname
     };
     socket.emit("countPlayers", playersOnline);
+
+    let sc = int(millis())
+    console.log(sc)
+    if (sc > 4000 && audioIsPlaying == false) {
+      socket.emit("play", {times: audio.currentTime, room : roomname});
+      audioIsPlaying = true;
+    }
+
   } else {
     for(var i = 0; i < otherCursors.length; i++){
       push();
@@ -208,13 +216,6 @@ function draw() {
     songPercent = songTime / (audio.duration);
   }
 
-}
-
-function mouseClicked() {
-  if (start == 0) {
-    socket.emit("play", {times: audio.currentTime, room : roomname});
-    start++;
-  }
 }
 
 

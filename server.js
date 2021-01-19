@@ -26,7 +26,7 @@ var usersAr = [];
 io.on("connection", function (socket) {
   usersAr.push(socket.id);
 
-  if (ctr == 1) {
+  if (ctr == 2) {
     socket.emit("first", "first");
   }
   ctr++;
