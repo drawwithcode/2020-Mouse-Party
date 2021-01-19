@@ -75,8 +75,11 @@ function next() {
   }
 }
 
-function chiudi(){
-  let welcomeFinished = true;
+function chiudi() {
+  var welcomeFinished = {
+    wf: true,
+    id: socket.id,
+  }
   socket.emit("fineTutorial", welcomeFinished);
   i=0
   h1 = "WELCOME!"
