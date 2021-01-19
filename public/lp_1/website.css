@@ -283,7 +283,8 @@ button {
 }
 
 #welcome {
-  display: none;
+  opacity: 0;
+  display: block;
   position: absolute;
   position: fixed;
   padding: 0;

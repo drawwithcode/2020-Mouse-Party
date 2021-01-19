@@ -1,10 +1,10 @@
 let socket = io();
 
 var w = 0;
-var i = 1;
+var a = 1;
 
 function preload(){
-  // put preload code here
+  document.getElementById("welcome").style.display = "none";
 }
 
 function setup() {
@@ -55,20 +55,22 @@ socket.on("closeWelcome", benvenuto);
 function benvenuto(data) {
   if (data.wf == true) {
     document.getElementById("welcome").style.display = "none";
-    i = 1;
+    a = 1;
   } else if (data.wf == false) {
     document.getElementById("welcome").style.display = "block";
-    i = 0;
+    document.getElementById("welcome").style.opacity = "100";
+    a = 0;
   }
 }
 
 function info(){
-  if (i == 0) {
+  if (a == 0) {
     document.getElementById("welcome").style.display = "none";
-    i = 1
-  } else if (i == 1) {
+    a = 1
+  } else if (a == 1) {
     document.getElementById("welcome").style.display = "block";
-    i = 0
+    // document.getElementById("welcome").style.opacity = "100";
+    a = 0
   }
 }
 

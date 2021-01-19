@@ -4,6 +4,7 @@ var w = 0;
 var i = 1;
 
 function preload(){
+  document.getElementById("welcome").style.display = "none";
   // put preload code here
 }
 
@@ -68,6 +69,7 @@ function info(){
     i = 1
   } else if (i == 1) {
     document.getElementById("welcome").style.display = "block";
+    document.getElementById("welcome").style.opacity = "100";
     i = 0
   }
 }
