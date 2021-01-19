@@ -37,41 +37,41 @@ let inputColor = "rgba(0,146,255,0.6)";
 //
 let sliderSizeX = [
   352, //1
-  0, //2
-  0, //3
-  0, //4
-  0, //5
-  0, //6
-  0, //7
-  0, //8
-  0, //9
-  0, //10
-  0, //11
-  0, //12
-  0, //13
-  0, //14
-  0, //15
-  0, //16
-  0 //17
+  272, //2
+  392, //3
+  591, //4
+  352, //5
+  472, //6
+  671, //7
+  398, //8
+  631, //9
+  551, //10
+  551, //11
+  472, //12
+  381, //13
+  408, //14
+  552, //15
+  631, //16
+  631 //17
 ];
 let sliderSizeY = [
   233, //1
-  0, //2
-  0, //3
-  0, //4
-  0, //5
-  0, //6
-  0, //7
-  0, //8
-  0, //9
-  0, //10
-  0, //11
-  0, //12
-  0, //13
-  0, //14
-  0, //15
-  0, //16
-  0 //17
+  314, //2
+  570, //3
+  554, //4
+  397, //5
+  513, //6
+  313, //7
+  399, //8
+  273, //9
+  353, //10
+  362, //11
+  393, //12
+  473, //13
+  473, //14
+  358, //15
+  432, //16
+  432 //17
 ]
 
 // __ Preload __
@@ -518,8 +518,8 @@ class Beat {
       }
       else if(this.type == 'slider'){
         this.beatSprite = createSprite(this.cornerX+sliderSizeX[this.sliderType-1]/2, this.cornerY+sliderSizeY[this.sliderType-1]/2);
-        //this.beatSprite.addImage(loadImage('/assets/images/gm/r1/'+this.sliderType+'.png'));
-        this.beatSprite.addImage(loadImage('/assets/images/gm/r1/slider1.png'));
+        this.beatSprite.addImage(loadImage('/assets/images/gm/r1/slider'+this.sliderType+'.png'));
+        //this.beatSprite.addImage(loadImage('/assets/images/gm/r1/slider1.png'));
       }
       else if(this.type == 'spin'){
         this.beatSprite = createSprite(this.posX, this.posY);

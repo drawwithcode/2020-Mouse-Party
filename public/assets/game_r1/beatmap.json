@@ -502,7 +502,7 @@
     "posY": -7,
     "endX": 4,
     "endY": 1,
-    "cornerX": -6,
+    "cornerX": -7,
     "cornerY": 5
   },
   {
@@ -546,12 +546,12 @@
     "timeEnd": 41.233,
     "type": "slider",
     "sliderType": "8",
-    "posX": -2,
-    "posY": 4,
+    "posX": -3,
+    "posY": 3,
     "endX": -4,
-    "endY": 2,
+    "endY": 1,
     "cornerX": -5,
-    "cornerY": 6
+    "cornerY": 5
   },
   {
     "time": 41.983,
@@ -1101,7 +1101,7 @@
     "posX": -3,
     "posY": 4,
     "endX": 3,
-    "endY": 5,
+    "endY": -5,
     "cornerX": -4,
     "cornerY": 6
   },
@@ -1137,7 +1137,7 @@
     "posX": -3,
     "posY": 4,
     "endX": 3,
-    "endY": 5,
+    "endY": -5,
     "cornerX": -4,
     "cornerY": 6
   },
