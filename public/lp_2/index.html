@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>MouseParty</title>
+  <link rel="icon" href="/assets/favicon.png">
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+  </style>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/assets/lib/p5.min.js"></script>
+  <script src="/assets/lib/p5.sound.min.js"></script>
+  <script src="/assets/lib/p5.play.js"></script>
+  <script src="sketch.js"></script>
+  <script src="/assets/welcome/sketch.js"></script>
+  <link href="/lp_2/website.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <iframe id="welcome" src="/assets/welcome/index.html"></iframe>
+  <div id="schermo">
+    <iframe id="myFrame" class="gioco" src="/assets/game_r2/index.html" scrolling="no"></iframe>
+  </div>
+  <div id="overlay">
+    <button id="bt3" onclick="info()"></button>
+    <div class="menu">
+      <div class="room1">
+        <p class="testo">room 1</p>
+        <div class="omini">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u1r1">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u2r1">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u3r1">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u4r1">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u5r1">
+          <div class="testo" id="plusR1">+</div>
+          <div class="testo" id="noneR1">-</div>
+        </div>
+      </div>
+      <div class="room2">
+        <p class="testo" id="dancing">room 2</p>
+        <div class="omini">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u1r2">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u2r2">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u3r2">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u4r2">
+          <img src="/assets/images/lp/omino.png" class="omino" id="u5r2">
+          <div class="testo" id="plusR2">+</div>
+          <div class="testo" id="noneR2">-</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="elementiSx"> -->
+    <img src="/assets/images/lp/logo4.png" id="logo" onclick="home()">
+  <!-- </div> -->
+  <!-- <div id="header"> -->
+    <div id="elementiDx">
+      <button id="join1" onclick="location.href='../index.html'">ROOM 1</button>
+      <button id="join2" onclick="gioca_2()">ROOM 2</button>
+      <button id="join3" onclick="gioca_3()">SOLO</button>
+      <button id="bt2" onclick="watch()"></button>
+    </div>
+  <!-- </div> -->
+</body>
+
+</html>

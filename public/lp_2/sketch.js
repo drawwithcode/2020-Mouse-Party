@@ -1,7 +1,7 @@
 let socket = io();
 
 var w = 0;
-var i = 0;
+var i = 1;
 
 function preload(){
   // put preload code here
@@ -29,13 +29,13 @@ function watch() {
 }
 
 function gioca_1() {
-  document.getElementById("overlay").style.display = "none";
-  document.getElementById("elementiDx").style.display = "none";
-  socket.emit("join_1", {id: socket.id});
+
 }
 
 function gioca_2() {
-
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("elementiDx").style.display = "none";
+  socket.emit("join_2", {id: socket.id});
 }
 
 function gioca_3() {
@@ -47,7 +47,7 @@ function gioca_3() {
 function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
-  socket.emit("leave_1", {id: socket.id});
+  socket.emit("leave_2", {id: socket.id});
 }
 
 socket.on("closeWelcome", benvenuto);

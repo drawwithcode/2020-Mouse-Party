@@ -565,7 +565,8 @@ class Beat {
           this.userBeatInput();
         }
       }
-      if (this.beatHit && currentBeat == this.id || songTime > this.time + beatInputDelay && currentBeat == this.id){ //deactivate the next beats until the current one is cleared or expired
+      if (this.beatHit && currentBeat == this.id || songTime > this.time + beatInputDelay && currentBeat == this.id){
+        //deactivate the next beats until the current one is cleared or expired
         this.beatSprite.remove()
         currentBeat = this.id + 1
       }
