@@ -18,6 +18,7 @@ var palette = [
   {r: 255, g: 103, b: 0 }
 ];
 var audioIsPlaying = false;
+var sc = 0;
 
 // __ varibili Riki __
 
@@ -88,6 +89,7 @@ function preload(){
 // __ Setup __
 
 function setup() {
+  frameRate(60);
   clap.setVolume(2);
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
@@ -187,9 +189,10 @@ function draw() {
     };
     socket.emit("countPlayers", playersOnline);
 
-    let sc = int(millis())
-    console.log(sc)
-    if (sc > 4000 && audioIsPlaying == false) {
+    if (frameCount % 60 == 0) {
+      sc++;
+    }
+    if (sc == 3 && audioIsPlaying == false) {
       socket.emit("play", {times: audio.currentTime, room : roomname});
       audioIsPlaying = true;
     }
