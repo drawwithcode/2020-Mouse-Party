@@ -29,13 +29,13 @@ function watch() {
 }
 
 function gioca_1() {
-
-}
-
-function gioca_2() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   socket.emit("join", {id: socket.id});
+}
+
+function gioca_2() {
+
 }
 
 function gioca_3() {

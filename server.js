@@ -31,14 +31,7 @@ io.on("connection", function (socket) {
   }
   ctr++;
 
-  socket.on("join_1", function(data) {
-    userIndex = usersAr.indexOf(data.id);
-    userIndex = userIndex + 2;
-    userId = usersAr[userIndex];
-    socket.to(userId).emit("playerJoined", "playerJoined");
-  });
-
-  socket.on("join_2", function(data) {
+  socket.on("join", function(data) {
     userIndex = usersAr.indexOf(data.id);
     userIndex = userIndex + 2;
     userId = usersAr[userIndex];
@@ -89,14 +82,7 @@ io.on("connection", function (socket) {
     socket.to(userId).emit("closeWelcome", chiudiBenvenuto);
   });
 
-  socket.on("leave_1", function(data) {
-    userIndex = usersAr.indexOf(data.id);
-    userIndex = userIndex + 2;
-    userId = usersAr[userIndex];
-    socket.to(userId).emit("playerLeft", "playerLeft");
-  });
-
-  socket.on("leave_2", function(data) {
+  socket.on("leave", function(data) {
     userIndex = usersAr.indexOf(data.id);
     userIndex = userIndex + 2;
     userId = usersAr[userIndex];
