@@ -1,5 +1,3 @@
-//problemi: sistemare cerchio animato spinner (dimensioni e rotazione), sistemare cerchio animato slider (timeEnd)
-
 // __ Global Variables __
 
 let socket = io();
@@ -83,7 +81,6 @@ function preload(){
   clap = loadSound("/assets/sounds/clap.wav");
   roll = loadSound("/assets/sounds/drumroll.mp3");
   data = loadJSON("/assets/game_r1/beatmap.json");
-  spinAnim = loadImage("/assets/images/gm/r1/spin-anim.png")
 }
 
 
@@ -476,8 +473,6 @@ class Beat {
         if (this.type == 'spin'){
           this.endX = this.posX;
           this.endY = this.posY;
-          imageMode(CENTER);
-          image(spinAnim, this.posX, this.posY, this.countPercentEnd, this.countPercentEnd);
         }
         if (this.count >= 40 && songTime < this.time){
           ellipse(this.posX, this.posY, this.countPercent);}
@@ -512,15 +507,6 @@ class Beat {
     }
   }
 
-  userSpinInput(){
-    if (this.beatCollide){
-      if(songTime >= this.time - beatInputDelay){
-        this.beatHit = true;
-        if (!roll.isPlaying()){roll.play();}
-      }
-      else if(!this.beatCollide && roll.isPlaying()){roll.stop();}
-    }
-  }
 
   run(){
     if (this.spriteLoaded == false){//load the correct sprite
@@ -535,7 +521,8 @@ class Beat {
       }
       else if(this.type == 'spin'){
         this.beatSprite = createSprite(this.posX, this.posY);
-        this.beatSprite.addImage(loadImage('/assets/images/gm/r1/spin.png'));
+        //this.beatSprite.addImage(loadImage('assets/spin.png'));
+        this.beatSprite.addImage(loadImage('/assets/images/gm/r1/beat.png'));
       }
       this.spriteLoaded = true;
     }
@@ -552,8 +539,8 @@ class Beat {
     }
     else{this.beatCollide = false}
 
-    //run beats
-    if (this.type == 'beat'){
+    //run spinners and beats
+    if (this.type != 'slider'){
       if (songTime >= this.time - beatDuration && songTime <= this.time + beatInputDelay){ //display beats in the allocated time slot
         this.beatSprite.visible = true;
         this.displayBeat();
@@ -580,35 +567,28 @@ class Beat {
         pop();
       }
     }
-    //run sliders & spinners
+    //run sliders
     else{
       if (songTime >= this.time - beatDuration && songTime <= this.timeEnd + beatInputDelay){ //display beats in the allocated time slot
-        if (this.type == 'spin'){this.mapStart = 207; this.mapEnd = beatSize/3}
-        else {this.mapStart = beatSize*5; this.mapEnd = beatSize}
-        if (songTime <= this.time && this.type == 'slider'){ //manage animated external circle
+        if (songTime <= this.time){ //manage animated external circle
           this.count += 1;
-          this.countPercent = map(this.count*beatSize/(beatDuration*60), 0, beatSize, this.mapStart, this.mapEnd);
+          this.countPercent = map(this.count*beatSize/(beatDuration*60), 0, beatSize, beatSize*5, beatSize);
         }
-        if (songTime <= this.timeEnd && songTime >= this.time){ //manage animated external circle
+        if (songTime <= this.timeEnd){ //manage animated external circle
           this.countEnd += 1;
-          this.countPercentEnd = map(this.countEnd*beatSize/(beatDuration*60), 0, beatSize, this.mapStart, this.mapEnd);
+          this.countPercentEnd = map(this.countEnd*beatSize/(beatDuration*60), 0, beatSize, beatSize*5, beatSize);
         }
         this.displayBeat();
         this.beatSprite.visible = true;
         if (hitBool && currentBeat == this.id){ //if user inputs command through either mouse or SPACEBAR
-          if(this.type == 'slider'){ //slider input
-            this.userSliderInput();
-          }
-          else{ //spin input
-            this.userSpinInput();
-          }
+          this.userSliderInput();
         }
       }
       if (songTime > this.timeEnd + beatInputDelay && currentBeat == this.id){ //deactivate the next beats until the current one is cleared or expired
         this.beatSprite.remove()
         currentBeat = this.id + 1
       }
-      if (songTime <= this.time + beatInputDelay && this.beatHit && this.type == 'slider'){ //show hit feedback on sliders
+      if (songTime <= this.time + beatInputDelay && this.beatHit){ //show hit feedback
         push();
           noFill();
           strokeWeight(4);
