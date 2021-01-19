@@ -60,6 +60,18 @@ function home() {
   socket.emit("leave", {id: socket.id});
 }
 
+socket.on("closeWelcome", benvenuto);
+
+function benvenuto(data) {
+  if (data == true) {
+    document.getElementById("welcome").style.display = "none";
+    i = 1;
+  } else if (data == false) {
+    document.getElementById("welcome").style.display = "block";
+    i = 0;
+  }
+}
+
 function info(){
   if (i == 0) {
     document.getElementById("welcome").style.display = "none";
