@@ -97,9 +97,9 @@ function setup() {
 
   myCursor = new myCursor();
 
-  // // Sprites
-  // pointer = createSprite(0, 0);
-  // pointer.addImage(loadImage('/assets/images/gm/r1/pointer.png'));
+  // Sprites
+  pointer = createSprite(0, 0);
+  pointer.addImage(loadImage('/assets/images/gm/r1/pointer.png'));
 
   socket.on("mouseBroadcast", mousePos);
 
@@ -141,8 +141,8 @@ function draw() {
 
   translate(width / 2, height / 2);
 
-  // pointer.position.x = mouseX - width / 2;
-  // pointer.position.y = mouseY - height / 2;
+  pointer.position.x = mouseX - width / 2;
+  pointer.position.y = mouseY - height / 2;
 
   if (playerIn == true) {
     drawSprites();

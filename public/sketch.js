@@ -43,18 +43,18 @@ function gioca_2() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   document.getElementById("myFrame").src = "/assets/game_r2/index.html";
-  // socket.emit("join", {id: socket.id});
+  socket.emit("join", {id: socket.id});
 }
 
 function gioca_3() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   document.getElementById("myFrame").src = "/assets/game_r3/index.html";
-  // socket.emit("join", {id: socket.id});
+  socket.emit("join", {id: socket.id});
 }
 
 function home() {
-  // document.getElementById("myFrame").src = "/assets/game_r1/index.html";
+  document.getElementById("myFrame").src = "/assets/game_r1/index.html";
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
   socket.emit("leave", {id: socket.id});

@@ -33,7 +33,7 @@ io.on("connection", function (socket) {
 
   socket.on("join", function(data) {
     userIndex = usersAr.indexOf(data.id);
-    userIndex = userIndex + 2;
+    userIndex = userIndex + 1;
     userId = usersAr[userIndex];
     socket.to(userId).emit("playerJoined", "playerJoined");
   });
@@ -79,7 +79,7 @@ io.on("connection", function (socket) {
 
   socket.on("leave", function(data) {
     userIndex = usersAr.indexOf(data.id);
-    userIndex = userIndex + 2;
+    userIndex = userIndex + 1;
     userId = usersAr[userIndex];
     socket.to(userId).emit("playerLeft", "playerLeft");
   });
