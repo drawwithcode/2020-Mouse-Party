@@ -86,7 +86,11 @@ io.on("connection", function (socket) {
     userIndex = usersAr.indexOf(data.id);
     userIndex = userIndex + 2;
     userId = usersAr[userIndex];
+    var cursorId = {
+      id: userId,
+    }
     socket.to(userId).emit("playerLeft", "playerLeft");
+    socket.broadcast.emit("deleteCursor", cursorId);
   });
 
   socket.on("disconnect", function() {
