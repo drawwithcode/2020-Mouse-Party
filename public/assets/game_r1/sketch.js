@@ -113,7 +113,6 @@ function setup() {
 
   //build beatmap
   for (let i = 0; i < data.beats.length; i++) {
-    maxScore = i+1;
     addBeats(
       i,
       data.beats[i].time,
@@ -649,7 +648,6 @@ class Beat {
           }
           else{ //this.type == 'slider'
             this.countPercentEnd = map(this.countEnd*beatSize/((beatDuration)*60), 0, beatSize, beatSize*5, beatSize);
-            console.log(this.countEnd*beatSize/((beatDuration)*60))
           }
         }
         this.displayBeat();
