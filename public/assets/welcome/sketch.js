@@ -5,7 +5,7 @@ let gifBenvenuto;
 let gif1;
 let gif2;
 let h1 = 'WELCOME!';
-let h2 = 'testo di introduzione lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+let h2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
 let i = 1;
 
 
@@ -20,10 +20,15 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   tutorial = gifBenvenuto;
   document.getElementById("freccina").style.display = "block";
+  document.getElementById("freccinaPre").style.display = "block";
   document.getElementById("X").style.display = "block";
 }
 
 function draw() {
+  if (i == 1) {
+    document.getElementById("freccinaPre").style.opacity = "0.3";
+  }
+  console.log(i)
   push();
   noStroke();
   fill('#375a64');
@@ -33,20 +38,27 @@ function draw() {
 
   push();
   noStroke();
-  image(tutorial, 100, height / 2 - 250, 500, 500);
+  image(tutorial, 60, height / 2 - 250, 500, 500);
+
+  noFill();
+  strokeWeight(20);
+  stroke('#375a64')
+  rect(60-10, height / 2 - 250-10, 515, 515, 30);
   pop();
 
   push();
   textFont('quicksand');
   textAlign(LEFT);
-  textStyle(BOLD);
 
+  textStyle(BOLD);
   textSize(30);
   fill(255);
-  text(h1, 650, height / 10 * 3, 250, 500);
+  text(h1, 630, height / 10 * 2.6, 250, 500);
+
+  textStyle(NORMAL);
   textSize(20);
   fill(255);
-  text(h2, 650, height / 10 * 4, 250, 500);
+  text(h2, 630, height / 10 * 4.0, 300, 500);
   pop();
 }
 
@@ -54,25 +66,57 @@ function draw() {
 function next() {
   if (i == 0) {
     h1 = "WELCOME!"
-    h2 = 'testo di introduzione lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+    h2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
     tutorial = gifBenvenuto;
     i++
+    document.getElementById("freccinaPre").style.opacity = "0.3";
+    document.getElementById("freccina").style.opacity = "1";
   } else if (i == 1) {
-    h1 = "CLICK"
-    h2 = 'Premi su il cerchiolino che appare con il giusto tempismo (testo da riscrivere)';
+    h1 = "CIRCLE BEATS"
+    h2 = 'Aim with your mouse and click\nor press spacebar when the\ntiming is right.\n\nLet the music guide you!';
     tutorial = gif1;
     i++
+    document.getElementById("freccinaPre").style.opacity = "1";
+    document.getElementById("freccina").style.opacity = "1";
   } else if (i == 2) {
     h1 = "SLIDER"
-    h2 = 'trascina il puntatore sullo slider (testo da riscrivere)';
+    h2 = 'Position yourself on the + sign\nand click or press spacebar\nas you slide across.\n\nPrecision is key!';
     tutorial = gif2;
     i++
+    document.getElementById("freccinaPre").style.opacity = "1";
+    document.getElementById("freccina").style.opacity = "1";
   } else if (i == 3) {
     h1 = "SPINNER"
-    h2 = 'bla blablabla spiegare spinner';
+    h2 = 'Wait until the dashed circle\nstarts moving, click or press\nspacebar, and spin around\nto your heart\'s content.\n\nBut don\'t get dizzy!';
     tutorial = gif3;
     i++
-    document.getElementById("freccina").style.display = "none";
+    document.getElementById("freccinaPre").style.opacity = "1";
+    document.getElementById("freccina").style.opacity = "0.3";
+  }
+}
+
+function prev() {
+  if (i == 2) {
+    h1 = "WELCOME!"
+    h2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
+    tutorial = gifBenvenuto;
+    i=i-1
+    document.getElementById("freccinaPre").style.opacity = "0.3";
+    document.getElementById("freccina").style.opacity = "1";
+  } else if (i == 3) {
+    h1 = "CIRCLE BEATS"
+    h2 = 'Aim with your mouse and click\nor press spacebar when the\ntiming is right.\n\nLet the music guide you!';
+    tutorial = gif1;
+    i=i-1
+    document.getElementById("freccinaPre").style.opacity = "1";
+    document.getElementById("freccina").style.opacity = "1";
+  } else if (i == 4) {
+    h1 = "SLIDER"
+    h2 = 'Position yourself on the + sign\nand click or press spacebar\nas you slide across.\n\nPrecision is key!';
+    tutorial = gif2;
+    i=i-1
+    document.getElementById("freccinaPre").style.opacity = "1";
+    document.getElementById("freccina").style.opacity = "1";
   }
 }
 
@@ -84,8 +128,9 @@ function chiudi() {
   socket.emit("fineTutorial", welcomeFinished);
   i=0
   h1 = "WELCOME!"
-  h2 = 'testo di introduzione lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+  h2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
   tutorial = gifBenvenuto;
   i++
   document.getElementById("freccina").style.display = "block";
+  document.getElementById("freccinaPre").style.display = "block";
 }
