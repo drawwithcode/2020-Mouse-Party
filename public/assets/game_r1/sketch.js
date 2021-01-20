@@ -516,11 +516,15 @@ class Beat {
         else{
           if (this.count >= 40 && songTime <= this.time+beatInputDelay){
             ellipse(this.posX, this.posY, this.countPercent);}
-          if (this.countEnd >= 40 && songTime < this.timeEnd){
+          if (this.countEnd >= 40 && songTime < this.timeEnd+beatInputDelay){
             stroke(this.animEndColor);
-            ellipse(this.endX, this.endY, this.countPercentEnd);}
+            if(songTime >= this.timeEnd){
+              ellipse(this.endX, this.endY, beatSize);
+            }
+            else{
+              ellipse(this.endX, this.endY, this.countPercentEnd);}
+            }
         }
-
       }
     pop();
   }
