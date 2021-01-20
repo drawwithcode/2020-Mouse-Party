@@ -28,13 +28,12 @@ function draw() {
   if (i == 1) {
     document.getElementById("freccinaPre").style.opacity = "0.3";
   }
-  console.log(i)
+
   push();
   noStroke();
   fill('#375a64');
   rect(0, 0, windowWidth, windowHeight, 30);
   pop();
-
 
   push();
   noStroke();
@@ -132,5 +131,7 @@ function chiudi() {
   tutorial = gifBenvenuto;
   i++
   document.getElementById("freccina").style.display = "block";
+  document.getElementById("freccina").style.opacity = "1";
   document.getElementById("freccinaPre").style.display = "block";
+  document.getElementById("freccinaPre").style.opacity = "0.3";
 }
