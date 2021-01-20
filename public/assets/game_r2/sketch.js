@@ -30,11 +30,15 @@ let mouseCursorSize = 50;
 let spacebarBool = false;
 let hitBool = false;
 let currentBeat = 0;
+let haloBlur = 10;
 let songTime;
 let songPercent;
 let songStarted = false;
-let inputColor = "rgba(0,146,255,0.6)";
+let inputColor = "rgba(0,146,255,1)";
 let inputSize = 20; //mouse collision area is an n pixel square around mouseX and mouseY
+
+let sliderImg = [];
+let sliderInputImg = [];
 
 //
 let sliderSizeX = [
@@ -82,6 +86,11 @@ function preload(){
   clap = loadSound("/assets/sounds/clap.wav");
   roll = loadSound("/assets/sounds/drumroll.mp3");
   data = loadJSON("/assets/game_r1/beatmap.json");
+  beatImg = loadImage('/assets/images/gm/r1/beat.png');
+  spinImg = loadImage('/assets/images/gm/r1/spin.png');
+  for (let i = 1; i <= 17; i++){
+    sliderImg.push(loadAnimation('/assets/images/gm/r1/slider'+i+'.png', '/assets/images/gm/r1/slider'+i+'-input.png'));
+  }
 }
 
 
@@ -127,7 +136,8 @@ function setup() {
 // __ Draw __
 
 function draw() {
-  background("#030c24");
+  if(frameCount%100 == 0){clear();} //clear old pixels to help performance
+  background("#0f1122");
   noCursor();
 
   let mousePosition = {
@@ -221,7 +231,10 @@ function draw() {
   }
 
   if (audio.currentTime > 0) {
-    songTime = audio.currentTime+0.3;
+    //debug
+    //audio.playbackRate = 3;
+    //debug
+    songTime = audio.currentTime + 0.3;
     songPercent = songTime / (audio.duration);
   }
 
@@ -236,17 +249,17 @@ socket.on("playerJoined", myPlayerJoined);
 socket.on("playerLeft", myPlayerLeft);
 
 function newPlayerConnected() {
-  console.log("your id:", socket.id);
+  console.log("game_r1 id:", socket.id);
   socket.emit('subscribe', roomname);
 }
 
 function myPlayerJoined() {
-  console.log("true")
+  // console.log("true")
   playerIn = true;
 }
 
 function myPlayerLeft() {
-  console.log("false")
+  // console.log("false")
   playerIn = false;
 }
 
@@ -453,19 +466,20 @@ class Beat {
 
   displayBeat() { //builds the beat visualization
     this.animColor = "rgba(255,255,255,"+map(this.count*beatSize/(beatDuration*60), 20, 65, 0, 1, true) + ")"
+    this.animEndColor = "rgba(255,255,255,"+map(this.countEnd*beatSize/(beatDuration*60), 20, 65, 0, 1, true) + ")"
     this.fixedColor = "rgba(255,255,255,"+map(this.id-currentBeat, 0, 4, 1, 0, true) + ")"
     this.lineColor = "rgba(255,255,255,"+map(this.id-currentBeat, 0, 3, 1, 0, true)/3 + ")"
 
     //line
     push();
-      strokeWeight(5);
+      strokeWeight(3);
       stroke(this.lineColor);
-      drawingContext.setLineDash([width/60, width/50]);
-      if (this.id > 0 && songTime <= beatmap[this.id-1].time + beatInputDelay){
-        if (beatmap[this.id-1].type == 'slider'){ //serve line to ending point of slider or just regular position of beat
+      drawingContext.setLineDash([12, 12]);
+      if (this.id > 0){
+        if (beatmap[this.id-1].type != 'beat' && songTime <= beatmap[this.id-1].timeEnd + beatInputDelay){ //serve line to ending point of slider or just regular position of beat
           line(this.posX, this.posY, beatmap[this.id-1].endX, beatmap[this.id-1].endY);
         }
-        else{line(this.posX, this.posY, beatmap[this.id-1].posX, beatmap[this.id-1].posY);}
+        else if (songTime <= beatmap[this.id-1].time + beatInputDelay){line(this.posX, this.posY, beatmap[this.id-1].posX, beatmap[this.id-1].posY);}
       }
     pop();
 
@@ -481,13 +495,33 @@ class Beat {
       }
       else{
         if (this.type == 'spin'){
+          //ellipse(this.posX, this.posY, map(this.countPercent, 207, beatSize/3, 207*3, 207));
           this.endX = this.posX;
           this.endY = this.posY;
+          push();
+            imageMode(CENTER);
+            translate(this.posX, this.posY);
+            rotate(frameCount*3+this.countPercentEnd);
+            drawingContext.setLineDash([10, 10]);
+            strokeWeight(4);
+            stroke('white');
+            if(this.countPercentEnd == 0){
+              ellipse(0, 0, 200);
+            }
+            else{
+              ellipse(0, 0, this.countPercentEnd);
+            }
+            translate(-this.posX, -this.posY);
+          pop();
         }
-        if (this.count >= 40 && songTime < this.time){
-          ellipse(this.posX, this.posY, this.countPercent);}
-        if (this.countEnd >= 40 && songTime < this.timeEnd){
-          ellipse(this.endX, this.endY, this.countPercentEnd);}
+        else{
+          if (this.count >= 40 && songTime <= this.time+beatInputDelay){
+            ellipse(this.posX, this.posY, this.countPercent);}
+          if (this.countEnd >= 40 && songTime < this.timeEnd){
+            stroke(this.animEndColor);
+            ellipse(this.endX, this.endY, this.countPercentEnd);}
+        }
+
       }
     pop();
   }
@@ -501,13 +535,16 @@ class Beat {
   userSliderInput(){
     if (this.beatCollide){
       push();
-        noFill();
-        strokeWeight(4);
-        stroke(inputColor);
-        fill("rgba(0,146,255,0.2)");
-        drawingContext.shadowBlur = 60;
+        drawingContext.shadowBlur = haloBlur;
         drawingContext.shadowColor = inputColor;
-        ellipse(mouseX-width/2, mouseY-height/2, beatSize);
+        push();
+          noFill();
+          strokeWeight(4);
+          stroke(inputColor);
+          fill("rgba(0,146,255,0.2)");
+          ellipse(mouseX-width/2, mouseY-height/2, beatSize);
+        pop();
+        this.beatSprite.animation.changeFrame(1)
       pop();
       if(songTime >= this.time - beatInputDelay){
         this.beatHit = true;
@@ -517,22 +554,40 @@ class Beat {
     }
   }
 
+  userSpinInput(){
+    if (this.beatCollideMain){
+      if(songTime >= this.time - beatInputDelay){
+        push();
+          strokeWeight(4);
+          stroke(inputColor);
+          fill("rgba(0,146,255,0.2)");
+          drawingContext.shadowBlur = haloBlur;
+          drawingContext.shadowColor = inputColor;
+          ellipse(this.posX, this.posY, 200);
+        pop();
+        this.beatHit = true;
+        if (!roll.isPlaying()){roll.play();}
+      }
+      else if(!this.beatCollide && roll.isPlaying()){roll.stop();}
+    }
+  }
 
   run(){
     if (this.spriteLoaded == false){//load the correct sprite
       if(this.type == 'beat'){
         this.beatSprite = createSprite(this.posX, this.posY);
-        this.beatSprite.addImage(loadImage('/assets/images/gm/r1/beat.png'));
+        this.beatSprite.addImage(beatImg);
       }
       else if(this.type == 'slider'){
         this.beatSprite = createSprite(this.cornerX+sliderSizeX[this.sliderType-1]/2, this.cornerY+sliderSizeY[this.sliderType-1]/2);
-        this.beatSprite.addImage(loadImage('/assets/images/gm/r1/slider'+this.sliderType+'.png'));
+        this.beatSprite.addAnimation('hit', sliderImg[this.sliderType-1]);
+        this.beatSprite.animation.stop();
+        this.beatSprite.animation.changeFrame(0);
         //this.beatSprite.addImage(loadImage('/assets/images/gm/r1/slider1.png'));
       }
       else if(this.type == 'spin'){
         this.beatSprite = createSprite(this.posX, this.posY);
-        //this.beatSprite.addImage(loadImage('assets/spin.png'));
-        this.beatSprite.addImage(loadImage('/assets/images/gm/r1/beat.png'));
+        this.beatSprite.addImage(spinImg);
       }
       this.spriteLoaded = true;
     }
@@ -549,8 +604,8 @@ class Beat {
     }
     else{this.beatCollide = false}
 
-    //run spinners and beats
-    if (this.type != 'slider'){
+    //run beats
+    if (this.type == 'beat'){
       if (songTime >= this.time - beatDuration && songTime <= this.time + beatInputDelay){ //display beats in the allocated time slot
         this.beatSprite.visible = true;
         this.displayBeat();
@@ -572,40 +627,53 @@ class Beat {
           strokeWeight(4);
           stroke(inputColor);
           fill("rgba(0,146,255,0.2)");
-          drawingContext.shadowBlur = 60;
+          drawingContext.shadowBlur = haloBlur;
           drawingContext.shadowColor = inputColor;
           ellipse(this.posX, this.posY, beatSize);
         pop();
       }
     }
-    //run sliders
+    //run sliders & spinners
     else{
       if (songTime >= this.time - beatDuration && songTime <= this.timeEnd + beatInputDelay){ //display beats in the allocated time slot
-        if (songTime <= this.time){ //manage animated external circle
+        if (this.type == 'spin'){this.countEndBehavior = this.time}
+        else {this.countEndBehavior = this.timeEnd-beatDuration}
+        if (songTime <= this.time && this.type == 'slider'){ //manage animated external circle
           this.count += 1;
           this.countPercent = map(this.count*beatSize/(beatDuration*60), 0, beatSize, beatSize*5, beatSize);
         }
-        if (songTime <= this.timeEnd){ //manage animated external circle
+        if (songTime <= this.timeEnd+beatInputDelay && songTime >= this.countEndBehavior){ //manage animated external circle
           this.countEnd += 1;
-          this.countPercentEnd = map(this.countEnd*beatSize/(beatDuration*60), 0, beatSize, beatSize*5, beatSize);
+          if(this.type == 'spin'){
+            this.countPercentEnd = map(this.countEnd*beatSize/((this.timeEnd-this.time)*60), 0, beatSize, 200, beatSize/3);
+          }
+          else{ //this.type == 'slider'
+            this.countPercentEnd = map(this.countEnd*beatSize/((beatDuration)*60), 0, beatSize, beatSize*5, beatSize);
+            console.log(this.countEnd*beatSize/((beatDuration)*60))
+          }
         }
         this.displayBeat();
         this.beatSprite.visible = true;
         if (hitBool && currentBeat == this.id){ //if user inputs command through either mouse or SPACEBAR
-          this.userSliderInput();
+          if(this.type == 'slider'){ //slider input
+            this.beatSprite.animation.changeFrame(0);
+            this.userSliderInput();
+          }
+          else{ //spin input
+            this.userSpinInput();
+          }
         }
       }
       if (songTime > this.timeEnd + beatInputDelay && currentBeat == this.id){ //deactivate the next beats until the current one is cleared or expired
         this.beatSprite.remove()
         currentBeat = this.id + 1
       }
-      if (songTime <= this.time + beatInputDelay && this.beatHit){ //show hit feedback
+      if (songTime <= this.time + beatInputDelay && this.beatHit && this.type == 'slider'){ //show hit feedback on sliders
         push();
-          noFill();
           strokeWeight(4);
           stroke(inputColor);
           fill("rgba(0,146,255,0.2)");
-          drawingContext.shadowBlur = 60;
+          drawingContext.shadowBlur = haloBlur;
           drawingContext.shadowColor = inputColor;
           ellipse(this.posX, this.posY, beatSize);
         pop();
