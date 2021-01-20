@@ -7,6 +7,7 @@ let gif2;
 let h1 = 'WELCOME!';
 let h2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
 let i = 1;
+let bckgcol = '#2b7077' //#c2797a //#375a64 //#186977
 
 
 function preload() {
@@ -31,7 +32,7 @@ function draw() {
 
   push();
   noStroke();
-  fill('#375a64');
+  fill(bckgcol);
   rect(0, 0, windowWidth, windowHeight, 30);
   pop();
 
@@ -41,7 +42,7 @@ function draw() {
 
   noFill();
   strokeWeight(20);
-  stroke('#375a64')
+  stroke(bckgcol)
   rect(60-10, height / 2 - 250-10, 515, 515, 30);
   pop();
 
