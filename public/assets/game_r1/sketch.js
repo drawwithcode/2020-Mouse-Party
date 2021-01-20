@@ -90,7 +90,6 @@ function preload(){
   spinImg = loadImage('/assets/images/gm/r1/spin.png');
   for (let i = 1; i <= 17; i++){
     sliderImg.push(loadAnimation('/assets/images/gm/r1/slider'+i+'.png', '/assets/images/gm/r1/slider'+i+'-input.png'));
-    //sliderInputImg.push(loadImage('/assets/images/gm/r1/slider'+i+'-input.png'));
   }
 }
 
@@ -476,11 +475,11 @@ class Beat {
       strokeWeight(3);
       stroke(this.lineColor);
       drawingContext.setLineDash([12, 12]);
-      if (this.id > 0 && songTime <= beatmap[this.id-1].time + beatInputDelay){
-        if (beatmap[this.id-1].type == 'slider'){ //serve line to ending point of slider or just regular position of beat
+      if (this.id > 0){
+        if (beatmap[this.id-1].type != 'beat' && songTime <= beatmap[this.id-1].timeEnd + beatInputDelay){ //serve line to ending point of slider or just regular position of beat
           line(this.posX, this.posY, beatmap[this.id-1].endX, beatmap[this.id-1].endY);
         }
-        else{line(this.posX, this.posY, beatmap[this.id-1].posX, beatmap[this.id-1].posY);}
+        else if (songTime <= beatmap[this.id-1].time + beatInputDelay){line(this.posX, this.posY, beatmap[this.id-1].posX, beatmap[this.id-1].posY);}
       }
     pop();
 
