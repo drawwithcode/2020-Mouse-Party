@@ -9,6 +9,7 @@ function preload(){
 
 function setup() {
   // put setup code here
+  socket.emit("join", {id: socket.id});
 }
 
 function draw() {
@@ -69,7 +70,7 @@ function info(){
     a = 1
   } else if (a == 1) {
     document.getElementById("welcome").style.display = "block";
-    // document.getElementById("welcome").style.opacity = "100";
+    document.getElementById("welcome").style.opacity = "100";
     a = 0
   }
 }

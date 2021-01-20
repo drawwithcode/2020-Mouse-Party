@@ -203,7 +203,7 @@ function draw() {
     if (frameCount % 60 == 0) {
       sc++;
     }
-    if (sc == 3 && audioIsPlaying == false) {
+    if (sc == 4 && audioIsPlaying == false) {
       socket.emit("play", {times: audio.currentTime, room : roomname});
       audioIsPlaying = true;
     }
