@@ -23,6 +23,7 @@ var sc = 0;
 // __ varibili Riki __
 
 let beatmap = [];
+let beatmapLength;
 let beatDuration = 1.5;
 let beatSize = 65;
 let beatInputDelay = 0.2;
@@ -111,6 +112,10 @@ function setup() {
 
   socket.on("mouseBroadcast", mousePos);
 
+  createBeatmap();
+}
+
+function createBeatmap(){
   //build beatmap
   for (let i = 0; i < data.beats.length; i++) {
     addBeats(
@@ -127,7 +132,6 @@ function setup() {
       data.beats[i].cornerY,
     );
   }
-
 }
 
 
@@ -135,7 +139,8 @@ function setup() {
 // __ Draw __
 
 function draw() {
-  if(frameCount%100 == 0){clear();} //clear old pixels to help performance
+  //if(frameCount%20 == 0){clear();} //clear old pixels to help performance
+
   background("#0f1122");
   noCursor();
 
@@ -231,10 +236,16 @@ function draw() {
 
   if (audio.currentTime > 0) {
     //debug
-    //audio.playbackRate = 3;
+    //audio.playbackRate = 5;
     //debug
-    songTime = audio.currentTime + 0.3;
+    songTime = audio.currentTime;
     songPercent = songTime / (audio.duration);
+  }
+  if(audio.ended){ //loop song and beatmap
+    beatmap.length = 0; //clear beatmap array after song ends
+    createBeatmap();
+    //currentBeat = 0;
+    audio.play();
   }
 
 }
@@ -434,6 +445,7 @@ function circles() {
 function addBeats(id, time, timeEnd, type, sliderType, posX, posY, endX, endY, cornerX, cornerY) {
   const newBeat = new Beat(id, time, timeEnd, type, sliderType, posX, posY, endX, endY, cornerX, cornerY)
   beatmap.push(newBeat);
+  beatmapLength = beatmap.length;
 }
 
 
@@ -576,6 +588,7 @@ class Beat {
   }
 
   run(){
+    if(currentBeat == beatmapLength){currentBeat=this.id}
     if (this.spriteLoaded == false){//load the correct sprite
       if(this.type == 'beat'){
         this.beatSprite = createSprite(this.posX, this.posY);
@@ -622,7 +635,7 @@ class Beat {
       }
       if (this.beatHit && currentBeat == this.id || songTime > this.time + beatInputDelay && currentBeat == this.id){
         //deactivate the next beats until the current one is cleared or expired
-        this.beatSprite.remove()
+        //this.beatSprite.remove()
         currentBeat = this.id + 1
       }
       if (songTime <= this.time + beatInputDelay && this.beatHit){ //show hit feedback
@@ -648,10 +661,10 @@ class Beat {
         if (songTime <= this.timeEnd+beatInputDelay && songTime >= this.countEndBehavior){ //manage animated external circle
           this.countEnd += 1;
           if(this.type == 'spin'){
-            this.countPercentEnd = map(this.countEnd*beatSize/((this.timeEnd-this.time)*60), 0, beatSize, 200, beatSize/3);
+            this.countPercentEnd = map(this.countEnd*beatSize/((this.timeEnd-this.time)*60), 0, beatSize, 200, beatSize/3, true);
           }
           else{ //this.type == 'slider'
-            this.countPercentEnd = map(this.countEnd*beatSize/((beatDuration)*60), 0, beatSize, beatSize*5, beatSize);
+            this.countPercentEnd = map(this.countEnd*beatSize/((beatDuration)*60), 0, beatSize, beatSize*5, beatSize, true);
           }
         }
         this.displayBeat();
@@ -667,7 +680,7 @@ class Beat {
         }
       }
       if (songTime > this.timeEnd + beatInputDelay && currentBeat == this.id){ //deactivate the next beats until the current one is cleared or expired
-        this.beatSprite.remove()
+        //this.beatSprite.remove()
         currentBeat = this.id + 1
       }
       if (songTime <= this.time + beatInputDelay && this.beatHit && this.type == 'slider'){ //show hit feedback on sliders
