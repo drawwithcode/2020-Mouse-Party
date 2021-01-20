@@ -192,8 +192,8 @@ function draw() {
     if (frameCount % 60 == 0) {
       sc++;
     }
-    if (sc == 4 && audioIsPlaying == false) {
-      socket.emit("play", {times: audio.currentTime, room : roomname});
+    if (sc >= 4 && audioIsPlaying == false) {
+      socket.emit("play", {times: audio.currentTime, id: socket.id});
       audioIsPlaying = true;
     }
 
@@ -212,6 +212,12 @@ function draw() {
       room: roomname
     };
     socket.emit("countPlayers", playersOnline);
+
+    if (audioIsPlaying == true) {
+      audio.pause();
+      audioIsPlaying = false;
+      // sc = 0;
+    }
   }
 
   if (audio.currentTime > 0) {
@@ -245,9 +251,9 @@ function myPlayerLeft() {
 }
 
 socket.on("first", function (data) {
-  audio.ontimeupdate = function () {
+  // audio.ontimeupdate = function () {
     socket.emit("where", {times: audio.currentTime, room: roomname});
-  };
+  // };
 });
 
 socket.on("current", function (data) {
@@ -261,9 +267,9 @@ socket.on("current", function (data) {
 });
 
 socket.on("playsong", function (data) {
-  audio.currentTime = data;
-  // console.log(audio.currentTime);
+  audio.currentTime = data.times;
   audio.play();
+  socket.emit("where", {times: audio.currentTime, room: roomname});
 });
 
 socket.on('deleteCursor', function(data) {
