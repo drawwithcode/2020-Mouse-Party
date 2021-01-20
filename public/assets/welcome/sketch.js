@@ -13,6 +13,7 @@ function preload() {
   gifBenvenuto = loadImage('assets/logo4.png');
   gif1 = loadImage('assets/banvenuto1.gif');
   gif2 = loadImage('assets/banvenuto2.gif');
+  gif3 = loadImage('assets/banvenuto3.gif');
 }
 
 function setup() {
@@ -69,7 +70,7 @@ function next() {
   } else if (i == 3) {
     h1 = "SPINNER"
     h2 = 'bla blablabla spiegare spinner';
-    tutorial = gif1;
+    tutorial = gif3;
     i++
     document.getElementById("freccina").style.display = "none";
   }
