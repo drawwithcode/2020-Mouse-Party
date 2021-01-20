@@ -2,6 +2,7 @@ let socket = io();
 
 var w = 0;
 var a = 1;
+var plJoined = false;
 
 function preload(){
   document.getElementById("welcome").style.display = "none";
@@ -9,11 +10,16 @@ function preload(){
 
 function setup() {
   // put setup code here
-  socket.emit("join", {id: socket.id});
+    socket.emit("join", {id: socket.id});
+  
 }
 
 function draw() {
   // put drawing code here
+  // if (plJoined == false) {
+  //   socket.emit("join", {id: socket.id});
+  //   plJoined = true;
+  // }
 }
 
 function watch() {

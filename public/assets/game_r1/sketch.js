@@ -203,8 +203,8 @@ function draw() {
     if (frameCount % 60 == 0) {
       sc++;
     }
-    if (sc == 4 && audioIsPlaying == false) {
-      socket.emit("play", {times: audio.currentTime, room : roomname});
+    if (sc >= 4 && audioIsPlaying == false) {
+      socket.emit("play", {times: audio.currentTime, id: socket.id});
       audioIsPlaying = true;
     }
 
@@ -223,13 +223,19 @@ function draw() {
       room: roomname
     };
     socket.emit("countPlayers", playersOnline);
+
+    if (audioIsPlaying == true) {
+      audio.pause();
+      audioIsPlaying = false;
+      // sc = 0;
+    }
   }
 
   if (audio.currentTime > 0) {
     //debug
     //audio.playbackRate = 3;
     //debug
-    songTime = audio.currentTime+0.3;
+    songTime = audio.currentTime + 0.3;
     songPercent = songTime / (audio.duration);
   }
 
@@ -244,24 +250,24 @@ socket.on("playerJoined", myPlayerJoined);
 socket.on("playerLeft", myPlayerLeft);
 
 function newPlayerConnected() {
-  console.log("your id:", socket.id);
+  console.log("game_r1 id:", socket.id);
   socket.emit('subscribe', roomname);
 }
 
 function myPlayerJoined() {
-  console.log("true")
+  // console.log("true")
   playerIn = true;
 }
 
 function myPlayerLeft() {
-  console.log("false")
+  // console.log("false")
   playerIn = false;
 }
 
 socket.on("first", function (data) {
-  audio.ontimeupdate = function () {
+  // audio.ontimeupdate = function () {
     socket.emit("where", {times: audio.currentTime, room: roomname});
-  };
+  // };
 });
 
 socket.on("current", function (data) {
@@ -275,9 +281,9 @@ socket.on("current", function (data) {
 });
 
 socket.on("playsong", function (data) {
-  audio.currentTime = data;
-  // console.log(audio.currentTime);
+  audio.currentTime = data.times;
   audio.play();
+  socket.emit("where", {times: audio.currentTime, room: roomname});
 });
 
 socket.on('deleteCursor', function(data) {

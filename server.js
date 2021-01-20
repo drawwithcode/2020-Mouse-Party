@@ -48,7 +48,11 @@ io.on("connection", function (socket) {
   });
 
   socket.on("play", function (data) {
-    io.to(data.room).emit("playsong", data.times);
+    userId = data.id
+    var trackTime = {
+      times: data.times,
+    }
+    io.to(userId).emit("playsong", trackTime);
   });
 
   socket.on("mouse", function(data) {
