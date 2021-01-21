@@ -1,7 +1,7 @@
 let socket = io();
 
 let tutorial;
-let gifBenvenuto;
+let gifBenvenuto; //change
 let gif1;
 let gif2;
 let h1 = 'WELCOME!';
@@ -23,11 +23,12 @@ function setup() {
   document.getElementById("freccina").style.display = "block";
   document.getElementById("freccinaPre").style.display = "block";
   document.getElementById("X").style.display = "block";
+  document.getElementById("freccinaPre").style.opacity = "0.3";
+  document.getElementById("freccinaPre").style.cursor = "default";
 }
 
 function draw() {
   if (i == 1) {
-    document.getElementById("freccinaPre").style.opacity = "0.3";
   }
 
   push();
@@ -78,6 +79,8 @@ function next() {
     i++
     document.getElementById("freccinaPre").style.opacity = "1";
     document.getElementById("freccina").style.opacity = "1";
+    document.getElementById("freccina").style.cursor = "pointer";
+    document.getElementById("freccinaPre").style.cursor = "pointer";
   } else if (i == 2) {
     h1 = "SLIDER"
     h2 = 'Position yourself on the + sign\nand click or press spacebar\nas you slide across.\n\nPrecision is key!';
@@ -85,6 +88,7 @@ function next() {
     i++
     document.getElementById("freccinaPre").style.opacity = "1";
     document.getElementById("freccina").style.opacity = "1";
+    document.getElementById("freccina").style.cursor = "pointer";
   } else if (i == 3) {
     h1 = "SPINNER"
     h2 = 'Wait until the dashed circle\nstarts moving, click or press\nspacebar, and spin around\nto your heart\'s content.\n\nBut don\'t get dizzy!';
@@ -92,6 +96,8 @@ function next() {
     i++
     document.getElementById("freccinaPre").style.opacity = "1";
     document.getElementById("freccina").style.opacity = "0.3";
+    document.getElementById("freccina").style.cursor = "default";
+    document.getElementById("crediti").style.display = "block";
   }
 }
 
@@ -101,6 +107,7 @@ function prev() {
     h2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
     tutorial = gifBenvenuto;
     i=i-1
+    document.getElementById("freccinaPre").style.cursor = "default";
     document.getElementById("freccinaPre").style.opacity = "0.3";
     document.getElementById("freccina").style.opacity = "1";
   } else if (i == 3) {
@@ -117,7 +124,28 @@ function prev() {
     i=i-1
     document.getElementById("freccinaPre").style.opacity = "1";
     document.getElementById("freccina").style.opacity = "1";
+    document.getElementById("freccina").style.cursor = "pointer";
+    bckgcol = '#2b7077';
+    document.getElementById("crediti").style.display = "none";
+    document.getElementById("freccina").style.backgroundColor = "#2b7077";
+    document.getElementById("freccinaPre").style.backgroundColor = "#2b7077";
+    document.getElementById("crediti").style.backgroundColor = "#2b7077";
+    document.getElementById("X").style.backgroundColor = "#2b7077";
   }
+}
+
+function credits(){
+bckgcol = '#c2797a';
+h1 = "CREDITS"
+h2 = 'Politecnico di Milano, ...\n\nBellavita Andrea\nManfredi Sharon\nMoreschi Nicole\nRigamondi Riccardo\n\nSoundtracks: ...';
+tutorial = gifBenvenuto; //che immagine mettiamo?
+document.getElementById("freccina").style.display = "none";
+document.getElementById("freccinaPre").style.display = "none";
+document.getElementById("freccina").style.backgroundColor = "#c2797a";
+document.getElementById("freccinaPre").style.backgroundColor = "#c2797a";
+document.getElementById("crediti").style.backgroundColor = "#c2797a";
+document.getElementById("X").style.backgroundColor = "#c2797a";
+document.getElementById("crediti").style.display = "none";
 }
 
 function chiudi() {
@@ -127,6 +155,7 @@ function chiudi() {
   }
   socket.emit("fineTutorial", welcomeFinished);
   i=0
+  bckgcol = '#2b7077';
   h1 = "WELCOME!"
   h2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
   tutorial = gifBenvenuto;
@@ -135,4 +164,11 @@ function chiudi() {
   document.getElementById("freccina").style.opacity = "1";
   document.getElementById("freccinaPre").style.display = "block";
   document.getElementById("freccinaPre").style.opacity = "0.3";
+  document.getElementById("crediti").style.display = "none";
+  document.getElementById("freccina").style.backgroundColor = "#2b7077";
+  document.getElementById("freccinaPre").style.backgroundColor = "#2b7077";
+  document.getElementById("crediti").style.backgroundColor = "#2b7077";
+  document.getElementById("X").style.backgroundColor = "#2b7077";
+  document.getElementById("freccina").style.cursor = "pointer";
+  document.getElementById("freccinaPre").style.cursor = "default";
 }

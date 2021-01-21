@@ -39,6 +39,8 @@ button {
 }
 
 #freccina{
+  cursor: pointer;
+  background-color: #2b7077;
   position: fixed;
   left: 670px;
   bottom: 50px;
@@ -48,7 +50,20 @@ button {
   display: none;
 }
 
+#crediti{
+  background-color: #2b7077;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 50pt;
+  border-color: #ffffff;
+  color: #ffffff;
+  display: none;
+}
+
 #freccinaPre{
+  cursor: pointer;
+  background-color: #2b7077;
   position: fixed;
   left: 630px;
   bottom: 50px;
@@ -60,6 +75,7 @@ button {
 
 #X{
   position: fixed;
+  background-color: #2b7077;
   right: 50px;
   top: 50px;
   width: 21pt;

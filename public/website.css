@@ -145,8 +145,8 @@ margin-top: 5pt;
 }
 
 #noneR1{
-  display: none;
-  /* display: block; */
+  /* display: none; */
+  display: block;
 }
 
 
