@@ -19,15 +19,10 @@
   <link href="/lp_2/website.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onload="setTimeout(loadFrame, 1500)">
-  <script type="text/javascript">
-    function loadFrame() {
-      document.getElementById('myFrame').src = "/assets/game_r2/index.html";
-    }
-  </script>
+<body>
   <iframe id="welcome" src="/assets/welcome/index.html"></iframe>
   <div id="schermo">
-    <iframe id="myFrame" class="gioco" src="" scrolling="no"></iframe>
+    <iframe id="myFrame" class="gioco" src="/assets/game_r2/index.html" scrolling="no"></iframe>
   </div>
   <div id="overlay">
     <button id="bt3" onclick="info()"></button>
