@@ -50,7 +50,7 @@ function gioca_2() {
 }
 
 function gioca_3() {
-  
+
 }
 
 function home() {
@@ -64,10 +64,14 @@ socket.on("closeWelcome", benvenuto);
 function benvenuto(data) {
   if (data.wf == true) {
     document.getElementById("welcome").style.display = "none";
+    document.getElementById("elementiDx").style.pointerEvents = "auto";
+    document.getElementById("logo").style.pointerEvents = "auto";
     a = 1;
   } else if (data.wf == false) {
     document.getElementById("welcome").style.display = "block";
     document.getElementById("welcome").style.opacity = "100";
+    document.getElementById("elementiDx").style.pointerEvents = "none";
+    document.getElementById("logo").style.pointerEvents = "none";
     a = 0;
   }
 }
@@ -75,10 +79,14 @@ function benvenuto(data) {
 function info(){
   if (a == 0) {
     document.getElementById("welcome").style.display = "none";
+    document.getElementById("elementiDx").style.pointerEvents = "auto";
+    document.getElementById("logo").style.pointerEvents = "auto";
     a = 1
   } else if (a == 1) {
     document.getElementById("welcome").style.display = "block";
     document.getElementById("welcome").style.opacity = "100";
+    document.getElementById("elementiDx").style.pointerEvents = "none";
+    document.getElementById("logo").style.pointerEvents = "none";
     a = 0
   }
 }

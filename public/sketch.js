@@ -55,9 +55,13 @@ socket.on("closeWelcome", benvenuto);
 function benvenuto(data) {
   if (data.wf == true) {
     document.getElementById("welcome").style.display = "none";
+    document.getElementById("elementiDx").style.pointerEvents = "auto";
+    document.getElementById("logo").style.pointerEvents = "auto";
     i = 1;
   } else if (data.wf == false) {
     document.getElementById("welcome").style.display = "block";
+    document.getElementById("elementiDx").style.pointerEvents = "none";
+    document.getElementById("logo").style.pointerEvents = "none";
     i = 0;
   }
 }
@@ -65,9 +69,13 @@ function benvenuto(data) {
 function info(){
   if (i == 0) {
     document.getElementById("welcome").style.display = "none";
+    document.getElementById("elementiDx").style.pointerEvents = "auto";
+    document.getElementById("logo").style.pointerEvents = "auto";
     i = 1
   } else if (i == 1) {
     document.getElementById("welcome").style.display = "block";
+    document.getElementById("elementiDx").style.pointerEvents = "none";
+    document.getElementById("logo").style.pointerEvents = "none";
     i = 0
   }
 }

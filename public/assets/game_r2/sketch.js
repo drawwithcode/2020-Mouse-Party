@@ -117,7 +117,9 @@ function preload(){
 function setup() {
   frameRate(60);
   clap.setVolume(2);
+
   createCanvas(windowWidth, windowHeight);
+
   angleMode(DEGREES);
 
   myCursor = new myCursor();
@@ -258,6 +260,7 @@ function draw() {
     songTime = audio.currentTime;
     songPercent = songTime / (audio.duration);
   }
+
   if(audio.ended){ //loop song and beatmap
     beatmap.length = 0; //clear beatmap array after song ends
     createBeatmap();
