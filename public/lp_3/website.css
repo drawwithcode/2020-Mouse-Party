@@ -1,0 +1,298 @@
+body {
+  position: absolute;
+  position: fixed;
+  background-color: #07090a;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#overlay{
+  background-image: url(/assets/images/lp/overlay1.png);
+  background-repeat: no-repeat;
+  background-position: center;  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  display: none;
+}
+
+/* #header {
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+} */
+
+/* .elementiSx {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  height: 15%;
+  width: 0%;
+  margin-left: 5%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+} */
+
+#elementiDx {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  display: none;
+  position: fixed;
+  width: 5%;
+  height: 15%;
+}
+
+
+#logo{
+  height: 30pt;
+  bottom: 5%;
+  position: fixed;
+  position: absolute;
+  margin-left: 5%;
+  z-index: 1;
+}
+
+/* #join, #occhio{
+  height: 20pt;
+  bottom: 0px;
+} */
+
+#logo:hover, #join1:hover, #join2:hover, #join3:hover, #bt2:hover, #bt3:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.menu{
+  position: fixed;
+  left: 5%;
+  top: 5%;
+  width: 15%;
+  height: 30%;
+}
+
+.testo{
+  margin:0;
+  padding: 0;
+  font-size: 12pt;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.room1{
+  margin-top: 0;
+  height:65px;
+}
+
+.room2{
+  margin-top: 0;
+  height:65px;
+}
+
+.omini{
+margin-top: 5pt;
+}
+
+.omino{
+  margin-top: 0;
+  margin-right: 2%;
+  height: 15pt;
+  float: left;
+}
+
+#u1r1{
+  display: none;
+  /* display: block; */
+}
+
+#u2r1{
+  display: none;
+  /* display: block; */
+}
+
+#u3r1{
+  display: none;
+  /* display: block; */
+}
+
+#u4r1{
+  display: none;
+  /* display: block; */
+}
+
+#u5r1{
+  display: none;
+  /* display: block; */
+}
+
+
+#plusR1{
+  display: none;
+  /* display: block; */
+}
+
+#noneR1{
+  /* display: none; */
+  display: block;
+}
+
+
+#u1r2{
+  display: none;
+  /* display: block; */
+}
+
+#u2r2{
+  display: none;
+  /* display: block; */
+}
+
+#u3r2{
+  display: none;
+  /* display: block; */
+}
+
+#u4r2{
+  display: none;
+  /* display: block; */
+}
+
+#u5r2{
+  display: none;
+  /* display: block; */
+}
+
+#plusR2{
+  display: none;
+  /* display: block; */
+}
+
+#noneR2{
+  /* display: none; */
+  display: block;
+}
+
+
+button {
+  background-color: #0f1122;
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: 1.5px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 11pt;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  /* display: inline-block; */
+  width: 40%;
+  height: 20pt;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#join1 {
+  width: 65pt;
+  display: block;
+  position: absolute;
+  bottom: 89pt;
+  right: 0;
+}
+
+#join2 {
+  width: 65pt;
+  display: block;
+  position: absolute;
+  bottom: 62pt;
+  right: 0;
+}
+
+#join3 {
+  width: 65pt;
+  display: block;
+  position: absolute;
+  bottom: 35pt;
+  right: 0;
+}
+
+#bt2 {
+  position: absolute;
+  width: 21pt;
+  background-image: url(/assets/images/lp/occhio.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  top: auto;
+  bottom: 0;
+  right: 0;
+
+}
+
+#bt3 {
+  position: fixed;
+  right: 5%;
+  top: 5%;
+  height: 15pt;
+  width: 15pt;
+  border-color: #ffffff;
+  color: #ffffff;
+  background-image: url(/assets/images/lp/i.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+
+.gioco {
+  width: 800px;
+  height: 800px;
+  z-index: 0;
+  border: none;
+  decoration: none;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#schermo {
+  position: absolute;
+  position: fixed;
+  background-image: url(/assets/images/lp/sfondo1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#welcome {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  position: fixed;
+  padding: 0;
+  width: 1000px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border: none;
+}

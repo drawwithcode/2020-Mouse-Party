@@ -50,9 +50,7 @@ function gioca_2() {
 }
 
 function gioca_3() {
-  document.getElementById("overlay").style.display = "none";
-  document.getElementById("elementiDx").style.display = "none";
-  document.getElementById("myFrame").src = "/assets/game_r3/index.html";
+  
 }
 
 function home() {

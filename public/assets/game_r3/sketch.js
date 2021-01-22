@@ -1,4 +1,19 @@
+let socket = io();
+
 var audio = document.getElementById('myaudio');
+var roomname = "3";
+var playerIn = true;
+var palette = [
+  {r: 3, g: 196, b: 216 },
+  {r: 0, g: 146, b: 255 },
+  {r: 151, g: 71, b: 214 },
+  {r: 178, g: 0, b: 114 },
+  {r: 234, g: 31, b: 109 },
+  {r: 255, g: 80, b: 51 },
+  {r: 255, g: 103, b: 0 }
+];
+var audioIsPlaying = false;
+var sc = 0;
 
 let beatmap = [];
 let beatmapLength;
@@ -84,6 +99,9 @@ function preload(){
 }
 
 function setup() {
+  frameRate(60);
+  clap.setVolume(2);
+
   createCanvas(windowWidth, windowHeight);
 
   angleMode(DEGREES);
@@ -122,11 +140,100 @@ function createBeatmap(){
 
 function draw() {
   background('#0F1122');
-  drawSprites();
+  noCursor();
 
-  if(mouseX>0 && mouseX<width && !songStarted){
-    audio.play();
-    songStarted = true;
+
+  if (playerIn == true) {
+    drawSprites();
+
+    //run beatmap
+    for(let i = 0; i < beatmap.length; i++) {
+        beatmap[i].run();
+    }
+
+    translate(width / 2, height / 2);
+
+    myCursor0.update();
+    myCursor0.display();
+
+    push();
+    rotate(45);
+    myCursor1.update();
+    myCursor1.display();
+    pop();
+
+    push();
+    rotate(90);
+    myCursor2.update();
+    myCursor2.display();
+    pop();
+
+    push();
+    rotate(135);
+    myCursor3.update();
+    myCursor3.display();
+    pop();
+
+    push();
+    rotate(180);
+    myCursor4.update();
+    myCursor4.display();
+    pop();
+
+    push();
+    rotate(225);
+    myCursor5.update();
+    myCursor5.display();
+    pop();
+
+    push();
+    rotate(270);
+    myCursor6.update();
+    myCursor6.display();
+    pop();
+
+    push();
+    rotate(315);
+    myCursor7.update();
+    myCursor7.display();
+    pop();
+
+    if (hitBool) {
+       myCursor0.displayColor();
+       for (var i = 0; i < random(0, 80); i++) { //quantità particelle
+          particles.push(new particelle((mouseX + random(-15, 15)), mouseY + random(-15, 15)));
+       }
+    } else {
+       myCursor0.display();
+    }
+
+    for (var i = 0; i < particles.length; i++) {
+       particles[i].update();
+       particles[i].render();
+       if (particles[i].particlesIsFinished()) {
+          particles.splice(i, 1);
+       }
+    }
+
+    if (frameCount % 60 == 0) {
+      sc++;
+    }
+    if (sc >= 1 && audioIsPlaying == false) {
+      audio.play();
+      audioIsPlaying = true;
+    }
+
+  } else {
+    if (audioIsPlaying == true) {
+      audio.pause();
+      audioIsPlaying = false;
+      // sc = 0;
+    }
+  }
+
+  if (audio.currentTime > 0) {
+    songTime = audio.currentTime;
+    songPercent = songTime / (audio.duration);
   }
 
   if(audio.ended){ //loop song and beatmap
@@ -136,83 +243,30 @@ function draw() {
     audio.play();
   }
 
-  songTime = audio.currentTime;
-  songPercent = songTime / audio.duration;
-
-
-  //run beatmap
-  for(let i = 0; i < beatmap.length; i++) {
-      beatmap[i].run();
-  }
-
-
-  //riflessione
-  translate(width / 2, height / 2);
-  noCursor();
-  myCursor0.update();
-  myCursor0.display();
-
-  angleMode(DEGREES);
-
-  push();
-  rotate(45);
-  myCursor1.update();
-  myCursor1.display();
-  pop();
-
-  push();
-  rotate(90);
-  myCursor2.update();
-  myCursor2.display();
-  pop();
-
-  push();
-  rotate(135);
-  myCursor3.update();
-  myCursor3.display();
-  pop();
-
-  push();
-  rotate(180);
-  myCursor4.update();
-  myCursor4.display();
-  pop();
-
-  push();
-  rotate(225);
-  myCursor5.update();
-  myCursor5.display();
-  pop();
-
-  push();
-  rotate(270);
-  myCursor6.update();
-  myCursor6.display();
-  pop();
-
-  push();
-  rotate(315);
-  myCursor7.update();
-  myCursor7.display();
-  pop();
-
-  if (hitBool) {
-     myCursor0.displayColor();
-     for (var i = 0; i < random(0, 80); i++) { //quantità particelle
-        particles.push(new particelle((mouseX + random(-15, 15)), mouseY + random(-15, 15)));
-     }
-  } else {
-     myCursor0.display();
-  }
-
-  for (var i = 0; i < particles.length; i++) {
-     particles[i].update();
-     particles[i].render();
-     if (particles[i].particlesIsFinished()) {
-        particles.splice(i, 1);
-     }
-  }
 }
+
+
+
+// __ Sockets Listeners __
+
+socket.on("connect", newPlayerConnected);
+socket.on("playerJoined", myPlayerJoined);
+socket.on("playerLeft", myPlayerLeft);
+
+function newPlayerConnected() {
+  console.log("game_r3 id:", socket.id);
+  socket.emit('subscribe', roomname);
+}
+
+function myPlayerJoined() {
+  playerIn = true;
+}
+
+function myPlayerLeft() {
+  playerIn = false;
+}
+
+
 
 class myCursor {
    constructor(temp_r, temp_g, temp_b) {
