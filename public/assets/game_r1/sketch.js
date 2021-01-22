@@ -2,12 +2,14 @@
 
 let socket = io();
 
-var myParticles = [];
-var otherCursors = [];
-var clickEffect = [];
-var audio = document.getElementById('myaudio');
 var roomname = "1";
 var playerIn = false;
+var otherCursors = [];
+var myParticles = [];
+var clickEffect = [];
+var audio = document.getElementById('myaudio');
+var audioIsPlaying = false;
+var sc = 0;
 var palette = [
   {r: 3, g: 196, b: 216 },
   {r: 0, g: 146, b: 255 },
@@ -17,11 +19,6 @@ var palette = [
   {r: 255, g: 80, b: 51 },
   {r: 255, g: 103, b: 0 }
 ];
-var audioIsPlaying = false;
-var sc = 0;
-
-// __ varibili Riki __
-
 let beatmap = [];
 let beatmapLength;
 let beatDuration = 1.5;
@@ -34,10 +31,8 @@ let currentBeat = 0;
 let haloBlur = 10;
 let songTime;
 let songPercent;
-let songStarted = false;
 let inputColor = "rgba(0,146,255,1)";
-let inputSize = 20; //mouse collision area is an n pixel square around mouseX and mouseY
-
+let inputSize = 20; // mouse collision area is an n pixel square around mouseX and mouseY
 let sliderImg = [];
 let sliderInputImg = [];
 
@@ -59,7 +54,7 @@ let sliderSizeX = [
   408, //14
   552, //15
   631, //16
-  631 //17
+  631  //17
 ];
 let sliderSizeY = [
   233, //1
@@ -78,8 +73,10 @@ let sliderSizeY = [
   473, //14
   358, //15
   432, //16
-  432 //17
+  432  //17
 ]
+
+
 
 // __ Preload __
 
@@ -101,23 +98,16 @@ function preload(){
 function setup() {
   frameRate(60);
   clap.setVolume(2);
-
   createCanvas(windowWidth, windowHeight);
-
   angleMode(DEGREES);
 
   myCursor = new myCursor();
-
-  // // Sprites
-  // pointer = createSprite(0, 0);
-  // pointer.addImage(loadImage('/assets/images/gm/r1/pointer.png'));
-
   socket.on("mouseBroadcast", mousePos);
 
   createBeatmap();
 }
 
-function createBeatmap(){
+function createBeatmap() {
   //build beatmap
   for (let i = 0; i < data.beats.length; i++) {
     addBeats(
@@ -155,9 +145,6 @@ function draw() {
   };
 
   translate(width / 2, height / 2);
-
-  // pointer.position.x = mouseX - width / 2;
-  // pointer.position.y = mouseY - height / 2;
 
   if (playerIn == true) {
     drawSprites();
@@ -232,20 +219,16 @@ function draw() {
     if (audioIsPlaying == true) {
       audio.pause();
       audioIsPlaying = false;
-      // sc = 0;
     }
   }
 
   if (audio.currentTime > 0) {
-    //debug
-    //audio.playbackRate = 5;
-    //debug
     songTime = audio.currentTime;
     songPercent = songTime / (audio.duration);
   }
 
-  if(audio.ended){ //loop song and beatmap
-    beatmap.length = 0; //clear beatmap array after song ends
+  if(audio.ended) { // loop song and beatmap
+    beatmap.length = 0; // clear beatmap array after song ends
     createBeatmap();
     //currentBeat = 0;
     audio.play();
@@ -267,12 +250,10 @@ function newPlayerConnected() {
 }
 
 function myPlayerJoined() {
-  // console.log("true")
   playerIn = true;
 }
 
 function myPlayerLeft() {
-  // console.log("false")
   playerIn = false;
 }
 
@@ -335,6 +316,7 @@ class myCursor {
     this.size = 50;
     this.history = [];
   }
+
   update() {
     var prevPos = {
       x: mouseX - width / 2,
@@ -466,7 +448,6 @@ class Beat {
     this.cornerX = cornerX*width/20;
     this.cornerY = -cornerY*height/20;
 
-
     this.beatStatus = null;
     this.countPercent = 0;
     this.count = 0;
@@ -478,7 +459,7 @@ class Beat {
     this.spriteLoaded = false;
   }
 
-  displayBeat() { //builds the beat visualization
+  displayBeat() { // builds the beat visualization
     this.animColor = "rgba(255,255,255,"+map(this.count*beatSize/(beatDuration*60), 20, 65, 0, 1, true) + ")"
     this.animEndColor = "rgba(255,255,255,"+map(this.countEnd*beatSize/(beatDuration*60), 20, 65, 0, 1, true) + ")"
     this.fixedColor = "rgba(255,255,255,"+map(this.id-currentBeat, 0, 4, 1, 0, true) + ")"
@@ -490,17 +471,18 @@ class Beat {
       stroke(this.lineColor);
       drawingContext.setLineDash([12, 12]);
       if (this.id > 0){
-        if (beatmap[this.id-1].type != 'beat' && songTime <= beatmap[this.id-1].timeEnd + beatInputDelay){ //serve line to ending point of slider or just regular position of beat
+        if (beatmap[this.id-1].type != 'beat' && songTime <= beatmap[this.id-1].timeEnd + beatInputDelay) {
+          // serve line to ending point of slider or just regular position of beat
           line(this.posX, this.posY, beatmap[this.id-1].endX, beatmap[this.id-1].endY);
         }
         else if (songTime <= beatmap[this.id-1].time + beatInputDelay){line(this.posX, this.posY, beatmap[this.id-1].posX, beatmap[this.id-1].posY);}
       }
     pop();
 
-    //beat anim circle
+    // beat anim circle
     push();
       noFill();
-      // stroke(this.animColor);
+      //stroke(this.animColor);
       stroke(this.animColor);
       strokeWeight(2);
       if (this.type == 'beat'){
@@ -697,12 +679,11 @@ class Beat {
         pop();
       }
     }
-    // drawSprites();
   }
 }
 
 
-function keyTyped(){ //spacebar input
+function keyTyped(){ // spacebar input
   if (keyCode === 32 && spacebarBool == false){
     clap.play();
     spacebarBool = true;
@@ -722,14 +703,12 @@ function keyReleased(){
 
 
 function mousePressed() {
-  //if () {
-    var circle = new circles();
-    clickEffect.push(circle);
+  var circle = new circles();
+  clickEffect.push(circle);
 
-    if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
-      clickEffect.splice(0, 1);
-    }
-  //}
+  if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+    clickEffect.splice(0, 1);
+  }
 
   clap.play();
   hitBool = true;
