@@ -276,7 +276,7 @@ socket.on("playerJoined", myPlayerJoined);
 socket.on("playerLeft", myPlayerLeft);
 
 function newPlayerConnected() {
-  console.log("game_r1 id:", socket.id);
+  console.log("game_r2 id:", socket.id);
   socket.emit('subscribe', roomname);
 }
 
