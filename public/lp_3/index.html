@@ -16,13 +16,18 @@
   <script src="/assets/lib/p5.play.js"></script>
   <script src="sketch.js"></script>
   <!-- <script src="/assets/welcome/sketch.js"></script> -->
-  <link href="/lp_2/website.css" rel="stylesheet" type="text/css">
+  <link href="/lp_3/website.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body onload="setTimeout(loadFrame, 500)">
+  <script type="text/javascript">
+    function loadFrame() {
+      document.getElementById('myFrame').src = "/assets/game_r3/index.html";
+    }
+  </script>
   <iframe id="welcome" src="/assets/welcome/index.html"></iframe>
   <div id="schermo">
-    <iframe id="myFrame" class="gioco" src="/assets/game_r3/index.html" scrolling="no"></iframe>
+    <iframe id="myFrame" class="gioco" src="" scrolling="no"></iframe>
   </div>
   <div id="overlay">
     <button id="bt3" onclick="info()"></button>
