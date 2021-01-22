@@ -81,14 +81,19 @@ let sliderSizeY = [
 // __ Preload __
 
 function preload(){
-  clap = loadSound("/assets/sounds/clap.wav");
-  roll = loadSound("/assets/sounds/drumroll.mp3");
+  clap = loadSound("/assets/sounds/botto3.wav");
+  whist = loadSound("/assets/sounds/fischio.wav");
+  roll = loadSound("/assets/sounds/scintilla.wav");
   data = loadJSON("/assets/game_r1/beatmap.json");
   beatImg = loadImage('/assets/images/gm/r1/beat.png');
   spinImg = loadImage('/assets/images/gm/r1/spin.png');
   for (let i = 1; i <= 17; i++){
     sliderImg.push(loadAnimation('/assets/images/gm/r1/slider'+i+'.png', '/assets/images/gm/r1/slider'+i+'-input.png'));
   }
+
+  roll.setVolume(0.6);
+  clap.setVolume(0.9);
+  whist.setVolume(0.3);
 }
 
 
@@ -97,7 +102,7 @@ function preload(){
 
 function setup() {
   frameRate(60);
-  clap.setVolume(2);
+
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
 
@@ -164,6 +169,12 @@ function draw() {
     if (hitBool) {
       for (var i = 0; i < random(0, 80); i++) {
         myParticles.push(new myParticle());
+      }
+      var circle = new circles();
+      clickEffect.push(circle);
+
+      if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+        clickEffect.splice(0, 1);
       }
     }
 
@@ -457,6 +468,8 @@ class Beat {
 
     this.beatHit = false;
     this.spriteLoaded = false;
+
+    this.whistleFX = false;
   }
 
   displayBeat() { // builds the beat visualization
@@ -678,6 +691,12 @@ class Beat {
           ellipse(this.posX, this.posY, beatSize);
         pop();
       }
+
+      if (songTime >= this.timeEnd-beatInputDelay && this.type != 'beat' && this.beatHit && !this.whistleFX && roll.isPlaying() && currentBeat == this.id){
+        whist.play();
+        roll.stop();
+        this.whistleFX = true;
+      }
     }
   }
 }
@@ -703,13 +722,6 @@ function keyReleased(){
 
 
 function mousePressed() {
-  var circle = new circles();
-  clickEffect.push(circle);
-
-  if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
-    clickEffect.splice(0, 1);
-  }
-
   clap.play();
   hitBool = true;
 }

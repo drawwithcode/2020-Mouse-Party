@@ -87,20 +87,23 @@ let sliderSizeY = [
 ]
 
 function preload(){
-  song = loadSound("/assets/sounds/musik-audacity.mp3");
-  clap = loadSound("/assets/sounds/clap.wav");
-  roll = loadSound("/assets/sounds/drumroll.mp3");
+  clap = loadSound("/assets/sounds/botto3.wav");
+  whist = loadSound("/assets/sounds/fischio.wav");
+  roll = loadSound("/assets/sounds/scintilla.wav");
   data = loadJSON("/assets/game_r1/beatmap.json");
   beatImg = loadImage('/assets/images/gm/r1/beat.png');
   spinImg = loadImage('/assets/images/gm/r1/spin.png');
   for (let i = 1; i <= 17; i++){
     sliderImg.push(loadAnimation('/assets/images/gm/r1/slider'+i+'.png', '/assets/images/gm/r1/slider'+i+'-input.png'));
   }
+
+  roll.setVolume(0.6);
+  clap.setVolume(0.9);
+  whist.setVolume(0.3);
 }
 
 function setup() {
   frameRate(60);
-  clap.setVolume(2);
 
   createCanvas(windowWidth, windowHeight);
 
@@ -203,8 +206,19 @@ function draw() {
        for (var i = 0; i < random(0, 80); i++) { //quantità particelle
           particles.push(new particelle((mouseX + random(-15, 15)), mouseY + random(-15, 15)));
        }
+       var circle = new circles();
+       clickEffect.push(circle);
+
+       if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+        clickEffect.splice(0, 1);
+       }
     } else {
        myCursor0.display();
+    }
+
+    for (var i = 0; i < clickEffect.length; i++) {
+      var circle = clickEffect[i];
+      circle.display();
     }
 
     for (var i = 0; i < particles.length; i++) {
@@ -245,6 +259,22 @@ function draw() {
 
 }
 
+function circles() {
+  this.x = mouseX - width / 2;
+  this.y = mouseY - height / 2;
+  this.dim = 0;
+  this.opacity = 200;
+
+  this.display = function() {
+    this.dim += 10;
+    this.opacity -= 10;
+
+    noFill()
+    strokeWeight(3);
+    stroke(255, 255, 255, this.opacity);
+    ellipse(this.x, this.y, this.dim);
+  }
+}
 
 
 // __ Sockets Listeners __
@@ -386,6 +416,8 @@ class Beat {
 
     this.beatHit = false;
     this.spriteLoaded = false;
+
+    this.whistleFX = false;
   }
 
   displayBeat() { //builds the beat visualization
@@ -606,6 +638,12 @@ class Beat {
           ellipse(this.posX, this.posY, beatSize);
         pop();
       }
+    }
+
+    if (songTime >= this.timeEnd-beatInputDelay && this.type != 'beat' && this.beatHit && !this.whistleFX && roll.isPlaying() && currentBeat == this.id){
+      whist.play();
+      roll.stop();
+      this.whistleFX = true;
     }
 
   }
