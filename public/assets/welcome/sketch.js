@@ -19,11 +19,11 @@ let tut4H1 = 'SPINNER';
 let tut4H2 = 'Wait until the dashed circle\nstarts moving, click or press\nspacebar, and spin around\nto your heart\'s content.\n\nBut don\'t get dizzy!';
 
 let cred1H1 = 'Coded with 🤍 by';
-let cred1H2 = 'Andrea Bellavita, \nSharon Manfredi, \nNicole Moreschi, \nRiccardo Rigamondi';
+//let cred1H2 = 'Andrea Bellavita, \nSharon Manfredi, \nNicole Moreschi, \nRiccardo Rigamondi';
 let cred1H3 = 'Politecnico di Milano - Scuola del Design\nCorso di laurea in Design della Comunicazione\n\nCreative Coding\nA.A. 2020-2021\n\nDocenti\nMichele Mauri, Tommaso Elli, Andrea Benedetti'
 let cred2H1 = 'SOUND';
-let cred2H2 = 'Aim with your mouse and click\nor press spacebar when the\ntiming is right.\n\nLet the music guide you!';
-let cred2H3 = 'Aim with your mouse and click\nor press spacebar when the\ntiming is right.\n\nLet the music guide you!';
+let cred2H2 = 'sfx by';
+let cred2H3 = '"Musik Liegt in Der Luft" by Phillip Gross\n\n\n\n\n"Fireworks" by Alexander Nakarada';
 
 
 let h1 = tut1H1;
@@ -36,6 +36,10 @@ function preload() {
   gif2 = loadImage('assets/banvenuto2.gif');
   gif3 = loadImage('assets/banvenuto3.gif');
   poli = loadImage('assets/logo-poli.png');
+  ritrattoR = loadImage('assets/ritratto-r.png');
+  //ritrattoA = loadImage('assets/ritratto-a.png');
+  //ritrattoN = loadImage('assets/ritratto-n.png');
+  //ritrattoS = loadImage('assets/ritratto-s.png');
 }
 
 function setup() {
@@ -93,6 +97,7 @@ function draw() {
       document.getElementById("link4").style.display = 'none';
       document.getElementById("link5").style.display = 'none';
       document.getElementById("link6").style.display = 'none';
+      document.getElementById("link7").style.display = 'none';
 
       textStyle(BOLD);
       textSize(30);
@@ -101,7 +106,6 @@ function draw() {
 
       textStyle(NORMAL);
       textSize(20);
-      text(cred1H2, 580, height / 10 * 3.2, 350, 500);
 
       text(cred1H3, 60, height / 10 * 1.8, 450, 500);
 
@@ -110,23 +114,65 @@ function draw() {
       document.getElementById("link1").style.top = "325px";
 
       image(poli, 60, height / 10 * 6.6, 165, 56);
+
+      image(ritrattoR, 580, 170, 60, 60);
+      text('Andrea Bellavita', 660, 190, 200, 500);
+
+      image(ritrattoR, 580, 250, 60, 60);
+      text('Sharon Manfredi', 660, 270, 200, 500);
+
+      image(ritrattoR, 580, 330, 60, 60);
+      text('Nicole Moreschi', 660, 350, 200, 500);
+
+      image(ritrattoR, 580, 410, 60, 60);
+      text('Riccardo Rigamondi', 660, 430, 200, 500);
     }
     else{
       document.getElementById("link1").style.display = 'none';
 
+      noFill();
+      stroke('red');
+      noStroke()
+
       textStyle(BOLD);
       textSize(30);
       fill(255);
-      text(cred2H1, 60, height / 10 * 1.8, 910, 500);
+      text(cred2H1, 60, height / 10 * 1.8, 250, 500);
 
-      textStyle(NORMAL);
       textSize(20);
-      text(cred2H2, 60, height / 10 * 3.2, 910, 500);
+      text(cred2H2, 60, height / 10 * 3.2, 250, 500);
+
+      document.getElementById("link2").style.display = 'block';
+      document.getElementById("link2").style.left = "60px";
+      document.getElementById("link2").style.top = "223px";
+
+      document.getElementById("link3").style.display = 'block';
+      document.getElementById("link3").style.left = "60px";
+      document.getElementById("link3").style.top = "253px";
+
+      document.getElementById("link4").style.display = 'block';
+      document.getElementById("link4").style.left = "60px";
+      document.getElementById("link4").style.top = "283px";
+
+      document.getElementById("link5").style.display = 'block';
+      document.getElementById("link5").style.left = "60px";
+      document.getElementById("link5").style.top = "313px";
+
+      text(cred2H3, 420, height / 10 * 3.2, 550, 500);
+
+      document.getElementById("link6").style.display = 'block';
+      document.getElementById("link6").style.left = "420px";
+      document.getElementById("link6").style.top = "223px";
+
+      document.getElementById("link7").style.display = 'block';
+      document.getElementById("link7").style.left = "420px";
+      document.getElementById("link7").style.top = "343px";
     }
   }
 
   pop();
 }
+
 
 
 function next() {
@@ -217,8 +263,6 @@ function credits(){
 i = 1;
 creditsBool = true;
 bckgcol = '#c2797a';
-h1 = cred1H1;
-h2 = cred1H2;
 document.getElementById("freccinaPre").style.opacity = "0.3";
 document.getElementById("freccina").style.opacity = "1";
 document.getElementById("freccinaPre").style.left = "60px";
@@ -230,11 +274,40 @@ document.getElementById("freccinaPre").style.backgroundColor = "#c2797a";
 document.getElementById("crediti").style.backgroundColor = "#c2797a";
 document.getElementById("X").style.backgroundColor = "#c2797a";
 document.getElementById("crediti").style.display = "none";
+document.getElementById("tutorial").style.display = "block";
 }
-//sound credits
-//sfx by fesliyanstudios.com, audiomicro.com, bigsoundbank.com
-//"Musik Liegt in Der Luft" by Phillip Gross (CC BY-NC-SA 3.0) [https://creativecommons.org/licenses/by-nc-sa/3.0/]
-//"Fireworks" by Alexander Nakarada (CC 0 1.0) [https://creativecommons.org/publicdomain/zero/1.0/deed.it]
+
+function tut(){
+  i = 1
+  creditsBool = false;
+
+  h1 = tut1H1;
+  h2 = tut1H2;
+  bckgcol = '#2b7077';
+  tutorial = gifBenvenuto;
+
+  document.getElementById("freccinaPre").style.opacity = "0.3";
+  document.getElementById("freccina").style.opacity = "1";
+  document.getElementById("freccinaPre").style.left = "630px";
+  document.getElementById("freccina").style.left = "670px";
+  document.getElementById("freccina").style.display = "block";
+  document.getElementById("freccinaPre").style.display = "block";
+  document.getElementById("freccina").style.backgroundColor = "#2b7077";
+  document.getElementById("freccinaPre").style.backgroundColor = "#2b7077";
+  document.getElementById("crediti").style.backgroundColor = "#2b7077";
+  document.getElementById("X").style.backgroundColor = "#2b7077";
+  document.getElementById("crediti").style.display = "none";
+  document.getElementById("tutorial").style.display = "none";
+
+  document.getElementById("link1").style.display = 'none';
+  document.getElementById("link2").style.display = 'none';
+  document.getElementById("link3").style.display = 'none';
+  document.getElementById("link4").style.display = 'none';
+  document.getElementById("link5").style.display = 'none';
+  document.getElementById("link6").style.display = 'none';
+  document.getElementById("link7").style.display = 'none';
+}
+
 
 function chiudi() {
   var welcomeFinished = {
@@ -253,6 +326,8 @@ function chiudi() {
   document.getElementById("freccina").style.opacity = "1";
   document.getElementById("freccinaPre").style.display = "block";
   document.getElementById("freccinaPre").style.opacity = "0.3";
+  document.getElementById("freccinaPre").style.left = "630px";
+  document.getElementById("freccina").style.left = "670px";
   document.getElementById("crediti").style.display = "none";
   document.getElementById("freccina").style.backgroundColor = "#2b7077";
   document.getElementById("freccinaPre").style.backgroundColor = "#2b7077";
@@ -260,4 +335,13 @@ function chiudi() {
   document.getElementById("X").style.backgroundColor = "#2b7077";
   document.getElementById("freccina").style.cursor = "pointer";
   document.getElementById("freccinaPre").style.cursor = "default";
+  document.getElementById("tutorial").style.display = "none";
+
+  document.getElementById("link1").style.display = 'none';
+  document.getElementById("link2").style.display = 'none';
+  document.getElementById("link3").style.display = 'none';
+  document.getElementById("link4").style.display = 'none';
+  document.getElementById("link5").style.display = 'none';
+  document.getElementById("link6").style.display = 'none';
+  document.getElementById("link7").style.display = 'none';
 }

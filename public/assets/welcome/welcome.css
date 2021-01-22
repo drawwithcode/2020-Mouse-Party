@@ -61,6 +61,17 @@ button {
   display: none;
 }
 
+#tutorial{
+  background-color: #c2797a;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 50pt;
+  border-color: #ffffff;
+  color: #ffffff;
+  display: none;
+}
+
 #freccinaPre{
   cursor: pointer;
   background-color: #2b7077;
