@@ -16,12 +16,12 @@ function setup() {
 
 function draw() {
   if (home_2 == true) {
-    if (frameCount % 60 == 0) {
+    if (frameCount % 30 == 0) {
       sc++;
     }
   }
   console.log(sc);
-  if (sc == 2) {
+  if (sc == 1) {
     console.log(sc);
     socket.emit("cancellaCursori", {id: socket.id});
     sc = 0;
