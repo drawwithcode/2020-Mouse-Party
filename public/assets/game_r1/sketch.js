@@ -222,11 +222,11 @@ function draw() {
     }
 
     // giocatori online
-    // let playersOnline = {
-    //   pl: otherCursors.length,
-    //   room: roomname
-    // };
-    // socket.emit("countPlayers", playersOnline);
+    let playersOnline = {
+      pl: otherCursors.length,
+      room: roomname
+    };
+    socket.emit("countPlayers", playersOnline);
 
     if (audioIsPlaying == true) {
       audio.pause();
