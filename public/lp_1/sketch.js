@@ -40,7 +40,7 @@ function draw() {
     sc_2 = 0;
     home_2 = false;
   }
-  if(playersData <= 1 && roomData == '1' && !toastBool){
+  if(playersData < 1 && roomData == '1' && !toastBool){
     notify1p_show();
   }
 }

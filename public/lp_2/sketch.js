@@ -54,7 +54,7 @@ function gioca_2() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   socket.emit("join", {id: socket.id});
-  if(playersData <= 1 && roomData == '2' && !toastBool){
+  if(playersData < 1 && roomData == '2' && !toastBool){
     notify1p_show();
   }
 }
