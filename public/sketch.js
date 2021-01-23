@@ -48,6 +48,7 @@ function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
   socket.emit("leave", {id: socket.id});
+  socket.emit("leave", {id: socket.id});
 }
 
 socket.on("closeWelcome", benvenuto);
