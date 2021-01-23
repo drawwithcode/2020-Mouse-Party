@@ -20,10 +20,8 @@ function draw() {
       sc++;
     }
   }
-  console.log(sc);
   if (sc == 1) {
-    console.log(sc);
-    socket.emit("cancellaCursori", {id: socket.id});
+    socket.emit("leave", {id: socket.id});
     sc = 0;
     home_2 = false;
   }
