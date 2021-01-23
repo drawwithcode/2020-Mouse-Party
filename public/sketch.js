@@ -1,3 +1,5 @@
+// __ Global Variables __
+
 let socket = io();
 
 var w = 0;
@@ -5,15 +7,12 @@ var i = 0;
 var sc = 0;
 var home_2 = false;
 
-function preload(){
-  // put preload code here
-}
-
 function setup() {
   frameRate(60);
 }
 
 function draw() {
+  // delete cursor if still visible after leaving the room
   if (home_2 == true) {
     if (frameCount % 30 == 0) {
       sc++;
@@ -26,6 +25,7 @@ function draw() {
   }
 }
 
+// spectator mode
 function watch() {
   if (w == 0) {
     console.log('click')
@@ -39,6 +39,7 @@ function watch() {
   }
 }
 
+// emit to the server that the player has joined the room
 function gioca_1() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
@@ -50,11 +51,10 @@ function gioca_2() {
 }
 
 function gioca_3() {
-  document.getElementById("overlay").style.display = "none";
-  document.getElementById("elementiDx").style.display = "none";
-  document.getElementById("myFrame").src = "/assets/game_r3/index.html";
+
 }
 
+// leave the room and display again the landing page
 function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
@@ -62,6 +62,7 @@ function home() {
   home_2 = true;
 }
 
+// welcome frame (tutorial + credits)
 socket.on("closeWelcome", benvenuto);
 
 function benvenuto(data) {
@@ -92,128 +93,121 @@ function info(){
   }
 }
 
+// check the number of players inside each room and show it on the landing page
 socket.on("playersNumber", displayPlayers);
 
 function displayPlayers(data) {
-  // qui ci va la gestione degli omini
-  // questo sketch riceve dal server il pacchetto di dati "playersData"
-  // all'interno c'è:
-  // data.pl = numoro di giocatori;
-  // data.room = stanza da cui arrivano i dati (data.room è una stringa, non un numero);
-
-if(data.pl == 0 && data.room == '1'){
-  document.getElementById("u1r1").style.display = "none";
-  document.getElementById("u2r1").style.display = "none";
-  document.getElementById("u3r1").style.display = "none";
-  document.getElementById("u4r1").style.display = "none";
-  document.getElementById("u5r1").style.display = "none";
-  document.getElementById("plusR1").style.display = "none";
-  document.getElementById("noneR1").style.display = "block";
-} else if(data.pl == 1 && data.room == '1'){
-  document.getElementById("u1r1").style.display = "block";
-  document.getElementById("u2r1").style.display = "none";
-  document.getElementById("u3r1").style.display = "none";
-  document.getElementById("u4r1").style.display = "none";
-  document.getElementById("u5r1").style.display = "none";
-  document.getElementById("plusR1").style.display = "none";
-  document.getElementById("noneR1").style.display = "none";
-} else if(data.pl == 2 && data.room == '1'){
-  document.getElementById("u1r1").style.display = "block";
-  document.getElementById("u2r1").style.display = "block";
-  document.getElementById("u3r1").style.display = "none";
-  document.getElementById("u4r1").style.display = "none";
-  document.getElementById("u5r1").style.display = "none";
-  document.getElementById("plusR1").style.display = "none";
-  document.getElementById("noneR1").style.display = "none";
-} else if(data.pl == 3 && data.room == '1'){
-  document.getElementById("u1r1").style.display = "block";
-  document.getElementById("u2r1").style.display = "block";
-  document.getElementById("u3r1").style.display = "block";
-  document.getElementById("u4r1").style.display = "none";
-  document.getElementById("u5r1").style.display = "none";
-  document.getElementById("plusR1").style.display = "none";
-  document.getElementById("noneR1").style.display = "none";
-} else if(data.pl == 4 && data.room == '1'){
-  document.getElementById("u1r1").style.display = "block";
-  document.getElementById("u2r1").style.display = "block";
-  document.getElementById("u3r1").style.display = "block";
-  document.getElementById("u4r1").style.display = "block";
-  document.getElementById("u5r1").style.display = "none";
-  document.getElementById("plusR1").style.display = "none";
-  document.getElementById("noneR1").style.display = "none";
-}else if(data.pl == 5 && data.room == '1'){
-  document.getElementById("u1r1").style.display = "block";
-  document.getElementById("u2r1").style.display = "block";
-  document.getElementById("u3r1").style.display = "block";
-  document.getElementById("u4r1").style.display = "block";
-  document.getElementById("u5r1").style.display = "block";
-  document.getElementById("plusR1").style.display = "none";
-  document.getElementById("noneR1").style.display = "none";
-} else if(data.pl > 5 && data.room == '1'){
-  document.getElementById("u1r1").style.display = "block";
-  document.getElementById("u2r1").style.display = "block";
-  document.getElementById("u3r1").style.display = "block";
-  document.getElementById("u4r1").style.display = "block";
-  document.getElementById("u5r1").style.display = "block";
-  document.getElementById("plusR1").style.display = "block";
-  document.getElementById("noneR1").style.display = "none";
-}
-
-else if(data.pl == 0 && data.room == '2'){
-  document.getElementById("u1r2").style.display = "none";
-  document.getElementById("u2r2").style.display = "none";
-  document.getElementById("u3r2").style.display = "none";
-  document.getElementById("u4r2").style.display = "none";
-  document.getElementById("u5r2").style.display = "none";
-  document.getElementById("plusR2").style.display = "none";
-  document.getElementById("noneR2").style.display = "block";
-} else if(data.pl == 1 && data.room == '2'){
-  document.getElementById("u1r2").style.display = "block";
-  document.getElementById("u2r2").style.display = "none";
-  document.getElementById("u3r2").style.display = "none";
-  document.getElementById("u4r2").style.display = "none";
-  document.getElementById("u5r2").style.display = "none";
-  document.getElementById("plusR2").style.display = "none";
-  document.getElementById("noneR2").style.display = "none";
-} else if(data.pl == 2 && data.room == '2'){
-  document.getElementById("u1r2").style.display = "block";
-  document.getElementById("u2r2").style.display = "block";
-  document.getElementById("u3r2").style.display = "none";
-  document.getElementById("u4r2").style.display = "none";
-  document.getElementById("u5r2").style.display = "none";
-  document.getElementById("plusR2").style.display = "none";
-  document.getElementById("noneR2").style.display = "none";
-} else if(data.pl == 3 && data.room == '2'){
-  document.getElementById("u1r2").style.display = "block";
-  document.getElementById("u2r2").style.display = "block";
-  document.getElementById("u3r2").style.display = "block";
-  document.getElementById("u4r2").style.display = "none";
-  document.getElementById("u5r2").style.display = "none";
-  document.getElementById("plusR2").style.display = "none";
-  document.getElementById("noneR2").style.display = "none";
-} else if(data.pl == 4 && data.room == '2'){
-  document.getElementById("u1r2").style.display = "block";
-  document.getElementById("u2r2").style.display = "block";
-  document.getElementById("u3r2").style.display = "block";
-  document.getElementById("u4r2").style.display = "block";
-  document.getElementById("u5r2").style.display = "none";
-  document.getElementById("plusR2").style.display = "none";
-  document.getElementById("noneR2").style.display = "none";
-}else if(data.pl == 5 && data.room == '2'){
-  document.getElementById("u1r2").style.display = "block";
-  document.getElementById("u2r2").style.display = "block";
-  document.getElementById("u3r2").style.display = "block";
-  document.getElementById("u4r2").style.display = "block";
-  document.getElementById("u5r2").style.display = "block";
-  document.getElementById("plusR2").style.display = "none";
-  document.getElementById("noneR2").style.display = "none";
-} else if(data.pl > 5 && data.room == '2'){
-  document.getElementById("u1r2").style.display = "block";
-  document.getElementById("u2r2").style.display = "block";
-  document.getElementById("u3r2").style.display = "block";
-  document.getElementById("u4r2").style.display = "block";
-  document.getElementById("u5r2").style.display = "block";
-  document.getElementById("plusR2").style.display = "block";
-  document.getElementById("noneR2").style.display = "none";
-}
+  if (data.pl == 0 && data.room == '1') {
+    document.getElementById("u1r1").style.display = "none";
+    document.getElementById("u2r1").style.display = "none";
+    document.getElementById("u3r1").style.display = "none";
+    document.getElementById("u4r1").style.display = "none";
+    document.getElementById("u5r1").style.display = "none";
+    document.getElementById("plusR1").style.display = "none";
+    document.getElementById("noneR1").style.display = "block";
+  } else if (data.pl == 1 && data.room == '1') {
+    document.getElementById("u1r1").style.display = "block";
+    document.getElementById("u2r1").style.display = "none";
+    document.getElementById("u3r1").style.display = "none";
+    document.getElementById("u4r1").style.display = "none";
+    document.getElementById("u5r1").style.display = "none";
+    document.getElementById("plusR1").style.display = "none";
+    document.getElementById("noneR1").style.display = "none";
+  } else if (data.pl == 2 && data.room == '1') {
+    document.getElementById("u1r1").style.display = "block";
+    document.getElementById("u2r1").style.display = "block";
+    document.getElementById("u3r1").style.display = "none";
+    document.getElementById("u4r1").style.display = "none";
+    document.getElementById("u5r1").style.display = "none";
+    document.getElementById("plusR1").style.display = "none";
+    document.getElementById("noneR1").style.display = "none";
+  } else if (data.pl == 3 && data.room == '1') {
+    document.getElementById("u1r1").style.display = "block";
+    document.getElementById("u2r1").style.display = "block";
+    document.getElementById("u3r1").style.display = "block";
+    document.getElementById("u4r1").style.display = "none";
+    document.getElementById("u5r1").style.display = "none";
+    document.getElementById("plusR1").style.display = "none";
+    document.getElementById("noneR1").style.display = "none";
+  } else if (data.pl == 4 && data.room == '1') {
+    document.getElementById("u1r1").style.display = "block";
+    document.getElementById("u2r1").style.display = "block";
+    document.getElementById("u3r1").style.display = "block";
+    document.getElementById("u4r1").style.display = "block";
+    document.getElementById("u5r1").style.display = "none";
+    document.getElementById("plusR1").style.display = "none";
+    document.getElementById("noneR1").style.display = "none";
+  } else if (data.pl == 5 && data.room == '1') {
+    document.getElementById("u1r1").style.display = "block";
+    document.getElementById("u2r1").style.display = "block";
+    document.getElementById("u3r1").style.display = "block";
+    document.getElementById("u4r1").style.display = "block";
+    document.getElementById("u5r1").style.display = "block";
+    document.getElementById("plusR1").style.display = "none";
+    document.getElementById("noneR1").style.display = "none";
+  } else if (data.pl > 5 && data.room == '1') {
+    document.getElementById("u1r1").style.display = "block";
+    document.getElementById("u2r1").style.display = "block";
+    document.getElementById("u3r1").style.display = "block";
+    document.getElementById("u4r1").style.display = "block";
+    document.getElementById("u5r1").style.display = "block";
+    document.getElementById("plusR1").style.display = "block";
+    document.getElementById("noneR1").style.display = "none";
+  } else if (data.pl == 0 && data.room == '2') {
+    document.getElementById("u1r2").style.display = "none";
+    document.getElementById("u2r2").style.display = "none";
+    document.getElementById("u3r2").style.display = "none";
+    document.getElementById("u4r2").style.display = "none";
+    document.getElementById("u5r2").style.display = "none";
+    document.getElementById("plusR2").style.display = "none";
+    document.getElementById("noneR2").style.display = "block";
+  } else if (data.pl == 1 && data.room == '2') {
+    document.getElementById("u1r2").style.display = "block";
+    document.getElementById("u2r2").style.display = "none";
+    document.getElementById("u3r2").style.display = "none";
+    document.getElementById("u4r2").style.display = "none";
+    document.getElementById("u5r2").style.display = "none";
+    document.getElementById("plusR2").style.display = "none";
+    document.getElementById("noneR2").style.display = "none";
+  } else if (data.pl == 2 && data.room == '2') {
+    document.getElementById("u1r2").style.display = "block";
+    document.getElementById("u2r2").style.display = "block";
+    document.getElementById("u3r2").style.display = "none";
+    document.getElementById("u4r2").style.display = "none";
+    document.getElementById("u5r2").style.display = "none";
+    document.getElementById("plusR2").style.display = "none";
+    document.getElementById("noneR2").style.display = "none";
+  } else if (data.pl == 3 && data.room == '2') {
+    document.getElementById("u1r2").style.display = "block";
+    document.getElementById("u2r2").style.display = "block";
+    document.getElementById("u3r2").style.display = "block";
+    document.getElementById("u4r2").style.display = "none";
+    document.getElementById("u5r2").style.display = "none";
+    document.getElementById("plusR2").style.display = "none";
+    document.getElementById("noneR2").style.display = "none";
+  } else if (data.pl == 4 && data.room == '2') {
+    document.getElementById("u1r2").style.display = "block";
+    document.getElementById("u2r2").style.display = "block";
+    document.getElementById("u3r2").style.display = "block";
+    document.getElementById("u4r2").style.display = "block";
+    document.getElementById("u5r2").style.display = "none";
+    document.getElementById("plusR2").style.display = "none";
+    document.getElementById("noneR2").style.display = "none";
+  } else if (data.pl == 5 && data.room == '2') {
+    document.getElementById("u1r2").style.display = "block";
+    document.getElementById("u2r2").style.display = "block";
+    document.getElementById("u3r2").style.display = "block";
+    document.getElementById("u4r2").style.display = "block";
+    document.getElementById("u5r2").style.display = "block";
+    document.getElementById("plusR2").style.display = "none";
+    document.getElementById("noneR2").style.display = "none";
+  } else if (data.pl > 5 && data.room == '2') {
+    document.getElementById("u1r2").style.display = "block";
+    document.getElementById("u2r2").style.display = "block";
+    document.getElementById("u3r2").style.display = "block";
+    document.getElementById("u4r2").style.display = "block";
+    document.getElementById("u5r2").style.display = "block";
+    document.getElementById("plusR2").style.display = "block";
+    document.getElementById("noneR2").style.display = "none";
+  }
 }

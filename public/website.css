@@ -23,29 +23,6 @@ body {
   display: block;
 }
 
-/* #header {
-  display: block;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 15%;
-  display: flex;
-  justify-content: space-between;
-} */
-
-/* .elementiSx {
-  display: block;
-  position: fixed;
-  bottom: 0;
-  height: 15%;
-  width: 0%;
-  margin-left: 5%;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-} */
-
 #elementiDx {
   position: absolute;
   bottom: 5%;
@@ -67,11 +44,6 @@ body {
   z-index: 1;
   pointer-events: none;
 }
-
-/* #join, #occhio{
-  height: 20pt;
-  bottom: 0px;
-} */
 
 #logo:hover, #join1:hover, #join2:hover, #join3:hover, #bt2:hover, #bt3:hover{
   opacity: 0.5;
@@ -117,73 +89,59 @@ body {
 
 #u1r1{
   display: none;
-  /* display: block; */
 }
 
 #u2r1{
   display: none;
-  /* display: block; */
 }
 
 #u3r1{
   display: none;
-  /* display: block; */
 }
 
 #u4r1{
   display: none;
-  /* display: block; */
 }
 
 #u5r1{
   display: none;
-  /* display: block; */
 }
 
 
 #plusR1{
   display: none;
-  /* display: block; */
 }
 
 #noneR1{
-  /* display: none; */
   display: block;
 }
 
 
 #u1r2{
   display: none;
-  /* display: block; */
 }
 
 #u2r2{
   display: none;
-  /* display: block; */
 }
 
 #u3r2{
   display: none;
-  /* display: block; */
 }
 
 #u4r2{
   display: none;
-  /* display: block; */
 }
 
 #u5r2{
   display: none;
-  /* display: block; */
 }
 
 #plusR2{
   display: none;
-  /* display: block; */
 }
 
 #noneR2{
-  /* display: none; */
   display: block;
 }
 

@@ -106,6 +106,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
 
+  // create the player's cursor
   myCursor = new myCursor();
   socket.on("mouseBroadcast", mousePos);
 
@@ -141,6 +142,7 @@ function draw() {
   background("#0f1122");
   noCursor();
 
+  // package for myCursor position
   let mousePosition = {
     x: mouseX,
     y: mouseY,
@@ -151,33 +153,41 @@ function draw() {
 
   translate(width / 2, height / 2);
 
+  // playerIn checks if the player has joined the room or is just a spectator
   if (playerIn == true) {
     drawSprites();
 
+    // display myCursor and send the information
     myCursor.update();
     myCursor.display();
     socket.emit("mouse", mousePosition);
 
+    // display the cursors of other players
     for(var i = 0; i < otherCursors.length; i++) {
       push();
-      rotate( (360 / (otherCursors.length+1) * (i+1)) );
+      // rotation angle defined by the amount of players connected
+      rotate((360 / (otherCursors.length + 1) * (i + 1)));
       otherCursors[i].display();
       otherCursors[i].update();
       pop();
     }
 
     if (hitBool) {
+      // create the particle effect around myCursor
       for (var i = 0; i < random(0, 80); i++) {
         myParticles.push(new myParticle());
       }
+
+      // create the circles effect around myCursor
       var circle = new circles();
       clickEffect.push(circle);
 
-      if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+      if (clickEffect.length > 3) {
         clickEffect.splice(0, 1);
       }
     }
 
+    // display the particle effect around myCursor
     for (var i = 0; i < myParticles.length; i++) {
       myParticles[i].update();
       myParticles[i].render();
@@ -186,58 +196,64 @@ function draw() {
       }
     }
 
+    // display the circles effect around myCursor
     for (var i = 0; i < clickEffect.length; i++) {
       var circle = clickEffect[i];
       circle.display();
     }
+
+    // emit the number of players connected to this room
+    let playersOnline = {
+      pl: otherCursors.length + 1, // other players plus "myPlayer"
+      room: roomname
+    };
+    socket.emit("countPlayers", playersOnline);
 
     //run beatmap
     for(let i = 0; i < beatmap.length; i++) {
         beatmap[i].run();
     }
 
-    // giocatori online
-    let playersOnline = {
-      pl: otherCursors.length + 1,
-      room: roomname
-    };
-    socket.emit("countPlayers", playersOnline);
-
+    // plat the song after a second when the player joined to the room
     if (frameCount % 60 == 0) {
       sc++;
     }
     if (sc >= 1 && audioIsPlaying == false) {
-      socket.emit("play", {times: audio.currentTime, id: socket.id});
+      // socket.emit("play", {times: audio.currentTime, id: socket.id});
+      audio.play();
       audioIsPlaying = true;
     }
 
-  } else {
+  } else { // if the player is a spectator
     for(var i = 0; i < otherCursors.length; i++){
       push();
-      rotate( (360 / (otherCursors.length) * (i+1)) );
+      rotate((360 / (otherCursors.length) * (i + 1)));
       otherCursors[i].display();
       otherCursors[i].update();
       pop();
     }
 
-    // giocatori online
+    // emit the number of players connected to this room
     let playersOnline = {
       pl: otherCursors.length,
       room: roomname
     };
     socket.emit("countPlayers", playersOnline);
 
+    // stop the song if the player leaves the game
     if (audioIsPlaying == true) {
       audio.pause();
       audioIsPlaying = false;
     }
   }
 
+  //
   if (audio.currentTime > 0) {
     songTime = audio.currentTime;
     songPercent = songTime / (audio.duration);
   }
 
+  // restart the song if audio.ended
   if (audio.ended) {
     beatmap.length = 0; // clear beatmap array after song ends
     createBeatmap();
@@ -254,25 +270,28 @@ socket.on("connect", newPlayerConnected);
 socket.on("playerJoined", myPlayerJoined);
 socket.on("playerLeft", myPlayerLeft);
 
+// join this room
 function newPlayerConnected() {
   console.log("game_r1 id:", socket.id);
   socket.emit('subscribe', roomname);
 }
 
+// set the boolean playerIn
 function myPlayerJoined() {
   playerIn = true;
 }
-
 function myPlayerLeft() {
   playerIn = false;
 }
 
+// on fisrt connection start to emit the time of the song
 socket.on("first", function (data) {
   // audio.ontimeupdate = function () {
     socket.emit("where", {times: audio.currentTime, room: roomname});
   // };
 });
 
+// set the time of the song to get at the same point of other players
 socket.on("current", function (data) {
   var diff = audio.currentTime - data;
   if (diff < 0 || diff > 2) {
@@ -283,13 +302,14 @@ socket.on("current", function (data) {
   };
 });
 
-socket.on("playsong", function (data) {
-  audio.currentTime = data.times;
-  audio.play();
-  socket.emit("where", {times: audio.currentTime, room: roomname});
-});
+// socket.on("playsong", function (data) {
+//   audio.currentTime = data.times;
+//   audio.play();
+//   socket.emit("where", {times: audio.currentTime, room: roomname});
+// });
 
-socket.on('deleteCursor', function(data) {
+// delete the cursor of the player that left the room
+socket.on("deleteCursor", function(data) {
   var getPos = otherCursors.findIndex(cursor => cursor.id === data.id);
   otherCursors.splice(getPos, 1);
 });
