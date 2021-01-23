@@ -3,26 +3,28 @@ let socket = io();
 var w = 0;
 var a = 1;
 var sc = 0;
-var plJoined = false;
+var home_2 = false;
 
 function preload(){
   document.getElementById("welcome").style.display = "none";
 }
 
 function setup() {
-  // put setup code here
-  // socket.emit("join", {id: socket.id});
-
+  frameRate(60);
 }
 
 function draw() {
-  // put drawing code here
-  if (frameCount % 60 == 0) {
-    sc++;
+  if (home_2 == true) {
+    if (frameCount % 30 == 0) {
+      sc++;
+    }
   }
-  if (sc >= 1 && plJoined == false) {
-    socket.emit("join", {id: socket.id});
-    plJoined = true;
+  console.log(sc);
+  if (sc == 1) {
+    console.log(sc);
+    socket.emit("cancellaCursori", {id: socket.id});
+    sc = 0;
+    home_2 = false;
   }
 }
 
@@ -57,6 +59,7 @@ function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
   socket.emit("leave", {id: socket.id});
+  home_2 = true;
 }
 
 socket.on("closeWelcome", benvenuto);

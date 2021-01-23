@@ -2,6 +2,8 @@ let socket = io();
 
 var w = 0;
 var i = 1;
+var sc = 0;
+var home_2 = false;
 
 function preload(){
   document.getElementById("welcome").style.display = "none";
@@ -9,11 +11,22 @@ function preload(){
 }
 
 function setup() {
-  // put setup code here
+  frameRate(60);
 }
 
 function draw() {
-  // put drawing code here
+  if (home_2 == true) {
+    if (frameCount % 30 == 0) {
+      sc++;
+    }
+  }
+  console.log(sc);
+  if (sc == 1) {
+    console.log(sc);
+    socket.emit("cancellaCursori", {id: socket.id});
+    sc = 0;
+    home_2 = false;
+  }
 }
 
 function watch() {
@@ -47,6 +60,7 @@ function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
   socket.emit("leave", {id: socket.id});
+  home_2 = true;
 }
 
 socket.on("closeWelcome", benvenuto);

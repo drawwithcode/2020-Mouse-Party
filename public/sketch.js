@@ -3,14 +3,13 @@ let socket = io();
 var w = 0;
 var i = 0;
 var sc = 0;
-home_2 = false;
+var home_2 = false;
 
 function preload(){
   // put preload code here
 }
 
 function setup() {
-  // put setup code here
   frameRate(60);
 }
 
@@ -27,8 +26,6 @@ function draw() {
     sc = 0;
     home_2 = false;
   }
-
-  // put drawing code here
 }
 
 function watch() {
@@ -66,13 +63,6 @@ function home() {
   socket.emit("leave", {id: socket.id});
   home_2 = true;
 }
-
-// socket.on("homeClick", home2);
-//
-// function home2() {
-//   document.getElementById("overlay").style.display = "block";
-//   document.getElementById("elementiDx").style.display = "flex";
-// }
 
 socket.on("closeWelcome", benvenuto);
 
