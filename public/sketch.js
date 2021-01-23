@@ -7,6 +7,11 @@ var i = 0;
 var sc = 0;
 var home_2 = false;
 
+let toastBool = false;
+
+let playersData;
+let roomData;
+
 function setup() {
   frameRate(60);
 }
@@ -23,6 +28,7 @@ function draw() {
     sc = 0;
     home_2 = false;
   }
+
 }
 
 // spectator mode
@@ -43,6 +49,9 @@ function gioca_1() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   socket.emit("join", {id: socket.id});
+  if(playersData <= 1 && roomData == '1' && !toastBool){
+    notify1p_show();
+  }
 }
 
 function gioca_2() {
@@ -96,6 +105,8 @@ function info(){
 socket.on("playersNumber", displayPlayers);
 
 function displayPlayers(data) {
+  playersData = data.pl;
+  roomData = data.room;
   if (data.pl == 0 && data.room == '1') {
     document.getElementById("u1r1").style.display = "none";
     document.getElementById("u2r1").style.display = "none";
@@ -209,4 +220,18 @@ function displayPlayers(data) {
     document.getElementById("plusR2").style.display = "block";
     document.getElementById("noneR2").style.display = "none";
   }
+}
+
+function notify1p(){ //close toast on click //new
+  document.getElementById('p1toast').style.animation = "toastanim 0.5s ease reverse forwards"
+  copyLink = document.getElementById("pageLink");
+  copyLink.select();
+  copyLink.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+}
+
+function notify1p_show(){ //open toast
+  document.getElementById('p1toast').style.display = "block";
+  document.getElementById('p1toast').style.animation = "toastanim 0.5s ease normal forwards"
+  toastBool = true;
 }

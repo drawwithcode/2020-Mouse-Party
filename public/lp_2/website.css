@@ -298,3 +298,38 @@ button {
   z-index: 1;
   border: none;
 }
+
+#p1toast {
+  display: none;
+  position: fixed;
+  padding: 6px 0px;
+  width: 530px;
+  height: 55px;
+  opacity: 0;
+  bottom: -20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #2b7077;
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: 1.5px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 11pt;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+@keyframes toastanim {
+  from {bottom: -20px; opacity: 0; display: none;}
+  to {bottom: 20px; opacity: 1; display: block;}
+}
+
+#pageLink{
+  display: block;
+  position: fixed;
+  opacity:0;
+  pointer-events: none;
+}
