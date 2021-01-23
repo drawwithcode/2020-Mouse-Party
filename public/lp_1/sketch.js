@@ -2,7 +2,9 @@ let socket = io();
 
 var w = 0;
 var a = 1;
-var sc = 0;
+var sc_1 = 0;
+var sc_2 = 0;
+var playerIn = false;
 var home_2 = false;
 
 function preload(){
@@ -14,16 +16,26 @@ function setup() {
 }
 
 function draw() {
+  if (frameCount % 60 == 0) {
+    sc_1++;
+  }
+  if (sc_1 == 1 && playerIn == false) {
+    socket.emit("join", {id: socket.id});
+    playerIn = true;
+  }
+
+
   if (home_2 == true) {
     if (frameCount % 30 == 0) {
-      sc++;
+      sc_2++;
     }
   }
-  if (sc == 1) {
+  if (sc_2 == 1) {
     socket.emit("leave", {id: socket.id});
-    sc = 0;
+    sc_2 = 0;
     home_2 = false;
   }
+
 }
 
 function watch() {

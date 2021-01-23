@@ -7,7 +7,6 @@ var home_2 = false;
 
 function preload(){
   document.getElementById("welcome").style.display = "none";
-  // put preload code here
 }
 
 function setup() {
