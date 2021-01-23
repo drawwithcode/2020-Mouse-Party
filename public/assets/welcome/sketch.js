@@ -18,7 +18,7 @@ let tut3H2 = 'Position yourself on the + sign\nand click or press spacebar\nas y
 let tut4H1 = 'SPINNER';
 let tut4H2 = 'Wait until the dashed circle\nstarts moving, click or press\nspacebar, and spin around\nto your heart\'s content.\n\nBut don\'t get dizzy!';
 
-let cred1H1 = 'Coded with 🤍 by';
+let cred1H1 = 'Coded with ♡ by';
 //let cred1H2 = 'Andrea Bellavita, \nSharon Manfredi, \nNicole Moreschi, \nRiccardo Rigamondi';
 let cred1H3 = 'Politecnico di Milano - Scuola del Design\nCorso di laurea in Design della Comunicazione\n\nCreative Coding\nA.A. 2020-2021\n\nDocenti\nMichele Mauri, Tommaso Elli, Andrea Benedetti'
 let cred2H1 = 'SOUND';
