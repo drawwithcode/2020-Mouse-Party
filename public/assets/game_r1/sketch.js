@@ -206,7 +206,7 @@ function draw() {
         beatmap[i].run();
     }
 
-    // plat the song after a second when the player joined to the room
+    // plat the song after a second when the player join the room
     if (frameCount % 60 == 0) {
       sc++;
     }
@@ -276,7 +276,7 @@ function myPlayerLeft() {
   playerIn = false;
 }
 
-// on fisrt connection start to emit the time of the song
+// on first connection start to emit the time of the song
 socket.on("first", function (data) {
   // audio.ontimeupdate = function () {
     socket.emit("where", {times: audio.currentTime, room: roomname});
