@@ -32,7 +32,7 @@ let h2 = tut1H2;
 
 function preload() {
   gifBenvenuto = loadImage('assets/intro.gif');
-  gifLogo = loadImage('assets/logo4.png');
+  gifLogo = loadImage('assets/cover.png');
   gif1 = loadImage('assets/banvenuto1.gif');
   gif2 = loadImage('assets/banvenuto2.gif');
   gif3 = loadImage('assets/banvenuto3.gif');
