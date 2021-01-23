@@ -61,6 +61,8 @@ function home() {
 
 socket.on("closeWelcome", benvenuto);
 
+socket.on("homeClick", home);
+
 function benvenuto(data) {
   if (data.wf == true) {
     document.getElementById("welcome").style.display = "none";

@@ -273,6 +273,7 @@ function myPlayerJoined() {
 
 function myPlayerLeft() {
   playerIn = false;
+  socket.emit("clickHome", "clickHome")
 }
 
 socket.on("first", function (data) {

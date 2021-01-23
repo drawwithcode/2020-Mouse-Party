@@ -99,6 +99,10 @@ io.on("connection", function (socket) {
     // socket.broadcast.emit("deleteCursor", cursorId);
   });
 
+  socket.on("clickHome", function(data){
+    socket.broadcast.emit("homeClick", "homeClick");
+  });
+
   socket.on("disconnect", function() {
     var socketData = {
       id: socket.id,
