@@ -73,7 +73,7 @@ io.on("connection", function (socket) {
       pl: data.pl,
       room: data.room,
     }
-    console.log(playersData);
+    // console.log(playersData);
     socket.broadcast.emit("playersNumber", playersData);
   });
 
@@ -98,21 +98,22 @@ io.on("connection", function (socket) {
     socket.broadcast.emit("deleteCursor", cursorId);
   });
 
-  socket.on("clickHome", function(data) {
-    // userIndex = usersAr.indexOf(data.id);
-    // userIndex = userIndex - 2;
-    // userId = usersAr[userIndex];
-    // var cursorId = {
-    //   id: userId,
-    // }
-    // socket.to(userId).emit("homeClick", "homeClick");
-    socket.broadcast.emit("deleteCursor", cursorId);
-  });
+  // socket.on("clickHome", function(data) {
+  //   userIndex = usersAr.indexOf(data.id);
+  //   userIndex = userIndex - 2;
+  //   userId = usersAr[userIndex];
+  //   var cursorId = {
+  //     id: userId,
+  //   }
+  //   socket.to(userId).emit("homeClick", "homeClick");
+  //   socket.broadcast.emit("deleteCursor", cursorId);
+  // });
 
   socket.on("cancellaCursori", function(data) {
     userIndex = usersAr.indexOf(data.id);
     userIndex = userIndex + 2;
     userId = usersAr[userIndex];
+    console.log(userId);
     var cursorId = {
       id: userId,
     }

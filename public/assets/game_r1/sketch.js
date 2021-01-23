@@ -10,8 +10,6 @@ var clickEffect = [];
 var audio = document.getElementById('myaudio');
 var audioIsPlaying = false;
 var sc = 0;
-var sc_2 = 0;
-var sc_3 = 0;
 var palette = [
   {r: 3, g: 196, b: 216 },
   {r: 0, g: 146, b: 255 },
@@ -241,18 +239,11 @@ function draw() {
   }
 
   if (audio.ended) {
-    if (frameCount % 60 == 0) {
-      sc_2++;
-    }
-    if (sc_2 == 1) {
-      beatmap.length = 0; // clear beatmap array after song ends
-      createBeatmap();
-      //currentBeat = 0;
-      audio.play();
-      sc_2 = 0;
-    }
+    beatmap.length = 0; // clear beatmap array after song ends
+    createBeatmap();
+    //currentBeat = 0;
+    audio.play();
   }
-
 }
 
 
@@ -274,13 +265,7 @@ function myPlayerJoined() {
 
 function myPlayerLeft() {
   playerIn = false;
-  if (frameCount % 60 == 0) {
-    sc_3++;
-  }
-  if (sc_3 == 1) {
-    socket.emit("clickHome", socket.id);
-    sc_3 = 0;
-  }
+  // socket.emit("clickHome", socket.id);
 }
 
 socket.on("first", function (data) {

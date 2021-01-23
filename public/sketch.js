@@ -3,6 +3,7 @@ let socket = io();
 var w = 0;
 var i = 0;
 var sc = 0;
+home_2 = false;
 
 function preload(){
   // put preload code here
@@ -14,6 +15,19 @@ function setup() {
 }
 
 function draw() {
+  if (home_2 == true) {
+    if (frameCount % 60 == 0) {
+      sc++;
+    }
+  }
+  console.log(sc);
+  if (sc == 2) {
+    console.log(sc);
+    socket.emit("cancellaCursori", {id: socket.id});
+    sc = 0;
+    home_2 = false;
+  }
+
   // put drawing code here
 }
 
@@ -50,13 +64,7 @@ function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
   socket.emit("leave", {id: socket.id});
-  if(frameCount % 60 == 0) {
-    sc++;
-  }
-  if (sc == 2) {
-    socket.emit("cancellaCursori", {id: socket.id});
-    sc = 0;
-  }
+  home_2 = true;
 }
 
 // socket.on("homeClick", home2);
