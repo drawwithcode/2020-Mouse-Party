@@ -10,6 +10,7 @@ var clickEffect = [];
 var audio = document.getElementById('myaudio');
 var audioIsPlaying = false;
 var sc = 0;
+var sc_2 = 0;
 var palette = [
   {r: 3, g: 196, b: 216 },
   {r: 0, g: 146, b: 255 },
@@ -221,11 +222,11 @@ function draw() {
     }
 
     // giocatori online
-    let playersOnline = {
-      pl: otherCursors.length,
-      room: roomname
-    };
-    socket.emit("countPlayers", playersOnline);
+    // let playersOnline = {
+    //   pl: otherCursors.length,
+    //   room: roomname
+    // };
+    // socket.emit("countPlayers", playersOnline);
 
     if (audioIsPlaying == true) {
       audio.pause();
@@ -238,11 +239,17 @@ function draw() {
     songPercent = songTime / (audio.duration);
   }
 
-  if(audio.ended) { // loop song and beatmap
-    beatmap.length = 0; // clear beatmap array after song ends
-    createBeatmap();
-    //currentBeat = 0;
-    audio.play();
+  if (audio.ended) {
+    if (frameCount % 60 == 0) {
+      sc_2++;
+    }
+    if (sc_2 == 1) {
+      beatmap.length = 0; // clear beatmap array after song ends
+      createBeatmap();
+      //currentBeat = 0;
+      audio.play();
+      sc_2 = 0;
+    }
   }
 
 }

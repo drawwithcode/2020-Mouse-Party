@@ -73,6 +73,7 @@ io.on("connection", function (socket) {
       pl: data.pl,
       room: data.room,
     }
+    console.log(playersData);
     socket.broadcast.emit("playersNumber", playersData);
   });
 
