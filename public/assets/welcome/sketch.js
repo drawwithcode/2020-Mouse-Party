@@ -10,7 +10,7 @@ let bckgcol = '#2b7077' //#c2797a //#375a64 //#186977
 let creditsBool = false;
 
 let tut1H1 = 'WELCOME!';
-let tut1H2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick introduction.';
+let tut1H2 = 'Mouse Party is an interactive\nchoreographical experience\neveryone can join. \n\nRound up a group of friends\nor strangers and feel the beat\ntogether!\n\nHere\'s a quick rundown.';
 let tut2H1 = 'CIRCLE BEATS';
 let tut2H2 = 'Aim with your mouse and click\nor press spacebar when the\ntiming is right.\n\nLet the music guide you!';
 let tut3H1 = 'SLIDER';
@@ -18,10 +18,11 @@ let tut3H2 = 'Position yourself on the + sign\nand click or press spacebar\nas y
 let tut4H1 = 'SPINNER';
 let tut4H2 = 'Wait until the dashed circle\nstarts moving, click or press\nspacebar, and spin around\nto your heart\'s content.\n\nBut don\'t get dizzy!';
 
-let cred1H1 = 'Coded with ♡ by';
+//let cred1H1 = 'Coded with ♡ by ASMR';
+let cred1H1 = 'Coded with ♡ \nby ASMR 🎤🦆';
 //let cred1H2 = 'Andrea Bellavita, \nSharon Manfredi, \nNicole Moreschi, \nRiccardo Rigamondi';
 let cred1H3 = 'Politecnico di Milano - Scuola del Design\nCorso di laurea in Design della Comunicazione\n\nCreative Coding\nA.A. 2020-2021\n\nDocenti\nMichele Mauri, Tommaso Elli, Andrea Benedetti'
-let cred2H1 = 'SOUND';
+let cred2H1 = 'SOUND ♫♪';
 let cred2H2 = 'sfx by';
 let cred2H3 = '"Musik Liegt in Der Luft" by Phillip Gross\n\n\n\n\n"Fireworks" by Alexander Nakarada';
 
@@ -102,12 +103,12 @@ function draw() {
       textStyle(BOLD);
       textSize(30);
       fill(255);
-      text(cred1H1, 580, height / 10 * 1.8, 350, 500);
+      text(cred1H1, 580, height / 10 * 1.5, 350, 500);
 
       textStyle(NORMAL);
       textSize(20);
 
-      text(cred1H3, 60, height / 10 * 1.8, 450, 500);
+      text(cred1H3, 60, height / 10 * 1.5, 450, 500);
 
       document.getElementById("link1").style.display = 'block';
       document.getElementById("link1").style.left = "60px";
@@ -115,17 +116,17 @@ function draw() {
 
       image(poli, 60, height / 10 * 6.6, 165, 56);
 
-      image(ritrattoR, 580, 170, 60, 60);
-      text('Andrea Bellavita', 660, 190, 200, 500);
+      image(ritrattoR, 580, 180, 60, 60);
+      text('Andrea Bellavita', 660, 200, 200, 500);
 
-      image(ritrattoR, 580, 250, 60, 60);
-      text('Sharon Manfredi', 660, 270, 200, 500);
+      image(ritrattoR, 580, 257, 60, 60);
+      text('Sharon Manfredi', 660, 277, 200, 500);
 
-      image(ritrattoR, 580, 330, 60, 60);
-      text('Nicole Moreschi', 660, 350, 200, 500);
+      image(ritrattoR, 580, 334, 60, 60);
+      text('Nicole Moreschi', 660, 354, 200, 500);
 
-      image(ritrattoR, 580, 410, 60, 60);
-      text('Riccardo Rigamondi', 660, 430, 200, 500);
+      image(ritrattoR, 580, 409, 60, 60);
+      text('Riccardo Rigamondi', 660, 429, 200, 500);
     }
     else{
       document.getElementById("link1").style.display = 'none';
@@ -137,10 +138,10 @@ function draw() {
       textStyle(BOLD);
       textSize(30);
       fill(255);
-      text(cred2H1, 60, height / 10 * 1.8, 250, 500);
+      text(cred2H1, 60, height / 10 * 1.5, 250, 500);
 
       textSize(20);
-      text(cred2H2, 60, height / 10 * 3.2, 250, 500);
+      text(cred2H2, 60, height / 10 * 2.9, 250, 500);
 
       document.getElementById("link2").style.display = 'block';
       document.getElementById("link2").style.left = "60px";
@@ -158,15 +159,15 @@ function draw() {
       document.getElementById("link5").style.left = "60px";
       document.getElementById("link5").style.top = "313px";
 
-      text(cred2H3, 420, height / 10 * 3.2, 550, 500);
+      text(cred2H3, 420, height / 10 * 2.9, 550, 500);
 
       document.getElementById("link6").style.display = 'block';
       document.getElementById("link6").style.left = "420px";
-      document.getElementById("link6").style.top = "223px";
+      document.getElementById("link6").style.top = "208px";
 
       document.getElementById("link7").style.display = 'block';
       document.getElementById("link7").style.left = "420px";
-      document.getElementById("link7").style.top = "343px";
+      document.getElementById("link7").style.top = "330px";
     }
   }
 

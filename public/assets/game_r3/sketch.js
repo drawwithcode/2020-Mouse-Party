@@ -206,12 +206,6 @@ function draw() {
        for (var i = 0; i < random(0, 80); i++) { //quantità particelle
           particles.push(new particelle((mouseX + random(-15, 15)), mouseY + random(-15, 15)));
        }
-       var circle = new circles();
-       clickEffect.push(circle);
-
-       if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
-        clickEffect.splice(0, 1);
-       }
     } else {
        myCursor0.display();
     }
@@ -650,13 +644,18 @@ class Beat {
 }
 
 
-function keyTyped(){ //spacebar input
+function keyTyped(){ // spacebar input
   if (keyCode === 32 && spacebarBool == false){
     clap.play();
+    var circle = new circles();
+    clickEffect.push(circle);
+
+    if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+      clickEffect.splice(0, 1);
+    }
     spacebarBool = true;
     hitBool = true;
     return 'SPACE';
-
   }
 }
 
@@ -669,20 +668,15 @@ function keyReleased(){
   }
 }
 
-function mousePressed(){ //mouse input
-    clap.play();
-    hitBool = true;
 
-  //riflessione
-  if (hitBool == true) {
+function mousePressed() {
+  clap.play();
+  hitBool = true;
+  var circle = new circles();
+  clickEffect.push(circle);
 
-     for (var i = 0; i < random(0,80); i++) { //quantità particelle(100, 800)
-       particles.push(new particelle((mouseX + random(-20, 20)), mouseY + random(-20, 20))); //area posizione iniziale particelle
-     }
-
-     if (clickEffect.length > 3) { //per far sparire i cerchi dopo un tot
-       clickEffect.splice(0, 1);
-     }
+  if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+    clickEffect.splice(0, 1);
   }
 }
 
