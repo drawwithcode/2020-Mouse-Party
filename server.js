@@ -109,7 +109,7 @@ io.on("connection", function (socket) {
     socket.broadcast.emit("deleteCursor", cursorId);
   });
 
-  socket.on("cancellaCursori" function(data) {
+  socket.on("cancellaCursori", function(data) {
     userIndex = usersAr.indexOf(data.id);
     userIndex = userIndex + 2;
     userId = usersAr[userIndex];
@@ -117,7 +117,7 @@ io.on("connection", function (socket) {
       id: userId,
     }
     socket.broadcast.emit("deleteCursor", cursorId);
-  })
+  });
 
   socket.on("disconnect", function() {
     var socketData = {
