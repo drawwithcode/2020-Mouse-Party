@@ -211,8 +211,8 @@ function draw() {
       sc++;
     }
     if (sc >= 1 && audioIsPlaying == false) {
-      // socket.emit("play", {times: audio.currentTime, id: socket.id});
-      audio.play();
+      socket.emit("play", {times: audio.currentTime, id: socket.id});
+      // audio.play();
       audioIsPlaying = true;
     }
 
@@ -294,11 +294,11 @@ socket.on("current", function (data) {
   };
 });
 
-// socket.on("playsong", function (data) {
-//   audio.currentTime = data.times;
-//   audio.play();
-//   socket.emit("where", {times: audio.currentTime, room: roomname});
-// });
+socket.on("playsong", function (data) {
+  audio.currentTime = data.times;
+  audio.play();
+  socket.emit("where", {times: audio.currentTime, room: roomname});
+});
 
 // delete the cursor of the player that left the room
 socket.on("deleteCursor", function(data) {

@@ -55,14 +55,14 @@ io.on("connection", function (socket) {
     io.to(data.room).emit("current", data.times);
   });
 
-  // // receive the signal to play the song and emit it
-  // socket.on("play", function (data) {
-  //   userId = data.id
-  //   var trackTime = {
-  //     times: data.times,
-  //   }
-  //   io.to(userId).emit("playsong", trackTime);
-  // });
+  // receive the signal to play the song and emit it
+  socket.on("play", function (data) {
+    userId = data.id
+    var trackTime = {
+      times: data.times,
+    }
+    io.to(userId).emit("playsong", trackTime);
+  });
 
   // check the mouse position and send it to each player in a room
   socket.on("mouse", function(data) {
