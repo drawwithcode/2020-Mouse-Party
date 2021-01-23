@@ -29,7 +29,6 @@ function draw() {
 
 function watch() {
   if (w == 0) {
-    console.log('click')
     document.getElementById("overlay").style.opacity = "0";
     document.getElementById("bt2").style.backgroundImage = "url(/assets/images/lp/occhio-barrato.png)";
     w = 1

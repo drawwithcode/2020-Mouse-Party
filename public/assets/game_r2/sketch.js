@@ -231,7 +231,8 @@ function draw() {
       sc++;
     }
     if (sc >= 1 && audioIsPlaying == false) {
-      socket.emit("play", {times: audio.currentTime, id: socket.id});
+      // socket.emit("play", {times: audio.currentTime, id: socket.id});
+      audio.play();
       audioIsPlaying = true;
     }
 
@@ -314,11 +315,11 @@ socket.on("current", function (data) {
   };
 });
 
-socket.on("playsong", function (data) {
-  audio.currentTime = data.times;
-  audio.play();
-  socket.emit("where", {times: audio.currentTime, room: roomname});
-});
+// socket.on("playsong", function (data) {
+//   audio.currentTime = data.times;
+//   audio.play();
+//   socket.emit("where", {times: audio.currentTime, room: roomname});
+// });
 
 socket.on('deleteCursor', function(data) {
   var getPos = otherCursors.findIndex(cursor => cursor.id === data.id);
@@ -763,7 +764,7 @@ function mousePressed() {
   var circle = new circles();
   clickEffect.push(circle);
 
-  if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+  if (clickEffect.length > 3) {
     clickEffect.splice(0, 1);
   }
 }

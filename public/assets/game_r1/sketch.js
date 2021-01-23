@@ -744,7 +744,7 @@ function mousePressed() {
   var circle = new circles();
   clickEffect.push(circle);
 
-  if (clickEffect.length > 3) { // per far sparire i cerchi dopo un tot
+  if (clickEffect.length > 3) {
     clickEffect.splice(0, 1);
   }
 }
