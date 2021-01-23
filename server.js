@@ -96,7 +96,7 @@ io.on("connection", function (socket) {
     }
     socket.to(userId).emit("playerLeft", "playerLeft");
     socket.broadcast.emit("deleteCursor", cursorId);
-    socket.broadcast.emit("deleteCursor", cursorId);
+    // socket.broadcast.emit("deleteCursor", cursorId);
   });
 
   socket.on("disconnect", function() {
