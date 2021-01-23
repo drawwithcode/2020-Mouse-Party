@@ -50,13 +50,13 @@ function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
   socket.emit("leave", {id: socket.id});
-  if(frameCount % 60 == 0) {
-    sc++;
-  }
-  if (sc == 2) {
-    socket.emit("leave", {id: socket.id});
-    sc = 0;
-  }
+  // if(frameCount % 60 == 0) {
+  //   sc++;
+  // }
+  // if (sc == 2) {
+  //   socket.emit("leave", {id: socket.id});
+  //   sc = 0;
+  // }
 }
 
 socket.on("closeWelcome", benvenuto);
