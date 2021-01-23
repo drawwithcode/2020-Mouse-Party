@@ -300,7 +300,7 @@ button {
 }
 
 #p1toast {
-  display: none;
+  display: block;
   position: fixed;
   padding: 6px 0px;
   width: 530px;
@@ -323,8 +323,8 @@ button {
 }
 
 @keyframes toastanim {
-  from {bottom: -20px; opacity: 0; display: none;}
-  to {bottom: 20px; opacity: 1; display: block;}
+  from {bottom: -20px; opacity: 0;}
+  to {bottom: 20px; opacity: 1;}
 }
 
 #pageLink{

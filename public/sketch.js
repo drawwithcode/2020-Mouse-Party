@@ -8,6 +8,7 @@ var sc = 0;
 var home_2 = false;
 
 let toastBool = false;
+let isHome = true;
 
 let playersData;
 let roomData;
@@ -28,7 +29,12 @@ function draw() {
     sc = 0;
     home_2 = false;
   }
-
+  if(toastBool && playersData > 1 && roomData == '1'){
+    notify1p_hide();
+  }
+  else if(playersData <= 1 && roomData == '1' && !toastBool && !isHome){
+    notify1p_show();
+  }
 }
 
 // spectator mode
@@ -49,9 +55,10 @@ function gioca_1() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("elementiDx").style.display = "none";
   socket.emit("join", {id: socket.id});
-  if(playersData < 1 && roomData == '1' && !toastBool){
+  if(playersData <= 1 && roomData == '1' && !toastBool){
     notify1p_show();
   }
+  isHome = false;
 }
 
 function gioca_2() {
@@ -66,7 +73,9 @@ function gioca_3() {
 function home() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("elementiDx").style.display = "flex";
+  notify1p_hide();
   socket.emit("leave", {id: socket.id});
+  isHome = true;
   home_2 = true;
 }
 
@@ -222,7 +231,7 @@ function displayPlayers(data) {
   }
 }
 
-function notify1p(){ //close toast on click //new
+function notify1p(){ //close toast on click
   document.getElementById('p1toast').style.animation = "toastanim 0.5s ease reverse forwards"
   copyLink = document.getElementById("pageLink");
   copyLink.select();
@@ -231,7 +240,11 @@ function notify1p(){ //close toast on click //new
 }
 
 function notify1p_show(){ //open toast
-  document.getElementById('p1toast').style.display = "block";
   document.getElementById('p1toast').style.animation = "toastanim 0.5s ease normal forwards"
   toastBool = true;
+}
+
+function notify1p_hide(){ //close toast on new user connection
+  document.getElementById('p1toast').style.animation = "toastanim 0.5s ease reverse forwards"
+  toastBool = false;
 }
