@@ -11,6 +11,7 @@ var audio = document.getElementById('myaudio');
 var audioIsPlaying = false;
 var sc = 0;
 var sc_2 = 0;
+var sc_3 = 0;
 var palette = [
   {r: 3, g: 196, b: 216 },
   {r: 0, g: 146, b: 255 },
@@ -273,7 +274,13 @@ function myPlayerJoined() {
 
 function myPlayerLeft() {
   playerIn = false;
-  socket.emit("clickHome", "clickHome")
+  if (frameCount % 60 == 0) {
+    sc_3++;
+  }
+  if (sc_3 == 1) {
+    socket.emit("clickHome", socket.id);
+    sc_3 = 0;
+  }
 }
 
 socket.on("first", function (data) {

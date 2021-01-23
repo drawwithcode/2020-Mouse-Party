@@ -96,11 +96,17 @@ io.on("connection", function (socket) {
     }
     socket.to(userId).emit("playerLeft", "playerLeft");
     socket.broadcast.emit("deleteCursor", cursorId);
-    // socket.broadcast.emit("deleteCursor", cursorId);
   });
 
-  socket.on("clickHome", function(data){
-    socket.broadcast.emit("homeClick", "homeClick");
+  socket.on("clickHome", function(data) {
+    // userIndex = usersAr.indexOf(data.id);
+    // userIndex = userIndex - 2;
+    // userId = usersAr[userIndex];
+    // var cursorId = {
+    //   id: userId,
+    // }
+    // socket.to(userId).emit("homeClick", "homeClick");
+    socket.broadcast.emit("deleteCursor", cursorId);
   });
 
   socket.on("disconnect", function() {

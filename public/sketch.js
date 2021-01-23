@@ -59,9 +59,14 @@ function home() {
   // }
 }
 
-socket.on("closeWelcome", benvenuto);
+// socket.on("homeClick", home2);
+//
+// function home2() {
+//   document.getElementById("overlay").style.display = "block";
+//   document.getElementById("elementiDx").style.display = "flex";
+// }
 
-socket.on("homeClick", home);
+socket.on("closeWelcome", benvenuto);
 
 function benvenuto(data) {
   if (data.wf == true) {
