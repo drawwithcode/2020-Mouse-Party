@@ -29,7 +29,11 @@ We weren’t sure whether we would have been able to celebrate New Year’s Eve 
 People can play with Mouse Party alone, but the full experience is designed to be enjoyed by multiple users - simple movements can become something intricate and beautiful thanks to collaboration among players.
 
 ### Overview
-The site features two rooms with a music track each and its beatmap. The beatmap is mirrored around the center point of the window, one reflection for each player, so that the final result is reminiscent of New Year’s Eve fireworks. The scope is to interact with other players and execute a choreography by following the beatmap and the rhythm with the focus on the collaboration. The game can be played from any device with a pointing device (a mouse, a trackpad, a graphic tablet).  
+The site features two rooms with a music track each and its beatmap. The beatmap is mirrored around the center point of the window, one reflection for each player, so that the final result is reminiscent of New Year’s Eve fireworks. The scope is to interact with other players and execute a choreography by following the beatmap and the rhythm with the focus on the collaboration. The game can be played from any device with a pointing device (a mouse, a trackpad, a graphic tablet). 
+
+<p align="center">
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/gameplay_1.gif"
+</p>
 
 * #### Architecture<br>
 The website has a landing page, two interactive rooms and a solo mode room. The landing page has an icon indicator for the users dancing in each room, three buttons for joining the different rooms, an info button and a watch button.
@@ -58,6 +62,10 @@ We coded circles on the beats and at the beginning and the end of the sliders. T
 
 ### Contextualize
 We decided to add an illustration for context. This illustration has fixed dimensions and according to the resolution on the screen, users will see it with different levels of zoom.
+
+<p align="center">
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/context.gif"
+</p>
 
 ### Input
 find an alternative to the left-click input (in order to make the gameplay suitable also for trackpads)	Devices with trackpad included thanks to the spacebar input (that works just like a left-click)
