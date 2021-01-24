@@ -72,8 +72,7 @@ We then had to make the choreography uniform from different screen sizes. At fir
 We also implemented a system to show the user when the execution of the betmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
 
-```  
-javascript
+```javascript
 ...
 
       else if(this.type == 'slider'){
@@ -86,6 +85,7 @@ javascript
 
     if (this.beatCollide){
 this.beatSprite.animation.changeFrame(1)
+...}
 ```
 
 ### Cursors
