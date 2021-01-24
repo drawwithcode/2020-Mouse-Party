@@ -131,7 +131,9 @@ We had to find a way in order to avoid showing in the "Room 1" iframe the cursor
 ```
 
 ### Collision
-Collision in p5.collide2D did not fit for our project since it allowed us to have collisions on basic shapes only, while we needed to follow the sliders shape (often a curve). We ended up implementing collision with the overlapPixel function of p5.play, creating png files with the background color in the collision area.
+p5.collide2D did not fit our needs since it only allowed us to have collisions on basic shapes. We needed to follow the sliders shape (often a curve), so e ended up implementing collision using the overlapPixel function of p5.play, creating png files with the background color in the collision area.
+
+We then implemented a system to show the user when the execution of the beatmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
 ```javascript
 ...
@@ -149,9 +151,9 @@ Collision in p5.collide2D did not fit for our project since it allowed us to hav
 ```
 
 ### User Connection
-We had to manage user connection at different moments without getting the song to start back from the beginning. We managed to make the song start on the first user, then the following users will inherit the ability to emit time from the first user who joined the room. In this way we let the song continue even if the first user logs off.
+We had to manage user connection at different moments without letting the song start back from the beginning. We managed to make the song start on the first user, then the following users will inherit the ability to emit time from the first user who joined the room. This way the song continues even if the first user logs off.
 
-After that, we had to solve a small bug we encountered: the user icons were flickering and do not respond correctly to log-ins and log-puts from the users. We solved it sending the delete cursor message a second time, just a few instants after the first one.
+After that, we had to solve a small bug we encountered: the user icons were flickering and did not respond correctly to log-ins and log-outs from the users. We solved it sending the delete cursor message a second time, just a few instants after the first one.
 
 ```javascript
 ...
@@ -186,6 +188,8 @@ socket.on("playsong", function (data) {
 ```
 
  ## Tools
+* HTML
+* CSS
 * P5.js
 * P5.play
 * Node.js
@@ -194,6 +198,7 @@ socket.on("playsong", function (data) {
 * Github
 * Heroku<br><br>
 * osu!
+* Adobe Illustrator
 
  ## References
 
