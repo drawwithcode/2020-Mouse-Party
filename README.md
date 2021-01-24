@@ -92,8 +92,7 @@ We then had to solve a small bug we encountered: the user icons were flickering 
 * P5.play
 * Node.js
 * Socket.io
-* Express.js
-<br>
+* Express.js<br><br>
 * Github
 * Heroku
 
