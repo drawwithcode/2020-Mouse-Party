@@ -7,18 +7,11 @@
 
 **Table of Contents**
 
-1. [The Project](#the-project)
-  1a. [Context](#context)
-  1b. [Concept](#concept)
-  1c. [Overview](#overview) <br>&ensp;▪ [Architecture](#architecture)<br>&ensp;▪ [Functioning](#functioning)<br>&ensp;▪ [Visuals](#visuals)<br>&ensp;▪ [Sounds](#sounds)
+1. [The Project](#the-project)<br>1a. [Context](#context)<br>1b.[Concept](#concept)<br>1c. [Overview](#overview) <br>&ensp;▪ [Architecture](#architecture)<br>&ensp;▪ [Functioning](#functioning)<br>&ensp;▪ [Visuals](#visuals)<br>&ensp;▪ [Sounds](#sounds)
 
-2. [Design Challenges](#design-challenges)
-	2a. [Instructions](#instructions)
-	2b.  [Contextualize](#contextualize)
-	2c.  [Input](#input)
-	2d. [Solo Mode](#solo-mode)
+3. [Design Challenges](#design-challenges)<br>2a. [Instructions](#instructions)<br>2b.  [Contextualize](#contextualize)<br>2c.  [Input](#input)<br>2d. [Solo Mode](#solo-mode)
 
-3. [Coding Challenges](#coding-challenges)
+4. [Coding Challenges](#coding-challenges)
 	3a. [Beatmap](#beatmap)
 	3b. [Collision](#collision)
 	3c. [User Connection](#user-connection)
