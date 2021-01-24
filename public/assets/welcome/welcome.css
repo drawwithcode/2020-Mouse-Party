@@ -40,7 +40,7 @@ button {
 
 #freccina{
   cursor: pointer;
-  background-image: url(/assets/welcome/assets/>.png);
+  background-image: url(/assets/welcome/assets/next.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -83,7 +83,7 @@ button {
 
 #freccinaPre{
   cursor: pointer;
-  background-image: url(/assets/welcome/assets/<.png);
+  background-image: url(/assets/welcome/assets/prev.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
