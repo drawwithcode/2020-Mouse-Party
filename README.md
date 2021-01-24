@@ -72,9 +72,21 @@ We then had to make the choreography uniform from different screen sizes. At fir
 We also implemented a system to show the user when the execution of the betmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
 
-<!--```  
+```  
 javascript
-```-->
+...
+
+      else if(this.type == 'slider'){
+        this.beatSprite = createSprite(this.cornerX+sliderSizeX[this.sliderType-1]/2, this.cornerY+sliderSizeY[this.sliderType-1]/2);
+        this.beatSprite.addAnimation('hit', sliderImg[this.sliderType-1]);
+        this.beatSprite.animation.stop();
+        this.beatSprite.animation.changeFrame(0);
+      }
+...
+
+    if (this.beatCollide){
+this.beatSprite.animation.changeFrame(1)
+```
 
 ### Cursors
 We had to find a way in order to avoid showing in the "Room 1" iframe the cursor of the user who just landed on the page. We hide the cursor, making a boolean variable that turns true when the user clicks on the button to join the room, and when this variable is true, the cursor turns visible. Moreover, when the variable is false, the rotation angle is calculated without counting the user's cursor, otherwise - when the variable is true - the rotation angle keeps into consideration the user's cursor too.
