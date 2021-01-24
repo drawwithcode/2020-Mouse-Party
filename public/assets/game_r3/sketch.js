@@ -96,13 +96,18 @@ function preload(){
     sliderImg.push(loadAnimation('/assets/images/gm/r1/slider'+i+'.png', '/assets/images/gm/r1/slider'+i+'-input.png'));
   }
 
-  roll.setVolume(0.6);
-  clap.setVolume(0.9);
-  whist.setVolume(0.3);
+  roll.setVolume(0.2);
+  clap.setVolume(0.3);
+  whist.setVolume(0.1);
 }
+
+
+
+// __ Setup __
 
 function setup() {
   frameRate(60);
+  audio.volume = 0.3;
 
   createCanvas(windowWidth, windowHeight);
 

@@ -38,9 +38,9 @@ function preload() {
   gif3 = loadImage('assets/banvenuto3.gif');
   poli = loadImage('assets/logo-poli.png');
   ritrattoR = loadImage('assets/ritratto-r.png');
-  //ritrattoA = loadImage('assets/ritratto-a.png');
-  //ritrattoN = loadImage('assets/ritratto-n.png');
-  //ritrattoS = loadImage('assets/ritratto-s.png');
+  ritrattoA = loadImage('assets/ritratto-a.png');
+  ritrattoN = loadImage('assets/ritratto-n.png');
+  ritrattoS = loadImage('assets/ritratto-s.png');
 }
 
 function setup() {
@@ -117,13 +117,13 @@ function draw() {
 
       image(poli, 60, height / 10 * 6.6, 165, 56);
 
-      image(ritrattoR, 580, 180, 60, 60);
+      image(ritrattoA, 580, 180, 60, 60);
       text('Andrea Bellavita', 660, 200, 200, 500);
 
-      image(ritrattoR, 580, 257, 60, 60);
+      image(ritrattoS, 580, 257, 60, 60);
       text('Sharon Manfredi', 660, 277, 200, 500);
 
-      image(ritrattoR, 580, 334, 60, 60);
+      image(ritrattoN, 580, 334, 60, 60);
       text('Nicole Moreschi', 660, 354, 200, 500);
 
       image(ritrattoR, 580, 409, 60, 60);
