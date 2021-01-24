@@ -44,7 +44,6 @@ The interaction is mostly real-time. Users can join in different moments and inp
 We chose a neon noir visual feel: neon colors on a blue night background, inspired by fireworks. The player’s cursor is always shown in white while the other players get randomly assigned one out of 9 colors.
 
 * #### Sounds
-
 We added fireworks sound effects when clicking on the beatmap and when sliding down the sliders. We chose to use electronic open source music.
 
 
@@ -52,6 +51,10 @@ We added fireworks sound effects when clicking on the beatmap and when sliding d
 
 ### Instructions
 We coded circles on the beats and at the beginning and the end of the sliders. These circles shrink showing the user when to click and have a hint about the speed, the rhythm. We also added a visual feedback (the circle turning blue) if the timing was correct - according to the learning by doing approach.
+
+<p align="center">
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/feedback.gif"
+</p>
 
 ### Contextualize
 We decided to add an illustration for context. This illustration has fixed dimensions and according to the resolution on the screen, users will see it with different levels of zoom.
