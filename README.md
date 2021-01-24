@@ -80,7 +80,7 @@ javascript
 We had to find a way to avoid showing in the "Room 1" iframe the cursor of the user who just landed on the main page. We hid the cursor, making a boolean variable that turns true when the user clicks on the button to join the room, and when this variable is true, the cursor turns visible. Moreover, when the variable is false, the rotation angle is calculated without counting the user's cursor, otherwise - when the variable is true - the rotation angle keeps into consideration the user's cursor too.
 
 ### Collision
-p5.collide2D did not fit our needs since it only allowed us to have collisions on basic shapes only. We needed to follow the sliders shape (often a curve), so e ended up implementing collision using the overlapPixel function of p5.play, creating png files with the background color in the collision area.
+p5.collide2D did not fit our needs since it only allowed us to have collisions on basic shapes. We needed to follow the sliders shape (often a curve), so e ended up implementing collision using the overlapPixel function of p5.play, creating png files with the background color in the collision area.
 
 We then implemented a system to show the user when the execution of the beatmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
@@ -90,6 +90,8 @@ We had to manage user connection at different moments without letting the song s
 We then had to solve a small bug we encountered: the user icons were flickering and do not respond correctly to log-ins and log-outs from the users. We solved it by sending the delete cursor message a second time, just instants after the first one.
 
  ## Tools
+* HTML
+* CSS
 * P5.js
 * P5.play
 * Node.js
