@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/cover.gif"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/cover_small.gif"
 </p>
 
 # Mouse Party
