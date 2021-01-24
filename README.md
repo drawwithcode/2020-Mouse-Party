@@ -58,7 +58,7 @@ We coded circles on the beats and at the beginning and the end of the sliders. T
 We decided to add an illustration for context. This illustration has fixed dimensions and according to the resolution on the screen, users will see it with different levels of zoom.
 
 ### Input
-find an alternative to the left-click input (in order to make the gameplay suitable also for trackpads)	Devices with trackpad included thanks to the spacebar input (that works just like a left-click)
+We found an alternative to the left-click input (in order to make the gameplay suitable also for trackpads).	Devices with trackpad included thanks to the spacebar input (that works just like a left-click).
 
 ### Solo Mode
 What would happen if only a player was online? 	Although we wanted Mouse Party to be a collaborative experience, we also wanted to give the people a chance to see what they could achieve with many players, therefore we created a "solo" room, where users can see the result with their cursor rotated 8 times.

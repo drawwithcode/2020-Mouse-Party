@@ -3,6 +3,8 @@ let socket = io();
 var audio = document.getElementById('myaudio');
 var roomname = "3";
 var playerIn = true;
+var audioIsPlaying = false;
+var sc = 0;
 var palette = [
   {r: 3, g: 196, b: 216 },
   {r: 0, g: 146, b: 255 },
@@ -12,9 +14,6 @@ var palette = [
   {r: 255, g: 80, b: 51 },
   {r: 255, g: 103, b: 0 }
 ];
-var audioIsPlaying = false;
-var sc = 0;
-
 let beatmap = [];
 let beatmapLength;
 let beatDuration = 1.5;

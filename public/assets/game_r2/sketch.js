@@ -8,6 +8,8 @@ var clickEffect = [];
 var audio = document.getElementById('myaudio');
 var roomname = "2";
 var playerIn = true;
+var audioIsPlaying = false;
+var sc = 0;
 var palette = [
   {r: 3, g: 196, b: 216 },
   {r: 0, g: 146, b: 255 },
@@ -17,11 +19,6 @@ var palette = [
   {r: 255, g: 80, b: 51 },
   {r: 255, g: 103, b: 0 }
 ];
-var audioIsPlaying = false;
-var sc = 0;
-
-// __ varibili Riki __
-
 let beatmap = [];
 let beatmapLength;
 let beatDuration = 1.5;
@@ -54,7 +51,7 @@ let sliderSizeX = [
   114, // 9
   192, // 10
   312, // 11
-  73, // 12
+  73,  // 12
   112, // 13
   272, // 14
   352, // 15
@@ -62,20 +59,20 @@ let sliderSizeX = [
   272, // 17
   193, // 18
   153, // 19
-  73, // 20
+  73,  // 20
   313, // 21
   310, // 22
   272, // 23
   352, // 24
-  232 // 25
+  232  // 25
 ];
 let sliderSizeY = [
   313, // 1
   313, // 2
-  73, // 3
-  73, // 4
+  73,  // 3
+  73,  // 4
   353, // 5
-  73, // 6
+  73,  // 6
   273, // 7
   394, // 8
   311, // 9
@@ -88,13 +85,13 @@ let sliderSizeY = [
   353, // 16
   273, // 17
   233, // 18
-  313,// 19
+  313, // 19
   393, // 20
   112, // 21
   133, // 22
   273, // 23
   130, // 24
-  313 // 25
+  313  // 25
 ]
 
 // __ Preload __
@@ -128,10 +125,6 @@ function setup() {
   angleMode(DEGREES);
 
   myCursor = new myCursor();
-
-  // // Sprites
-  // pointer = createSprite(0, 0);
-  // pointer.addImage(loadImage('/assets/images/gm/r1/pointer.png'));
 
   socket.on("mouseBroadcast", mousePos);
 
@@ -177,9 +170,6 @@ function draw() {
   };
 
   translate(width / 2, height / 2);
-
-  // pointer.position.x = mouseX - width / 2;
-  // pointer.position.y = mouseY - height / 2;
 
   if (playerIn == true) {
     drawSprites();
@@ -255,7 +245,6 @@ function draw() {
     if (audioIsPlaying == true) {
       audio.pause();
       audioIsPlaying = false;
-      // sc = 0;
     }
   }
 
@@ -273,7 +262,6 @@ function draw() {
     //currentBeat = 0;
     audio.play();
   }
-
 }
 
 
