@@ -103,22 +103,22 @@ We then had to solve a small bug we encountered: the user icons were flickering 
 
 ## Credits
 #### Music
-&ensp;Room 1 + Solo Mode Room
-&ensp;&ensp;"Musik liegt in der Luft" by Phillip Gross [(CC BY-NC-SA 3.0)](https://creativecommons.org/licenses/by-nc-sa/3.0/)
-&ensp;&ensp;[freemusicarchive.org](https://freemusicarchive.org/home)
-&ensp;Room 2:
-&ensp;&ensp;"Fireworks" by Alexander Nakarada [(CC 0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.it)
+&ensp;Room 1 + Solo Mode Room<br>
+&ensp;&ensp;"Musik liegt in der Luft" by Phillip Gross [(CC BY-NC-SA 3.0)](https://creativecommons.org/licenses/by-nc-sa/3.0/)<br>
+&ensp;&ensp;[freemusicarchive.org](https://freemusicarchive.org/home)<br>
+&ensp;Room 2:<br>
+&ensp;&ensp;"Fireworks" by Alexander Nakarada [(CC 0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.it)<br>
 &ensp;&ensp;[https://freepd.com](https://freepd.com/electronic.php)
 <br>
 #### Sound Effects
-[fesliyanstudios.com,](https://fesliyanstudios.com/)
-[audiomicro.com,](https://audiomicro.com/)
-[bigsoundbank.com,](https://bigsoundbank.com/)
-[freemusicarchive.org](https://freemusicarchive.org/home)
+[fesliyanstudios.com,](https://fesliyanstudios.com/)<br>
+[audiomicro.com,](https://audiomicro.com/)<br>
+[bigsoundbank.com,](https://bigsoundbank.com/)<br>
+[freemusicarchive.org](https://freemusicarchive.org/home)<br>
 <br>
 <br>
 Coded with ♥ by Andrea Bellavita, Nicole Moreschi, Riccardo Rigamondi, Sharon Manfredi
 
-**Creative Coding 2020/2021** (https://drawwithcode.github.io/)
-Politecnico di Milano - Scuola del Design
+**Creative Coding 2020/2021** (https://drawwithcode.github.io/)<br>
+Politecnico di Milano - School of Design<br>
 Faculty: Michele Mauri, Tommaso Elli, Andrea Benedetti
