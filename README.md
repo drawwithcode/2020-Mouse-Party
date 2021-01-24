@@ -49,7 +49,9 @@ In each room the user will find the game and the home button.
 Interaction between users is mostly real-time. Players can join in different moments, and their inputs will be mirrored around a central point. Based on the number of users in the room, the angle of different inputs will increase or decrease (360°/no. of users).  The user's cursor and instructions they have to follow will always be on the 0° angle, while the other users are shown as translated. <br>When an user is alone in the room, they can still play, but a pop-up message will suggest inviting a few friends in order to make the experience more enjoyable.
 
 * #### Visuals
-We chose a neon noir visual feel: neon colors on a blue night background, inspired by fireworks. The player’s cursor is always shown in white while the other players get randomly assigned one out of 9 colors.
+We started with a neon noir visual feel: neon colors on a blue night background, inspired by fireworks. The player’s cursor is always shown in white while the other players get randomly assigned one out of 9 colors.
+
+For the enviroment, we chose dark pastel colors that don't draw attention away from the game.
 
 * #### Sounds
 We added fireworks sound effects when clicking on the beatmap and when sliding down the sliders. We chose to use royalty free electronic music that felt fun to keep a beat to.
