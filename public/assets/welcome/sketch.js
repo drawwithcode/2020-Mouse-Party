@@ -99,6 +99,7 @@ function draw() {
       document.getElementById("link5").style.display = 'none';
       document.getElementById("link6").style.display = 'none';
       document.getElementById("link7").style.display = 'none';
+      document.getElementById("link8").style.display = 'none';
 
       textStyle(BOLD);
       textSize(30);
@@ -159,15 +160,19 @@ function draw() {
       document.getElementById("link5").style.left = "60px";
       document.getElementById("link5").style.top = "313px";
 
-      text(cred2H3, 420, height / 10 * 2.9, 550, 500);
-
       document.getElementById("link6").style.display = 'block';
-      document.getElementById("link6").style.left = "420px";
-      document.getElementById("link6").style.top = "208px";
+      document.getElementById("link6").style.left = "60px";
+      document.getElementById("link6").style.top = "343px";
+
+      text(cred2H3, 420, height / 10 * 2.9, 550, 500);
 
       document.getElementById("link7").style.display = 'block';
       document.getElementById("link7").style.left = "420px";
-      document.getElementById("link7").style.top = "330px";
+      document.getElementById("link7").style.top = "208px";
+
+      document.getElementById("link8").style.display = 'block';
+      document.getElementById("link8").style.left = "420px";
+      document.getElementById("link8").style.top = "330px";
     }
   }
 
@@ -307,6 +312,7 @@ function tut(){
   document.getElementById("link5").style.display = 'none';
   document.getElementById("link6").style.display = 'none';
   document.getElementById("link7").style.display = 'none';
+  document.getElementById("link8").style.display = 'none';
 }
 
 
@@ -345,4 +351,5 @@ function chiudi() {
   document.getElementById("link5").style.display = 'none';
   document.getElementById("link6").style.display = 'none';
   document.getElementById("link7").style.display = 'none';
+  document.getElementById("link8").style.display = 'none';
 }

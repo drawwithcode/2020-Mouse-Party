@@ -14,14 +14,25 @@ body {
 
 #overlay{
   /* background-image: url(/assets/images/lp/overlay1.png); */
-  background-image: url(/assets/images/lp/overlay1.gif);
+  background-image: url(/assets/images/lp/over1.png);
   background-repeat: no-repeat;
-  background-position: center;  position: fixed;
+  background-position: center;
+  position: fixed;
   margin: 0;
   width: 100%;
   height: 100%;
   opacity: 1;
   display: block;
+
+  animation: overanim 3s linear infinite both;
+}
+
+@keyframes overanim {
+    0%{background-image: url(/assets/images/lp/over1.png);}
+    49%{background-image: url(/assets/images/lp/over1.png);}
+    50%{background-image: url(/assets/images/lp/over2.png);}
+    99%{background-image: url(/assets/images/lp/over2.png);}
+    100%{background-image: url(/assets/images/lp/over1.png);}
 }
 
 #elementiDx {
