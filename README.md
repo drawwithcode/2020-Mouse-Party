@@ -11,7 +11,7 @@
 
 3. [Design Challenges](#design-challenges)<br>2a. [Instructions](#instructions)<br>2b.  [Contextualize](#contextualize)<br>2c.  [Input](#input)<br>2d. [Solo Mode](#solo-mode)
 
-4. [Coding Challenges](#coding-challenges)<br>3a. [Beatmap](#beatmap)<br>3b. [Collision](#collision)<br>3c. [User Connection](#user-connection)<br>3d. [Cursors](#cursors)
+4. [Coding Challenges](#coding-challenges)<br>3a. [Beatmap](#beatmap)<br>3b. [Cursors](#cursors)<br>3c. [Collision](#collision)<br>3d. [User Connection](#user-connection)
 
 5. [Tools](#tools)
 
