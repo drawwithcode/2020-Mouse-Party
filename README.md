@@ -41,6 +41,10 @@ The user is greeted by a welcome message with a short tutorial, that can be reca
 When landing on the website, the user will be able to see what's happening in the «party room» but it will be darkened by an overlay. By clicking the watch button the user will be able to see what's happening without this «screen».
 In each room the user will find the game and the home button.
 
+<p align="center">
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/tutorial.png"
+</p>
+
 * #### Functioning<br>
 The interaction is mostly real-time. Users can join in different moments and inputs from the users will be mirrored around a central point. Based on the number of users in the room, the angle of different inputs will increase or decrease (360°/no. of users).  The instructions that the user has to follow will always be on the 0° angle, while the other users are shown as translated by the angle. <br>The idea is to show how collaboration brings good things, so when the users are alone in the room they can still play, but a pop-up will suggest inviting a few friends in order to make the experience more enjoyable.
 
