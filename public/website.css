@@ -161,9 +161,9 @@ body {
 button {
   background-color: #0f1122;
   border-color: #ffffff;
-  border-style: solid;
-  border-width: 1.5px;
-  color: #ffffff;
+  border-style: none;
+  /* border-width: 1.5px;
+  color: #ffffff; */
   text-align: center;
   font-size: 11pt;
   font-family: 'Quicksand', sans-serif;
@@ -177,32 +177,44 @@ button {
 }
 
 #join1 {
-  width: 65pt;
+  width: 60pt;
   display: block;
   position: absolute;
   bottom: 89pt;
   right: 0;
+  background-image: url(/assets/images/lp/room-1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #join2 {
-  width: 65pt;
+  width: 60pt;
   display: block;
   position: absolute;
   bottom: 62pt;
   right: 0;
+  background-image: url(/assets/images/lp/room-2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #join3 {
-  width: 65pt;
+  width: 60pt;
   display: block;
   position: absolute;
   bottom: 35pt;
   right: 0;
+  background-image: url(/assets/images/lp/solo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #bt2 {
   position: absolute;
-  width: 21pt;
+  width: 20pt;
   background-image: url(/assets/images/lp/occhio.png);
   background-size: contain;
   background-repeat: no-repeat;

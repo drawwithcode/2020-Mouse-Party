@@ -22,9 +22,9 @@ body {
 
 button {
   background-color: #2b7077;
-  border-color: #ffffff;
-  border-style: solid;
-  border-width: 1.5px;
+  border-style: none;
+  /* border-color: #ffffff;
+  border-width: 1.5px; */
   color: #ffffff;
   text-align: center;
   font-size: 11pt;
@@ -40,47 +40,58 @@ button {
 
 #freccina{
   cursor: pointer;
-  background-color: #2b7077;
+  background-image: url(/assets/welcome/assets/>.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: fixed;
   left: 670px;
   bottom: 50px;
   width: 21pt;
-  border-color: #ffffff;
-  color: #ffffff;
+  /* border: none; */
   display: none;
 }
 
 #crediti{
+  display: none;
+  cursor: pointer;
   background-color: #2b7077;
   position: fixed;
+  background-image: url(/assets/welcome/assets/credits.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   right: 50px;
   bottom: 50px;
-  width: 50pt;
-  border-color: #ffffff;
-  color: #ffffff;
+  width: 63pt;
   display: none;
 }
 
 #tutorial{
+  cursor: pointer;
   background-color: #c2797a;
   position: fixed;
+  background-image: url(/assets/welcome/assets/tutorial.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   right: 50px;
   bottom: 50px;
-  width: 50pt;
-  border-color: #ffffff;
-  color: #ffffff;
+  width: 63pt;
   display: none;
 }
 
 #freccinaPre{
   cursor: pointer;
-  background-color: #2b7077;
+  background-image: url(/assets/welcome/assets/<.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: fixed;
   left: 630px;
   bottom: 50px;
   width: 21pt;
-  border-color: #ffffff;
-  color: #ffffff;
+  /* border: none; */
   display: none;
 }
 
@@ -94,15 +105,15 @@ a{
 
 #X{
   position: fixed;
-  background-color: #2b7077;
+  /* background-color: #2b7077; */
   right: 50px;
   top: 50px;
-  width: 21pt;
-  border-color: #ffffff;
-  color: #ffffff;
-  /* background-image: url(/assets/images/lp/i.png);
+  width: 20pt;
+  /* border-color: #ffffff;
+  color: #ffffff; */
+  background-image: url(/assets/welcome/assets/x.png);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center; */
+  background-position: center;
   display: none;
 }
