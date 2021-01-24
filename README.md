@@ -69,6 +69,9 @@ We decided to have a single beatmap that didn't have to be rotated or moved. In 
 
 We then had to make the choreography uniform from different screen sizes. At first we made a grid and remapped everything, but then we realized collision wasn't working on scaled p5.play Sprites - which we used to create the sliders - therefore we couldn't make the beatmap responsive. We managed to work around the problem putting the beatmap in an iframe with fixed dimensions (800x800px) and in order to make it look nicer, we added an illustration for context.
 
+We also implemented a system to show the user when the execution of the betmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
+
+
 <!--```  
 javascript
 ```-->
@@ -78,8 +81,6 @@ We had to find a way in order to avoid showing in the "Room 1" iframe the cursor
 
 ### Collision
 Collision in p5.collide2D did not fit for our project since it allowed us to have collisions on basic shapes only, while we needed to follow the sliders shape (often a curve). We ended up implementing collision with the overlapPixel function of p5.play, creating png files with the background color in the collision area.
-
-We then implemented a system to show the user when the execution of the betmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
 ### User Connection
 We had to manage user connection at different moments without getting the song to start back from the beginning. We managed to make the song start on the first user, then the following users will inherit the ability to emit time from the first user who joined the room. In this way we managed to make the song continue even if the first user logs off.
@@ -93,10 +94,11 @@ We then had to solve a small bug we encountered: the user icons were flickering 
 * Socket.io
 * Express.js<br><br>
 * Github
-* Heroku
+* Heroku<br><br>
+* osu!
 
  ## References
- * osu!
+
  * StackOverflow.com
  * w3schools.com
 
@@ -116,7 +118,7 @@ We then had to solve a small bug we encountered: the user icons were flickering 
 [freemusicarchive.org](https://freemusicarchive.org/home)<br>
 <br>
 <br>
-Coded with ♥ by Andrea Bellavita, Nicole Moreschi, Riccardo Rigamondi, Sharon Manfredi
+Coded with ♥ by ASMR | Andrea Bellavita, Nicole Moreschi, Riccardo Rigamondi, Sharon Manfredi
 
 **Creative Coding 2020/2021** (https://drawwithcode.github.io/)<br>
 Politecnico di Milano - School of Design<br>
