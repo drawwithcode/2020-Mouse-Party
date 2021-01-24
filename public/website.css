@@ -13,7 +13,8 @@ body {
 }
 
 #overlay{
-  background-image: url(/assets/images/lp/overlay1.png);
+  /* background-image: url(/assets/images/lp/overlay1.png); */
+  background-image: url(/assets/images/lp/overlay1.gif);
   background-repeat: no-repeat;
   background-position: center;  position: fixed;
   margin: 0;
