@@ -249,7 +249,7 @@ function displayPlayers(data) {
 }
 
 function notify1p(){ //close toast on click //new
-  document.getElementById('p1toast').style.animation = "toastanim 0.5s ease reverse forwards"
+  document.getElementById('p1toast').style.animation = "toastanim-rev 0.5s ease normal forwards"
   copyLink = document.getElementById("pageLink");
   copyLink.select();
   copyLink.setSelectionRange(0, 99999);
@@ -263,6 +263,6 @@ function notify1p_show(){ //open toast
 
 
 function notify1p_hide(){ //close toast on new user connection
-  document.getElementById('p1toast').style.animation = "toastanim 0.5s ease reverse forwards"
+  document.getElementById('p1toast').style.animation = "toastanim-rev 0.5s ease normal forwards"
   toastBool = false;
 }

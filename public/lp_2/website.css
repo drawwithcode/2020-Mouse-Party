@@ -334,7 +334,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  background-color: #2b7077;
+  background-color: #0f1122;
   border-color: #ffffff;
   border-style: solid;
   border-width: 1.5px;
@@ -348,7 +348,12 @@ button {
 
 @keyframes toastanim {
   from {bottom: -20px; opacity: 0;}
-  to {bottom: 20px; opacity: 1;}
+  to {bottom: 3%; opacity: 1;}
+}
+
+@keyframes toastanim-rev {
+  0% {bottom: 3%; opacity: 1;}
+  100% {bottom: -20px; opacity: 0;}
 }
 
 #pageLink{
