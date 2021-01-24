@@ -22,7 +22,7 @@
 Mouse Party is a desktop game designed to celebrate New Year's Eve together.
 
 ### Context
-2020 has been the year of this big, scary pandemic that is still not over. In 2020 we had to give up gatherings in order to stop the spreading of this virus. We wanted to have a virtual place where people could gather together once again to celebrate and we wanted to stress how collaboration brings good things. We rely on word of mouth and shares on social media and instant messagging apps in order to spread the game.
+2020 has been the year of this big, scary pandemic that is still not over. In 2020 we had to give up gatherings in order to stop the spreading of this virus. We wanted to have a virtual place where people could gather together once again to celebrate and we wanted to stress how collaboration brings good things. We rely on word of mouth and shares on social media in order to spread the game.
 
 ### Concept
 We weren’t sure whether we would have been able to celebrate New Year’s Eve together with our friends, so we thought we could design an interactive experience online which would recall two of the symbols of New Year’s Eve. We put fireworks and dances together and we got Mouse Party, a virtual place where you can create fireworks "dancing" with friends or strangers, following the rhythm of the music.
