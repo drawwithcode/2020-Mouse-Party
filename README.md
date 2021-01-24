@@ -74,16 +74,17 @@ We also implemented a system to show the user when the execution of the betmap i
 
 ```javascript
 ...
-
       else if(this.type == 'slider'){
         this.beatSprite = createSprite(this.cornerX+sliderSizeX[this.sliderType-1]/2, this.cornerY+sliderSizeY[this.sliderType-1]/2);
         this.beatSprite.addAnimation('hit', sliderImg[this.sliderType-1]);
         this.beatSprite.animation.stop();
         this.beatSprite.animation.changeFrame(0);
       }
+      
 ...
 
     if (this.beatCollide){
+...
 this.beatSprite.animation.changeFrame(1)
 ...}
 ```
@@ -91,13 +92,83 @@ this.beatSprite.animation.changeFrame(1)
 ### Cursors
 We had to find a way in order to avoid showing in the "Room 1" iframe the cursor of the user who just landed on the page. We hide the cursor, making a boolean variable that turns true when the user clicks on the button to join the room, and when this variable is true, the cursor turns visible. Moreover, when the variable is false, the rotation angle is calculated without counting the user's cursor, otherwise - when the variable is true - the rotation angle keeps into consideration the user's cursor too.
 
+```javascript
+...
+// playerIn checks if the player has joined the room or is just a spectator
+  if (playerIn == true) {
+    drawSprites();
+
+    // display myCursor and send the information
+    myCursor.update();
+    myCursor.display();
+    socket.emit("mouse", mousePosition);
+
+    // display the cursors of other players
+    for(var i = 0; i < otherCursors.length; i++) {
+      push();
+      // rotation angle defined by the amount of players connected
+      rotate((360 / (otherCursors.length + 1) * (i + 1)));
+      otherCursors[i].display();
+      otherCursors[i].update();
+      pop();
+    }
+...
+```
+
 ### Collision
 Collision in p5.collide2D did not fit for our project since it allowed us to have collisions on basic shapes only, while we needed to follow the sliders shape (often a curve). We ended up implementing collision with the overlapPixel function of p5.play, creating png files with the background color in the collision area.
+
+```javascript
+...
+    //check collision on 4 points arount the pointer (allows for more forgiving inputs)
+    this.beatCollideA = this.beatSprite.overlapPixel(mouseX-width/2+inputSize, mouseY-height/2+inputSize);
+    this.beatCollideB = this.beatSprite.overlapPixel(mouseX-width/2-inputSize, mouseY-height/2+inputSize);
+    this.beatCollideC = this.beatSprite.overlapPixel(mouseX-width/2-inputSize, mouseY-height/2-inputSize);
+    this.beatCollideD = this.beatSprite.overlapPixel(mouseX-width/2+inputSize, mouseY-height/2-inputSize);
+    this.beatCollideMain = this.beatSprite.overlapPixel(mouseX-width/2, mouseY-height/2);
+    if (this.beatCollideA || this.beatCollideB || this.beatCollideC || this.beatCollideD || this.beatCollideMain){
+      this.beatCollide = true;
+    }
+    else{this.beatCollide = false}
+...
+```
 
 ### User Connection
 We had to manage user connection at different moments without getting the song to start back from the beginning. We managed to make the song start on the first user, then the following users will inherit the ability to emit time from the first user who joined the room. In this way we managed to make the song continue even if the first user logs off.
 
 We then had to solve a small bug we encountered: the user icons were flickering and do not respond correctly to log-ins and log-puts from the users. We solved it sending the delete cursor message  a second time, just after 0.5 from the first one.
+
+```javascript
+...
+// join the selected room
+  socket.on('subscribe', function (room) {
+    socket.join(room);
+  });
+
+  // receive the time of the track and send it to every player in that room
+  socket.on("where", function (data) {
+    console.log(data);
+    io.to(data.room).emit("current", data.times);
+  });
+  
+...
+
+// set the time of the song to get at the same point of other players
+socket.on("current", function (data) {
+  var diff = audio.currentTime - data;
+  if (diff < 0 || diff > 2) {
+    audio.currentTime = data;
+  }
+  audio.ontimeupdate = function () {
+    socket.emit("where", {times: audio.currentTime, room: roomname});
+  };
+});
+
+socket.on("playsong", function (data) {
+  audio.currentTime = data.times;
+  audio.play();
+});
+```
 
  ## Tools
 * P5.js
