@@ -19,10 +19,10 @@
 7. [Credits](#credits)
 
 ## The Project
-Mouse Party is a desktop game designed to celebrate New Year's Eve together. The COVID-19 pandemic made it impossible to have a house party to celebrate 2021 together with friends, Mouse Party wants to bring people together once again, dancing and making fireworks together, although being physically distant.
+Mouse Party is a desktop game designed to celebrate New Year's Eve together.
 
 ### Context
-2020 has been the year of this big, scary pandemic that is still not over. In 2020 we had to give up gatherings in order to stop the spreading of this horrible virus. We wanted to have a virtual place where people could gather together once again to celebrate and we wanted to stress how collaboration brings good things.
+2020 has been the year of this big, scary pandemic that is still not over. In 2020 we had to give up gatherings in order to stop the spreading of this virus. We wanted to have a virtual place where people could gather together once again to celebrate and we wanted to stress how collaboration brings good things. We rely on word of mouth and shares on social media and instant messagging apps in order to spread the game.
 
 ### Concept
 We weren’t sure whether we would have been able to celebrate New Year’s Eve together with our friends, so we thought we could design an interactive experience online which would recall two of the symbols of New Year’s Eve. We put fireworks and dances together and we got Mouse Party, a virtual place where you can create fireworks "dancing" with friends or strangers, following the rhythm of the music.
@@ -46,7 +46,7 @@ In each room the user will find the game and the home button.
 </p>
 
 * #### Functioning<br>
-The interaction is mostly real-time. Users can join in different moments and inputs from the users will be mirrored around a central point. Based on the number of users in the room, the angle of different inputs will increase or decrease (360°/no. of users).  The instructions that the user has to follow will always be on the 0° angle, while the other users are shown as translated by the angle. <br>The idea is to show how collaboration brings good things, so when the users are alone in the room they can still play, but a pop-up will suggest inviting a few friends in order to make the experience more enjoyable.
+The interaction is mostly real-time. Users can join in different moments and inputs from the users will be mirrored around a central point. Based on the number of users in the room, the angle of different inputs will increase or decrease (360°/no. of users).  The instructions that the user has to follow will always be on the 0° angle, while the other users are shown as translated. <br>When the users are alone in the room they can still play, but a pop-up will suggest inviting a few friends in order to make the experience more enjoyable.
 
 * #### Visuals
 We chose a neon noir visual feel: neon colors on a blue night background, inspired by fireworks. The player’s cursor is always shown in white while the other players get randomly assigned one out of 9 colors.
@@ -65,14 +65,14 @@ We coded circles on the beats and at the beginning and the end of the sliders. T
 </p>
 
 ### Contextualize
-We decided to add an illustration for context. This illustration has fixed dimensions and according to the resolution on the screen, users will see it with different levels of zoom.
+We decided to add an illustration for context. Its main purpose is to distinguish the interactive area from the rest of the webpage. This illustration has fixed dimensions and according to the resolution on the screen, users will see it with different levels of zoom.
 
 <p align="center">
 <img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/context.gif"
 </p>
 
 ### Input
-find an alternative to the left-click input (in order to make the gameplay suitable also for trackpads)	Devices with trackpad included thanks to the spacebar input (that works just like a left-click)
+We wanted to have an alternative to the left-click input (in order to make the gameplay suitable also for trackpads). We decided to go for an input from the spacebar (that works just like a left-click)
 
 ### Solo Mode
 What would happen if only a player was online? 	Although we wanted Mouse Party to be a collaborative experience, we also wanted to give the people a chance to see what they could achieve with many players, therefore we created a "solo" room, where users can see the result with their cursor rotated 8 times.
@@ -82,7 +82,7 @@ What would happen if only a player was online? 	Although we wanted Mouse Party t
 ### Beatmap
 We decided to have a single beatmap that didn't have to be rotated or moved. In order to make it possibile, we chose to keep the user in a fixed position, while rotating the cursors of other connected players.
 
-We then had to make the choreography uniform from different screen sizes. At first we made a grid and remapped everything, but then we realized collision wasn't working on scaled p5.play Sprites - which we used to create the sliders - therefore we couldn't make the beatmap responsive. We managed to work around the problem putting the beatmap in an iframe with fixed dimensions (800x800px) and in order to make it look nicer, we added an illustration for context.
+We then had to make the choreography uniform from different screen sizes. At first we made a grid and remapped everything, but then we realized collision wasn't working on scaled p5.play Sprites - which we used to create the sliders - therefore we couldn't make the beatmap responsive. We managed to work around the problem putting the beatmap in an iframe with fixed dimensions (800x800px) and we added an illustration for context, in order to make it look nicer.
 
 We also implemented a system to show the user when the execution of the betmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
@@ -149,9 +149,9 @@ Collision in p5.collide2D did not fit for our project since it allowed us to hav
 ```
 
 ### User Connection
-We had to manage user connection at different moments without getting the song to start back from the beginning. We managed to make the song start on the first user, then the following users will inherit the ability to emit time from the first user who joined the room. In this way we managed to make the song continue even if the first user logs off.
+We had to manage user connection at different moments without getting the song to start back from the beginning. We managed to make the song start on the first user, then the following users will inherit the ability to emit time from the first user who joined the room. In this way we let the song continue even if the first user logs off.
 
-We then had to solve a small bug we encountered: the user icons were flickering and do not respond correctly to log-ins and log-puts from the users. We solved it sending the delete cursor message  a second time, just after 0.5 from the first one.
+After that, we had to solve a small bug we encountered: the user icons were flickering and do not respond correctly to log-ins and log-puts from the users. We solved it sending the delete cursor message  a second time, just after 0.5 from the first one.
 
 ```javascript
 ...
