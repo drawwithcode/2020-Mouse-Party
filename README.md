@@ -19,7 +19,9 @@
 7. [Credits](#credits)
 
 ## The Project
-Mouse Party is a desktop game designed to celebrate New Year's Eve together.
+Mouse Party is a desktop game* designed to celebrate New Year's Eve together.
+
+\*Optimized for Chrome
 
 ### Context
 2020 has been the year of this big, scary pandemic that is still not over. In 2020 we had to give up gatherings in order to stop the spreading of this virus. We wanted to have a virtual place where people could gather together once again to celebrate and we wanted to stress how collaboration brings good things. We rely on word of mouth and shares on social media in order to spread the game.
