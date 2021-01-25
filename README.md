@@ -46,7 +46,7 @@ In each room the user will find the game and the home button.
 </p>
 
 * #### Functioning<br>
-Interaction between users is mostly real-time. Players can join in different moments, and their inputs will be mirrored around a central point. Based on the number of users in the room, the angle of different inputs will increase or decrease (360°/no. of users).  The user's cursor and instructions they have to follow will always be on the 0° angle, while the other users are shown as translated. <br>When an user is alone in the room, they can still play, but a pop-up message will suggest inviting a few friends in order to make the experience more enjoyable.
+Interaction between users is real-time. Players can join in different moments, and their inputs will be mirrored around a central point. Based on the number of users in the room, the angle of different inputs will increase or decrease (360°/no. of users).  The user's cursor and instructions they have to follow will always be on the 0° angle, while the other users are shown as translated. <br>When a user is alone in the room, they can still play, but a pop-up message will suggest inviting a few friends in order to make the experience more enjoyable.
 
 * #### Visuals
 We started with a neon noir visual feel: neon colors on a blue night background, inspired by fireworks. The player’s cursor is always shown in white while the other players get randomly assigned one out of 9 colors.
@@ -91,6 +91,8 @@ What would happen if only a single player was online? 	Although we wanted Mouse 
 We decided to have a single beatmap that didn't have to be rotated or moved. In order to make it possibile, we chose to keep the user in a fixed position, while rotating the cursors of other connected players.
 
 We then had to make the choreography look uniform across different screen sizes. At first we tried with a system of a grid and mapping methods, but we realized collision wasn't working on scaled p5.play Sprites - which we used to create the sliders - therefore we couldn't make the beatmap responsive. We managed to work around the problem by confining the game to an iframe with fixed dimensions (800x800px) and we added an illustration for context, in order to make it look nicer.
+
+We also implemented a system to show the user when the execution of the beatmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
 
 ```javascript
@@ -138,8 +140,6 @@ We had to find a way to avoid showing in the "Room 1" iframe the cursor of the u
 
 ### Collision
 p5.collide2D did not fit our needs since it only allowed us to have collisions on basic shapes. We needed to follow the sliders shape (often a curve), so e ended up implementing collision using the overlapPixel function of p5.play, creating png files with the background color in the collision area.
-
-We then implemented a system to show the user when the execution of the beatmap is correct. The sliders' sprites are made up by an animation made up of two different frames: the first one is the regular slider, the second one is colored with blue and the animation is called when the input and the timing is correct.
 
 ```javascript
 ...
