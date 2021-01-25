@@ -214,17 +214,16 @@ socket.on("playsong", function (data) {
 ## Credits
 #### Music
 &ensp;Room 1 + Solo Mode Room<br>
-&ensp;&ensp;"Musik liegt in der Luft" by Phillip Gross [(CC BY-NC-SA 3.0)](https://creativecommons.org/licenses/by-nc-sa/3.0/)<br>
+&ensp;&ensp;"Musik Liegt in der Luft" by Phillip Gross [(CC BY-NC-SA 3.0)](https://creativecommons.org/licenses/by-nc-sa/3.0/)<br>
 &ensp;&ensp;[freemusicarchive.org](https://freemusicarchive.org/home)<br>
 &ensp;Room 2:<br>
 &ensp;&ensp;"Fireworks" by Alexander Nakarada [(CC 0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.it)<br>
-&ensp;&ensp;[https://freepd.com](https://freepd.com/electronic.php)
+&ensp;&ensp;[freepd.com](https://freepd.com/electronic.php)
 <br>
 #### Sound Effects
 [fesliyanstudios.com,](https://fesliyanstudios.com/)<br>
 [audiomicro.com,](https://audiomicro.com/)<br>
 [bigsoundbank.com,](https://bigsoundbank.com/)<br>
-[freemusicarchive.org](https://freemusicarchive.org/home)<br>
 <br>
 <br>
 Coded with ♥ by ASMR | Andrea Bellavita, Nicole Moreschi, Riccardo Rigamondi, Sharon Manfredi
