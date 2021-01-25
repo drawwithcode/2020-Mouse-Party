@@ -54,7 +54,7 @@ We started with a neon noir visual feel: neon colors on a blue night background,
 For the enviroment, we chose dark pastel colors that don't draw attention away from the game.
 
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/palette_1.gif"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/palette_1.jpeg"
 </p>
 
 * #### Sounds
