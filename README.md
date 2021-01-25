@@ -53,6 +53,10 @@ We started with a neon noir visual feel: neon colors on a blue night background,
 
 For the enviroment, we chose dark pastel colors that don't draw attention away from the game.
 
+<p align="center">
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/palette_1.gif"
+</p>
+
 * #### Sounds
 We added fireworks sound effects when clicking on the beatmap and when sliding down the sliders. We chose to use royalty free electronic music that felt fun to keep a beat to.
 
