@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/cover_small.gif"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/cover_small.gif">
 </p>
 
 # Mouse Party
@@ -32,7 +32,7 @@ People can play with Mouse Party alone, but the full experience is designed to b
 The site features two rooms with a music track each and its beatmap. Each user's cursor is then mirrored around the center point of the window, so that the final result is reminiscent of New Year’s Eve fireworks. The scope is to interact with other players and execute a choreography by following the beatmap and the rhythm with the focus on collaborative results. The game can be played from any screen with a pointing device (a mouse, a trackpad, a graphic tablet). 
 
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/gameplay_1.gif"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/gameplay_1.gif">
 </p>
 
 * #### Architecture<br>
@@ -42,7 +42,7 @@ When landing on the website, the user will be able to see what's happening in th
 In each room the user will find the game and the home button.
 
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/tutorial.png"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/tutorial.png">
 </p>
 
 * #### Functioning<br>
@@ -54,7 +54,7 @@ We started with a neon noir visual feel: neon colors on a blue night background,
 For the enviroment, we chose dark pastel colors that don't draw attention away from the game.
 
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/palette_1.jpg"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/palette.png">
 </p>
 
 * #### Sounds
@@ -69,14 +69,14 @@ In order to make the songs we chose playable, we had to create something called 
 We coded circles on the beats and at the beginning and the end of the sliders. These circles shrink showing the user when to click and have a hint about the speed, the rhythm. We also added a visual feedback (the circle turning blue) if the timing was correct - according to the learning by doing approach. For spinners, we had to find out a good balance between clarity of usage and a minimalistic look, so we opted for a fixed "donut" and a shrinking dashed circle that tells when to start and stop holding the click.
 
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/feedback.gif"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/feedback.gif">
 </p>
 
 ### Contextualize
 We decided to add an illustration for context. Its main purpose is to distinguish the interactive area from the rest of the webpage. This illustration has fixed dimensions and according to the resolution on the screen, users will see it with different levels of zoom. It's also a fun easter egg when the user zooms out of the page!
 
 <p align="center">
-<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/context.gif"
+<img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/context.gif">
 </p>
 
 ### Input
