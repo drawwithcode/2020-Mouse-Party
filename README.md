@@ -29,7 +29,7 @@ We weren’t sure whether we would have been able to celebrate New Year’s Eve 
 People can play with Mouse Party alone, but the full experience is designed to be enjoyed by multiple users - simple movements can become something intricate and beautiful thanks to collaboration among players.
 
 ### Overview
-The site features two rooms with a music track each and its beatmap. Each user's cursor is then mirrored around the center point of the window, so that the final result is reminiscent of New Year’s Eve fireworks. The scope is to interact with other players and execute a choreography by following the beatmap and the rhythm with the focus on collaborative results. The game can be played from any screen with a pointing device (a mouse, a trackpad, a graphic tablet). 
+The site features two rooms with a music track each and its beatmap. Each user's cursor is then mirrored around the center point of the window, so that the final result is reminiscent of New Year’s Eve fireworks. The scope is to interact with other players and execute a choreography by following the beatmap and the rhythm with the focus on collaborative results. The game can be played from any screen with a pointing device (a mouse, a trackpad, a graphic tablet).
 
 <p align="center">
 <img src="https://github.com/drawwithcode/2020-asmr-final/blob/master/public/assets/images/readme/gameplay_1.gif">
@@ -103,7 +103,7 @@ We also implemented a system to show the user when the execution of the beatmap 
         this.beatSprite.animation.stop();
         this.beatSprite.animation.changeFrame(0);
       }
-      
+
 ...
 
     if (this.beatCollide){
@@ -139,7 +139,7 @@ We had to find a way to avoid showing in the "Room 1" iframe the cursor of the u
 ```
 
 ### Collision
-p5.collide2D did not fit our needs since it only allowed us to have collisions on basic shapes. We needed to follow the sliders shape (often a curve), so e ended up implementing collision using the overlapPixel function of p5.play, creating png files with the background color in the collision area.
+p5.collide2D did not fit our needs since it only allowed us to have collisions on basic shapes. We needed to follow the sliders shape (often a curve), so we ended up implementing collision using the overlapPixel function of p5.play, creating png files with the background color in the collision area.
 
 ```javascript
 ...
@@ -173,7 +173,7 @@ After that, we had to solve a small bug we encountered: the user icons were flic
     console.log(data);
     io.to(data.room).emit("current", data.times);
   });
-  
+
 ...
 
 // set the time of the song to get at the same point of other players
